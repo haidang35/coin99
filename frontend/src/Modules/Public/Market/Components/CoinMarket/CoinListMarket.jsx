@@ -3,7 +3,9 @@ import React, { Component } from "react";
 export class CoinListMarket extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            name: 'lamson',
+        }
     }
     render() {
         return (
