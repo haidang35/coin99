@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 
-export class Blog extends Component {
+export class CoinPricing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name:'lamsondepzai',
+
         }
     }
     render() {
         return (
             <>
-                <div className="blog_wrapper">
+                <div className="pricing-new">
                     <div className="container">
                         <div className="row">
-                            <main className="col-sm-8">
-                                <div className="post post_list post_list_lg">
+                            <div className="col-sm-8">
+                                <div className="price-chart">
+                                    <div id="chartdiv" />
+                                </div>
+                                {/* /.End of chart */}
+                                <div className="widget_banner">
+                                    <img
+                                        src="assets/img/add-728x90-1.png"
+                                        className="img-responsive center-block"
+                                        alt=""
+                                    />
+                                </div>
+                                {/* /.End of banner widget */}
+                                <h4 className="widget_title">Pricing News</h4>
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="blog-details.html">
-                                            <img src="assets/img/blog/290x232-1.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-1.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Lifestyle</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="blog-details.html">
                                                 <strong>Aliquam</strong> <span className="dash">—</span> rutrum
@@ -48,16 +58,13 @@ export class Blog extends Component {
                                     </div>
                                 </div>
                                 {/* /.End of post list */}
-                                <div className="post post_list post_list_lg">
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="blog-details.html">
-                                            <img src="assets/img/blog/290x232-2.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-2.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Adventure</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="blog-details.html">
                                                 <strong>IFusce</strong> <span className="dash">—</span> ac
@@ -82,16 +89,13 @@ export class Blog extends Component {
                                     </div>
                                 </div>
                                 {/* /.End of post list */}
-                                <div className="post post_list post_list_lg">
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-3.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-3.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Crypto</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="#">
                                                 <strong>Established</strong> <span className="dash">—</span>{" "}
@@ -116,16 +120,13 @@ export class Blog extends Component {
                                     </div>
                                 </div>
                                 {/* /.End of post list */}
-                                <div className="post post_list post_list_lg">
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-4.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-4.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Lifestyle</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="#">
                                                 <strong>Aenean</strong> <span className="dash">—</span>{" "}
@@ -150,16 +151,13 @@ export class Blog extends Component {
                                     </div>
                                 </div>
                                 {/* /.End of post list */}
-                                <div className="post post_list post_list_lg">
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-5.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-5.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Traditional</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="#">
                                                 <strong>Suspendisse</strong> <span className="dash">—</span> eu
@@ -184,16 +182,13 @@ export class Blog extends Component {
                                     </div>
                                 </div>
                                 {/* /.End of post list */}
-                                <div className="post post_list post_list_lg">
+                                <div className="post post_list post_list_md">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-6.jpg" alt="" />
+                                            <img src="assets/img/blog/240x160-6.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Traditional</a>
-                                        </div>
                                         <h3 className="post_heading">
                                             <a href="#">
                                                 <strong>Suspendisse</strong> <span className="dash">—</span> eu
@@ -244,7 +239,7 @@ export class Blog extends Component {
                                     </li>
                                 </ul>
                                 {/* /.End of pagination */}
-                            </main>
+                            </div>
                             <aside className="col-sm-4 p_l_40">
                                 <div className="widget">
                                     <h4 className="widget_title">Search here</h4>
@@ -405,7 +400,6 @@ export class Blog extends Component {
                         </div>
                     </div>
                 </div>
-
 
             </>
         )

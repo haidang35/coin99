@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CoinListMarket } from "./Components/CoinListMarket/CoinListMarket";
+import { CoinListMarket } from "./Components/CoinMarket/CoinListMarket";
 
 export class Market extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ export class Market extends Component {
         return (
             <>
             <CoinListMarket />
+            
 
             </>
         )

@@ -1,13 +1,48 @@
 import React, { Component } from "react";
+import { Link, Navigate, Redirect } from "react-router-dom";
 
 export class CoinListMarket extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: 'lamson',
+            coinList: [
+                {
+                    name: 'Bitcoin',
+                    ticker: 'BTC',
+                    price: 888.74,
+                    currency: "$",
+                    capitalization: 150.36,
+                    maxQuantity: 21,
+                    idChange: 13.08,
+                },
+                {
+                    name: 'Bitcoin Gold',
+                    ticker: 'BTG',
+                    price: 777.74,
+                    currency: "$",
+                    capitalization: 120.54,
+                    maxQuantity: 25,
+                    idChange: 15.08,
+                },
+                {
+                    name: 'Dash',
+                    ticker: 'DASH',
+                    price: 666.74,
+                    currency: "$",
+                    capitalization: 130.36,
+                    maxQuantity: 28,
+                    idChange: 18.08,
+
+                }
+
+
+            ]
         }
     }
+
     render() {
+        const { coinList } = this.state;
         return (
             <>
                 <div className="currency-table">
@@ -50,534 +85,63 @@ export class CoinListMarket extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/BTC.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Bitcoin</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">BTC</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$8,874.19</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$150.36 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">21 M</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        +13.08%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/ETH.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Ethereum</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">ETH</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$864.14</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$85.68 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">Unlimited</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        +6.82%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/XRP.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Ripple</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">XRP</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$1.06</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$43.16 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">99.99 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        +43.04%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/LTC.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Litecoin</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">LTC</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$145.25</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$8.05 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">84 M</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_negative">
-                                                        -11.53%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#e34828"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/tron.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">TRON</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">TRX</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$0.04</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$2.73 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">Unlimited</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_negative">
-                                                        -18.58%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#e34828"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/BTG.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Bitcoin Gold</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">BTG</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$108.07</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$381,159</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">Unlimited</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -12.93%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/qtum.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Qtum</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">BTG</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$108.07</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$381,159</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">Unlimited</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_negative">
-                                                        -12.93%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#e34828"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/stellar.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Stellar</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">XLM</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$0.35</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$6.69 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">103.27 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -13.7%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/DASH.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Dash</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">DASH</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$578.69</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$4.55 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">18.9 M</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -13.21%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/ETC.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Ethereum Classic</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">ETC</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$22.23</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$2.21 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">Unlimited</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -17.05%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/ZEC.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Zcash</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">ZEC</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$22.23</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$2.21 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">140.25 M</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -17.05%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr data-href="price.html">
-                                                <td>
-                                                    <div className="logo-name">
-                                                        <div className="item-logo">
-                                                            <img
-                                                                src="assets/img/coin-logo/neo.svg"
-                                                                className="img-responsive"
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                        <span className="item_name_value">Neo</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className="value_ticker">NEO</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_price">$22.23</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_cap">$2.21 B</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_max_quantity">140.25 M</span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_d1_return percent_positive">
-                                                        -17.05%
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span className="value_graph">
-                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                            {" "}
-                                                            <polyline
-                                                                fill="none"
-                                                                stroke="#35a947"
-                                                                strokeWidth={5}
-                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                            />{" "}
-                                                        </svg>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                            {coinList.map((coin, index) => {
+                                                return (
+                                                    <tr key={index}>
+                                                        <td >
+                                                            <Link to={{
+                                                                pathname: `/coin-market/${coin.ticker}`,
+                                                                state: {name: 'hello'}
+                                                            }}>
+                                                                <div className="logo-name">
+                                                                    <div className="item-logo">
+                                                                        <img
+                                                                            src="assets/img/coin-logo/BTC.svg"
+                                                                            className="img-responsive"
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                    <span className="item_name_value">{coin.name}</span>
+                                                                </div>
+                                                            </Link>
+
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_ticker">{coin.ticker}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_price">{coin.price}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_cap">{coin.capitalization}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_max_quantity">{coin.maxQuantity}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_d1_return percent_positive">
+                                                                {coin.idChange}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="value_graph">
+                                                                <svg viewBox="0 0 500 100" className="chart">
+                                                                    {" "}
+                                                                    <polyline
+                                                                        fill="none"
+                                                                        stroke="#35a947"
+                                                                        strokeWidth={5}
+                                                                        points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
+                                                                    />{" "}
+                                                                </svg>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+
+                                                )
+                                            })}
+
+
                                         </tbody>
                                     </table>
                                 </div>

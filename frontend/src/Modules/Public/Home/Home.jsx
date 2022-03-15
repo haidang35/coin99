@@ -4,8 +4,6 @@ import { Market } from "../Market/Market";
 import { Footer } from "../Shared/Components/Layouts/Footer";
 import { Navbar } from "../Shared/Components/Layouts/Navbar";
 import { CoinList } from "./Components/CoinList/CoinList";
-import { Slider } from "./Components/Slider/Slider";
-
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +14,8 @@ export class Home extends Component {
     return (
       <>
         <Navbar />
-        <Slider />
         <CoinList />
+        <Market />
         <Footer />
       </>
     );
