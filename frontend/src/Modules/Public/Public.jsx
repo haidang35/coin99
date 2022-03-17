@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { Home } from "./Home/Home";
 import styles from "./Shared/Styles/Public.scss";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Market } from "./Market/Market";
 import { Navbar } from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
@@ -22,18 +22,12 @@ export class Public extends Component {
             <>
                 <BrowserRouter >
                 <Navbar />
-                {/* <Slider /> */}
-                    <Switch>
-                        <Route path="/" exact>
-                            <Home />
-                        </Route>
-                        <Route path="/coin-market" exact >
-                            <Market />
-                        </Route>
-                        <Route path="/coin-market/:id" exact >
-                            <Coin />
-                        </Route>
-                    </Switch>
+                <Slider />
+                    <Routes>
+                        <Route path="/" exact element={<Home />} />
+                        <Route path="/coin-market" exact element={<Market />} />
+                        <Route path="/coin-market/:id" exact element={<Coin />} />
+                    </Routes>
                 </BrowserRouter>
             </>
         )
