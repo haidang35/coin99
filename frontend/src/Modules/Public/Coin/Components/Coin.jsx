@@ -1,19 +1,30 @@
+import { onValue, ref } from "firebase/database";
 import React, { Component }  from "react";
+import { useParams, withRouter } from "react-router-dom";
+import { realtimeDb } from "../../../../Configs/firebase";
 import { CoinDetails } from "./CoinDetails/CoinDetails";
 import { CoinHeader } from "./CoinHeader/CoinHeader";
 import { CoinPricing } from "./CoinPricing/CoinPricing";
 
-export class Coin extends Component {
+ class Coin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         }
     }
 
     componentDidMount() {
-        const { location } = this.props;
-        console.log(this.props);
+        this.getCoinDetails();
+    }
+
+    getCoinDetails = () => {
+        const { symbol } = this.props.match.params;
+        const coinKey = this.props.location.state.coinKey;
+        const coinRef = ref(realtimeDb, `coins/binance/${coinKey}`);
+        onValue(coinRef, (snapshot) => {
+            console.log(snapshot.val());
+        });
     }
 
 
@@ -28,3 +39,5 @@ export class Coin extends Component {
     }
 
 }
+
+export default withRouter(Coin);
