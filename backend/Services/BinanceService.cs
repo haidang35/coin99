@@ -105,7 +105,7 @@ namespace backend.Services
                             priceChangePercent = dataConverted.P,
                             lastPrice = dataConverted.c,
                         };
-                        Debug.WriteLine(dataConverted);
+                        Debug.WriteLine(data);
                     }
                     await Task.Delay(1000);
                 }

@@ -276,7 +276,24 @@
     </Compile>
     <Compile Include="Models\BinanceCoin.cs" />
     <Compile Include="Models\BinanceMarketTickersStream.cs" />
+    <Compile Include="Models\CoinCategory.cs" />
+    <Compile Include="Models\CoinMarketTable.cs" />
+    <Compile Include="Models\CoinTable.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PostCategorieTable.cs" />
+    <Compile Include="Models\PostsTable.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\UpgradePack.cs" />
+    <Compile Include="Models\UpgradePackPrice.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRegistedUpgrade.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Services\BinanceService.cs" />
     <Compile Include="Services\FirebaseService.cs" />
   </ItemGroup>
@@ -310,6 +327,10 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
