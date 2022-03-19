@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Slider } from "../Shared/Components/Slider/Slider";
 import { } from "../Shared/Styles/Public.scss"
 
 export class Contact extends Component {
@@ -10,6 +11,7 @@ export class Contact extends Component {
     render() {
         return (
             <>
+                <Slider />
                 <div className="contact_content">
                     <div className="container">
                         <div className="row">
