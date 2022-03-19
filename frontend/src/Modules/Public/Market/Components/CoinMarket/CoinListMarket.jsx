@@ -41,6 +41,7 @@ export class CoinListMarket extends Component {
 
   render() {
     const { coinList, coinDetail, isRedirect } = this.state;
+    console.log(coinDetail);
     if(isRedirect) {
         return <Redirect to={{
             pathname: `/coin-market/${coinDetail.symbol}`,

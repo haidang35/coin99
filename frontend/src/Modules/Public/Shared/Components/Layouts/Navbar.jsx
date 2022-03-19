@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
   constructor(props) {
@@ -85,16 +86,19 @@ export class Navbar extends Component {
               <div className="collapse navbar-collapse" id="navbar-menu">
                 <ul className="nav navbar-nav" data-in="" data-out="">
                   <li className="active">
-                    <a href="index-2.html">Home</a>
+                    <Link to="/" >
+                        Home
+                    </Link>
                   </li>
                   <li>
-                    <a href="lending.html">Lending</a>
+                    <Link to="/coin-market">
+                      Coin Market
+                    </Link>
                   </li>
                   <li>
-                    <a href="coinmarket.html">Coin market</a>
-                  </li>
-                  <li>
-                    <a href="contact.html">Contact</a>
+                    <Link to="/Contact">
+                      Contact
+                    </Link>
                   </li>
                   <li className="dropdown">
                     <a

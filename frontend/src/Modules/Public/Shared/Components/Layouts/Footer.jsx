@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Footer extends Component {
   constructor(props) {
@@ -16,14 +17,14 @@ export class Footer extends Component {
               <div className="breadcrumbs-row">
                 <ul className="f_breadcrumbs">
                   <li>
-                    <a href="#">
-                      <span>Home</span>
-                    </a>
+                    <Link to="/" exact>
+                    Home
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
-                      <span>About</span>
-                    </a>
+                    <Link to="/Abouts" exact>
+                    Abouts
+                    </Link>
                   </li>
                 </ul>
                 <div className="scroll-top" id="back-to-top">
@@ -37,7 +38,6 @@ export class Footer extends Component {
               </div>
             </div>
           </div>
-          {/* /.End of breadcrumbs */}
           <div className="action_btn_inner">
             <a href="register.html#tab1" className="action_btn">
               <span className="action_title">Register</span>
@@ -166,7 +166,6 @@ export class Footer extends Component {
               </div>
             </div>
           </div>
-          {/* /.End of main footer */}
           <div className="sub_footer">
             <div className="container">
               <div className="logos-wrapper">
@@ -212,7 +211,6 @@ export class Footer extends Component {
               </div>
             </div>
           </div>
-          {/* /.End of sub footer */}
         </footer>
       </>
     );
