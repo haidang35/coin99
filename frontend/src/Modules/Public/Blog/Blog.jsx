@@ -334,6 +334,7 @@ export class Blog extends Component {
                                     <div className="social_icon">
                                         <a href="#" className="facebook">
                                             <i className="fa fa-facebook" />
+                                            
                                         </a>
                                         <a href="#" className="twitter">
                                             <i className="fa fa-twitter" />

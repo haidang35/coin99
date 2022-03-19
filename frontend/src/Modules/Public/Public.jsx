@@ -7,6 +7,8 @@ import { Market } from "./Market/Market";
 import { Navbar } from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
+import { Contact } from "./Contact/Contact";
+import { Abouts } from "./About/Abouts";
 
 
 export class Public extends Component {
@@ -32,6 +34,12 @@ export class Public extends Component {
                         </Route>
                         <Route path="/coin-market/:symbol" exact >
                             <Coin />
+                        </Route>
+                        <Route path="/Contact" exact >
+                        <Contact />
+                        </Route>
+                        <Route path="/Abouts" exact>
+                            <Abouts />
                         </Route>
                     </Switch>
                 </BrowserRouter>
