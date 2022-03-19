@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 
-
 export class CoinHeader extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
     render() {
+        const { coinDetails } = this.props;
         return (
             <>
                 <div
@@ -31,8 +29,8 @@ export class CoinHeader extends Component {
                                         <div className="company-valu">
                                             <div className="company-value-title">Current Price</div>
                                             <div className="company-value-current">
-                                                $11,530.0155
-                                                <span className="company-value-change">+0.28%</span>
+                                                { coinDetails !== null ? coinDetails.lastPrice : '' }
+                                                <span className="company-value-change">+{ coinDetails !== null ? coinDetails.priceChangePercent : '' }%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -44,8 +42,6 @@ export class CoinHeader extends Component {
                         <img src="assets/img/mask.png" className="intro-round" alt="" />
                     </div>
                 </div>
-
-
             </>
         )
     }

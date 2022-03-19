@@ -8,6 +8,7 @@ export class CoinDetails extends Component {
         }
     }
     render() {
+        const { coinDetails } = this.props;
         return (
             <>
                 <div className="crypto-details">
@@ -16,7 +17,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">1-Day Change</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_positive">+4.03%</span>
+                                    <span className="percent_positive">+{coinDetails !== null ? coinDetails.priceChangePercent : ''}%</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -48,7 +49,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Volume (24h)</div>
                                 <div className="info-cell-value">
-                                    <span>$6.15 B</span>
+                                    <span>$ {coinDetails !== null ? (coinDetails.volume).toFixed(2) : ''}B</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -60,7 +61,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Max Quantity</div>
                                 <div className="info-cell-value">
-                                    <span>21,000,000</span>
+                                    <span>{coinDetails !== null ? coinDetails.lastQty : ''}</span>
                                 </div>
                             </div>
                         </div>
