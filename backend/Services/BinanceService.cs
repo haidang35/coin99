@@ -114,6 +114,14 @@ namespace backend.Services
                                         priceChangePercent = dataConverted.P,
                                         lastPrice = dataConverted.c,
                                         symbol = dataConverted.s,
+                                        weightedAvgPrice = dataConverted.w,
+                                        lastQty = dataConverted.Q,
+                                        bidPrice = dataConverted.b,
+                                        bidQty = dataConverted.B,
+                                        volume = dataConverted.v,
+                                        quoteVolume = dataConverted.q,
+                                        openPrice = dataConverted.o,
+                                        highPrice = dataConverted.h
                                     };
                                     await firebaseService.Update("coins/binance/" + d.Key, binanceCoin);
                                 }
