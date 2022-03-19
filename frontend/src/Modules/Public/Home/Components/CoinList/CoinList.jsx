@@ -3,7 +3,6 @@ import React from "react";
 import { Component } from "react";
 import { PATH_ENDPOINT, realtimeDb } from "../../../../../Configs/firebase";
 
-
 export class CoinList extends Component {
   constructor(props) {
     super(props);

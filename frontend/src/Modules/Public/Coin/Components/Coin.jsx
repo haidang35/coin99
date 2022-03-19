@@ -10,7 +10,7 @@ import { CoinPricing } from "./CoinPricing/CoinPricing";
     constructor(props) {
         super(props);
         this.state = {
-            
+            coinDetails: null
         }
     }
 
@@ -23,16 +23,20 @@ import { CoinPricing } from "./CoinPricing/CoinPricing";
         const coinKey = this.props.location.state.coinKey;
         const coinRef = ref(realtimeDb, `coins/binance/${coinKey}`);
         onValue(coinRef, (snapshot) => {
-            console.log(snapshot.val());
+           console.log("🚀 ~ file: Coin.jsx ~ line 26 ~ Coin ~ onValue ~ snapshot", snapshot.val())
+           this.setState({
+               coinDetails: snapshot.val(),
+           });
         });
     }
 
 
     render() {
+        const { coinDetails } = this.state;
         return(
             <>
-            <CoinHeader />
-            <CoinDetails />
+            <CoinHeader coinDetails={coinDetails}/>
+            <CoinDetails coinDetails={coinDetails}/>
             <CoinPricing />
             </>
         )
