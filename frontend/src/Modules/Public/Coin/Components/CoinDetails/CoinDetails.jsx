@@ -9,6 +9,7 @@ export class CoinDetails extends Component {
     }
     render() {
         const { coinDetails } = this.props;
+        console.log(coinDetails);
         return (
             <>
                 <div className="crypto-details">
@@ -21,29 +22,29 @@ export class CoinDetails extends Component {
                                 </div>
                             </div>
                             <div className="info-cell">
-                                <div className="info-cell-title">1-Week Change</div>
+                                <div className="info-cell-title">Open Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_positive">+17.22%</span>
+                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.openPrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
-                                <div className="info-cell-title">1-Month Change</div>
+                                <div className="info-cell-title">High Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_positive">+25.59%</span>
+                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.highPrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
-                                <div className="info-cell-title">YTD Change</div>
+                                <div className="info-cell-title">Low Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_negative">-16.78%</span>
+                                    <span className="percent_negative">{coinDetails !== null ? coinDetails.lowPrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                         </div>
                         <div className="crypto-details-info">
                             <div className="info-cell">
-                                <div className="info-cell-title">Market Cap</div>
-                                <div className="info-cell-value">
-                                    <span>$195.04 B</span>
+                                <div className="info-cell-title">Quote Volume</div>
+                                <div className="info-cell-value" >
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.quoteVolume.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -53,9 +54,9 @@ export class CoinDetails extends Component {
                                 </div>
                             </div>
                             <div className="info-cell">
-                                <div className="info-cell-title">In Circulation</div>
+                                <div className="info-cell-title">WeightedAvg Price</div>
                                 <div className="info-cell-value">
-                                    <span>16.9 M</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.weightedAvgPrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -64,6 +65,34 @@ export class CoinDetails extends Component {
                                     <span>{coinDetails !== null ? coinDetails.lastQty : ''}</span>
                                 </div>
                             </div>
+                         
+                        </div>
+                        <div className="crypto-details-info">
+                            <div className="info-cell">
+                                <div className="info-cell-title">Last Price</div>
+                                <div className="info-cell-value" >
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.lastPrice.toFixed(10) : ''}</span>
+                                </div>
+                            </div>
+                            <div className="info-cell">
+                                <div className="info-cell-title">Close Price</div>
+                                <div className="info-cell-value">
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.prevClosePrice.toFixed(10) : ''}</span>
+                                </div>
+                            </div>
+                            <div className="info-cell">
+                                <div className="info-cell-title">Bid Qty</div>
+                                <div className="info-cell-value">
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.bidQty.toFixed(5) : ''}</span>
+                                </div>
+                            </div>
+                            <div className="info-cell">
+                                <div className="info-cell-title">Bid Price</div>
+                                <div className="info-cell-value">
+                                    <span>{coinDetails !== null ? coinDetails.bidPrice.toFixed(5) : ''}</span>
+                                </div>
+                            </div>
+                         
                         </div>
                         <div className="more">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

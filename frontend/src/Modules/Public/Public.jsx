@@ -7,35 +7,32 @@ import { Market } from "./Market/Market";
 import { Navbar } from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
+import { Contact } from "./Contact/Contact";
+import { Abouts } from "./About/Abouts";
 
-
-export class Public extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    render() {
-        return (
-            <>
-                <BrowserRouter >
-                <Navbar />
-                {/* <Slider /> */}
-                    <Switch>
-                        <Route path="/" exact >
-                            <Home />
-                        </Route>
-                        <Route path="/coin-market" exact >
-                            <Market />
-                        </Route>
-                        <Route path="/coin-market/:symbol" exact >
-                            <Coin />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-            </>
-        )
-    }
+export function Public() {
+  return (
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/coin-market" exact>
+            <Market />
+          </Route>
+          <Route path="/coin-market/:symbol" exact>
+            <Coin />
+          </Route>
+          <Route path="/Contact" exact>
+            <Contact />
+          </Route>
+          <Route path="/Abouts" exact>
+            <Abouts />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
 }

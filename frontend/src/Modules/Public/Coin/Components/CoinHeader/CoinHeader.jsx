@@ -25,7 +25,7 @@ export class CoinHeader extends Component {
                                         <div className="company-icon">
                                             <img src="http://cryptomarkethtml.bdtask.com/assets/img/coin-logo/BTC.svg" alt="" />
                                         </div>
-                                        <div className="company">Bitcoin</div>
+                                        <div className="company">{ coinDetails !== null ? coinDetails.symbol : ''}</div>
                                         <div className="company-valu">
                                             <div className="company-value-title">Current Price</div>
                                             <div className="company-value-current">
