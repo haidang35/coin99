@@ -26,7 +26,7 @@ namespace backend.Controllers
         {
             /*await firebaseService.Delete("coins/binance/-MyHzzqaXvzM-NgLCNUl");*/
             /*await binanceService.Get24hTickerPriceChange();*/
-            await binanceService.Subcribe24PriceChange();
+            /*await binanceService.Subcribe24PriceChange();*/
             return View();
         }
 

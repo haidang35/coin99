@@ -1,11 +1,8 @@
 import { onValue, ref } from "firebase/database";
 import React from "react";
 import { Component } from "react";
-import { realtimeDb } from "../../../../../Configs/firebase";
+import { PATH_ENDPOINT, realtimeDb } from "../../../../../Configs/firebase";
 
-const PATH_ENDPOINT = {
-  COINLIST_BINANCE: 'coins/binance'
-}
 export class CoinList extends Component {
   constructor(props) {
     super(props);

@@ -3,6 +3,7 @@ import { Component } from "react";
 import { Market } from "../Market/Market";
 import { Footer } from "../Shared/Components/Layouts/Footer";
 import { Navbar } from "../Shared/Components/Layouts/Navbar";
+import { Slider } from "../Shared/Components/Slider/Slider";
 import firebaseService from "../Shared/Services/FirebaseService";
 import { CoinList } from "./Components/CoinList/CoinList";
 export class Home extends Component {
@@ -20,13 +21,11 @@ export class Home extends Component {
   getCoinListBinance = async () => {
     await firebaseService.subcribeCoinListChangePriceBinance()
     .then((res) => {
-      console.log("🚀 ~ file: Home.jsx ~ line 23 ~ Home ~ .then ~ res", res)
       this.setState({
         coinListBinance: res
       });
     })
     .catch((err) => {
-      console.log(err);
     });
   }
 
@@ -34,6 +33,7 @@ export class Home extends Component {
     const { coinListBinance } = this.state;
     return (
       <>
+        <Slider />
         <CoinList coinListBinance={coinListBinance} />
         <Footer />
       </>

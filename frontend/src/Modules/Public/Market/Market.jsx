@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Slider } from "../Shared/Components/Slider/Slider";
 import { CoinListMarket } from "./Components/CoinMarket/CoinListMarket";
 
 export class Market extends Component {
@@ -9,9 +10,8 @@ export class Market extends Component {
     render() {
         return (
             <>
+            <Slider />
             <CoinListMarket />
-            
-
             </>
         )
     }
