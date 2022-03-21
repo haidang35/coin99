@@ -12,6 +12,8 @@ import { Abouts } from "./About/Abouts";
 import { LenDing } from "./Lending/LenDing";
 import { Blog } from "./Blog/Blog";
 import { BlogDetails } from "./Blog/Components/BlogDetails";
+
+
 export function Public() {
   return (
     <>
