@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Footer } from "../Shared/Components/Layouts/Footer";
 import { Slider } from "../Shared/Components/Slider/Slider";
 import { } from "../Shared/Styles/Public.scss"
 
@@ -118,54 +119,7 @@ export class Contact extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="footer-breadcrumbs">
-                    <div className="container">
-                        <div className="breadcrumbs-row">
-                            <ul className="f_breadcrumbs">
-                                <li>
-                                   <Link to="/">
-                                   Home
-                                   </Link>
-                                </li>
-                                <li>
-                                    <Link to="/Abouts"> 
-                                    About
-                                    </Link>
-                                </li>
-                            </ul>
-                            <div className="scroll-top" id="back-to-top">
-                                <div className="scroll-top-text">
-                                    
-                                    <span>Scroll to Top</span>
-                                </div>
-                                <div className="scroll-top-icon">
-                                    <i className="fa fa-angle-up" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="action_btn_inner">
-                    <a href="register.html#tab1" className="action_btn">
-                        <span className="action_title">Register</span>
-                        <span className="lnr lnr-chevron-right action_icon" />
-                        <span className="action_sub_title">
-                            Join the new era of cryptocurrency exchange
-                        </span>
-                    </a>
-                    <a href="register.html#tab2" className="action_btn">
-                        <span className="action_title">Sign in</span>
-                        <span className="lnr lnr-chevron-right action_icon" />
-                        <span className="action_sub_title">
-                            Access the cryptocurrency experience you deserve
-                        </span>
-                    </a>
-                </div>
-
-
-
-
-
+               <Footer />
             </>
         )
     }

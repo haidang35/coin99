@@ -11,14 +11,7 @@ export class Navbar extends Component {
   render() {
     return (
       <>
-          {/* <div id="loader-wrapper">
-            <div id="loader" />
-            <div className="loader-section section-left" />
-            <div className="loader-section section-right" />
-          </div> */}
-          {/* /.End of loader wrapper*/}
           <nav className="navbar navbar-default navbar-fixed navbar-transparent bootsnav">
-            {/* Start Top Search */}
             <div className="top-search">
               <div className="container">
                 <div className="input-group">
@@ -36,9 +29,7 @@ export class Navbar extends Component {
                 </div>
               </div>
             </div>
-            {/* End Top Search */}
             <div className="container">
-              {/* Start Atribute Navigation */}
               <div className="attr-nav">
                 <ul>
                   <li className="nav-language">
@@ -66,8 +57,6 @@ export class Navbar extends Component {
                   </li>
                 </ul>
               </div>
-              {/* End Atribute Navigation */}
-              {/* Start Header Navigation */}
               <div className="navbar-header">
                 <button
                   type="button"
@@ -81,8 +70,6 @@ export class Navbar extends Component {
                   <img src="assets/img/logo.png" className="logo" alt="" />
                 </a>
               </div>
-              {/* End Header Navigation */}
-              {/* Collect the nav links, forms, and other content for toggling */}
               <div className="collapse navbar-collapse" id="navbar-menu">
                 <ul className="nav navbar-nav" data-in="" data-out="">
                   <li className="active">
@@ -110,7 +97,9 @@ export class Navbar extends Component {
                     </a>
                     <ul className="dropdown-menu">
                       <li>
-                        <a href="buy.html">Buy</a>
+                       <Link to="/Buy">
+                       Buy
+                       </Link>
                       </li>
                       <li>
                         <a href="sell.html">Sell</a>
@@ -119,7 +108,9 @@ export class Navbar extends Component {
                         <a href="price.html">Pricing Details</a>
                       </li>
                       <li>
-                        <a href="about.html">About</a>
+                        <Link to="/Abouts">
+                        Abouts
+                        </Link>
                       </li>
                       <li>
                         <a href="service.html">Service</a>
@@ -140,10 +131,8 @@ export class Navbar extends Component {
                   </li>
                 </ul>
               </div>
-              {/* /.navbar-collapse */}
             </div>
           </nav>
-          {/* /. End of Navigation */}
       </>
     );
   }
