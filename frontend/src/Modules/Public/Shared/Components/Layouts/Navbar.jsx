@@ -87,47 +87,10 @@ export class Navbar extends Component {
                       Contact
                     </Link>
                   </li>
-                  <li className="dropdown">
-                    <a
-                      href="#"
-                      className="dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      Pages
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li>
-                       <Link to="/Buy">
-                       Buy
-                       </Link>
-                      </li>
-                      <li>
-                        <a href="sell.html">Sell</a>
-                      </li>
-                      <li>
-                        <a href="price.html">Pricing Details</a>
-                      </li>
-                      <li>
-                        <Link to="/Abouts">
-                        Abouts
-                        </Link>
-                      </li>
-                      <li>
-                        <a href="service.html">Service</a>
-                      </li>
-                      <li>
-                        <a href="blog.html">Blog</a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">Blog Details</a>
-                      </li>
-                      <li>
-                        <a href="faq.html">F.A.Q</a>
-                      </li>
-                      <li>
-                        <a href="register.html">Register</a>
-                      </li>
-                    </ul>
+                  <li>
+                    <Link to="/Blog" >
+                      Blog
+                    </Link>
                   </li>
                 </ul>
               </div>

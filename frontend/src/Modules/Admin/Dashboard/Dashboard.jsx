@@ -10,7 +10,6 @@ export class Dashboard extends Component {
   render() {
     return (
       <>
- 
         <div className="page-topbar gradient-blue1">
           <div className="logo-area crypto"></div>
           <div className="quick-area">
@@ -369,12 +368,8 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div>
-        {/* END TOPBAR */}
-        {/* START CONTAINER */}
         <div className="page-container row-fluid container-fluid">
-          {/* SIDEBAR - START */}
           <div className="page-sidebar fixedscroll">
-            {/* MAIN MENU - START */}
             <div className="page-sidebar-wrapper crypto" id="main-menu-wrapper">
               <ul className="wraplist">
                 <li className="menusection">Main</li>
@@ -941,18 +936,13 @@ export class Dashboard extends Component {
                 </li>
               </ul>
             </div>
-            {/* MAIN MENU - END */}
           </div>
-          {/*  SIDEBAR - END */}
-          {/* START CONTENT */}
           <section id="main-content" className=" ">
             <div className="wrapper main-wrapper row" style={{}}>
               <div className="col-xs-12">
                 <div className="page-title">
                   <div className="pull-left">
-                    {/* PAGE HEADING TAG - START */}
                     <h1 className="title">Crypto Dashboard</h1>
-                    {/* PAGE HEADING TAG - END */}
                   </div>
                 </div>
               </div>
@@ -1041,17 +1031,13 @@ export class Dashboard extends Component {
                         </div>
                       </div>
                     </div>
-                    {/* End .row */}
                   </div>
                 </section>
               </div>
               <div className="clearfix" />
-              {/* MAIN CONTENT AREA STARTS */}
               <div className="col-xs-12">
                 <div className="pull-left">
-                  {/* PAGE HEADING TAG - START */}
                   <h4 className="title boldy mb-5 mt-15">Crypto Balance</h4>
-                  {/* PAGE HEADING TAG - END */}
                 </div>
               </div>
               <div className="clearfix" />
@@ -1160,7 +1146,6 @@ export class Dashboard extends Component {
                     </div>
                   </div>
                   <div className="apg-arrows">
-                    {/* Add Navigation */}
                     <div className="swiper-button-prev" />
                     <div className="swiper-button-next" />
                   </div>
@@ -1300,7 +1285,6 @@ export class Dashboard extends Component {
                         </div>
                       </div>
                     </div>{" "}
-                    {/* End .row */}
                   </div>
                 </section>
               </div>
@@ -1795,10 +1779,8 @@ export class Dashboard extends Component {
                 </section>
               </div>
               <div className="clearfix" />
-              {/* MAIN CONTENT AREA ENDS */}
             </div>
           </section>
-          {/* END CONTENT */}
           <div className="page-chatapi hideit">
             <div className="search-bar">
               <input
@@ -2046,8 +2028,6 @@ export class Dashboard extends Component {
           </div>
           <div className="chatapi-windows "></div>
         </div>
-        {/* END CONTAINER */}
-        {/* LOAD FILES AT PAGE END FOR FASTER LOADING */}
       </>
     );
   }

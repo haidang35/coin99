@@ -112,9 +112,7 @@ export class Contact extends Component {
                                             Get In Touch
                                         </button>
                                     </form>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>

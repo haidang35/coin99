@@ -105,7 +105,9 @@ export class Footer extends Component {
                             <a href="#">Referral Program</a>
                           </li>
                           <li>
-                            <a href="#">About Us</a>
+                           <Link to="/Abouts" exact>
+                           About Us
+                           </Link>
                           </li>
                           <li>
                             <a href="#">24/7 Support</a>
@@ -136,7 +138,9 @@ export class Footer extends Component {
                             <a href="#">Roadmap Bitcoin</a>
                           </li>
                           <li>
-                            <a href="contact.html">Contact us</a>
+                           <Link to="/Contacts" exact>
+                           Contacts
+                           </Link>
                           </li>
                         </ul>
                       </div>
