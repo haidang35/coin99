@@ -44,7 +44,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Quote Volume</div>
                                 <div className="info-cell-value" >
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.quoteVolume.toFixed(5) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.quoteVolume.toFixed(2) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -71,13 +71,13 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Last Price</div>
                                 <div className="info-cell-value" >
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.lastPrice.toFixed(10) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.lastPrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
                                 <div className="info-cell-title">Close Price</div>
                                 <div className="info-cell-value">
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.prevClosePrice.toFixed(10) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.prevClosePrice.toFixed(5) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">

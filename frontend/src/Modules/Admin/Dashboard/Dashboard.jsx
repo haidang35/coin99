@@ -10,7 +10,7 @@ export class Dashboard extends Component {
   render() {
     return (
       <>
-        {/* START TOPBAR */}
+ 
         <div className="page-topbar gradient-blue1">
           <div className="logo-area crypto"></div>
           <div className="quick-area">
@@ -75,7 +75,7 @@ export class Dashboard extends Component {
                     <li className="list">
                       <ul className="dropdown-menu-list list-unstyled ps-scrollbar">
                         <li className="unread available">
-                          {/* available: success, warning, info, error */}
+                        
                           <a href="javascript:;">
                             <div className="notice-icon">
                               <i className="fa fa-check" />
@@ -91,7 +91,7 @@ export class Dashboard extends Component {
                           </a>
                         </li>
                         <li className="unread away">
-                          {/* available: success, warning, info, error */}
+                    
                           <a href="javascript:;">
                             <div className="notice-icon">
                               <i className="fa fa-clock-o" />
@@ -105,7 +105,6 @@ export class Dashboard extends Component {
                           </a>
                         </li>
                         <li className=" busy">
-                          {/* available: success, warning, info, error */}
                           <a href="javascript:;">
                             <div className="notice-icon">
                               <i className="fa fa-times" />
@@ -119,7 +118,7 @@ export class Dashboard extends Component {
                           </a>
                         </li>
                         <li className=" available">
-                          {/* available: success, warning, info, error */}
+
                           <a href="javascript:;">
                             <div className="notice-icon">
                               <i className="fa fa-check" />
