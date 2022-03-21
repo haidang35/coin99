@@ -6,7 +6,7 @@ using System.Web;
 namespace backend.Models
 {
     public enum CoinTableType { }
-    public class CoinTable
+    public class Coin
     {
         public int Id { get; set; }
         public string CoinName { get; set; }

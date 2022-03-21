@@ -92,15 +92,6 @@ namespace backend.Services
                     {
                         using (ClientWebSocket websocket = new ClientWebSocket())
                         {
-<<<<<<< HEAD
-                            priceChange = dataConverted.p,
-                            priceChangePercent = dataConverted.P,
-                            lastPrice = dataConverted.c,
-                        };
-                        Debug.WriteLine(data);
-                    }
-                    await Task.Delay(1000);
-=======
                             string url = this.baseStreamPath + d.Value.symbol.ToLower() + "@ticker";
                             Debug.WriteLine("Connecting to: " + url);
                             await websocket.ConnectAsync(new Uri(url), CancellationToken.None);
@@ -143,7 +134,6 @@ namespace backend.Services
                 }catch(Exception e)
                 {
                     
->>>>>>> development
                 }
 
 

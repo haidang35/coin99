@@ -5,7 +5,7 @@ using System.Web;
 
 namespace backend.Models
 {
-    public class CoinMarketTable
+    public class CoinMarket
     {
         public int Id { get; set; }
         public string Name { get; set; }
