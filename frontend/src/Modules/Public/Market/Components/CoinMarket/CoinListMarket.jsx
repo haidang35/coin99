@@ -91,7 +91,7 @@ export class CoinListMarket extends Component {
                                                         <td >
                                                             <Link to={{
                                                                 pathname: `/coin-market/${coin.ticker}`,
-                                                                state: {name: 'hello'}
+                                                                state: { name: 'hello' }
                                                             }}>
                                                                 <div className="logo-name">
                                                                     <div className="item-logo">
