@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Footer } from "../Shared/Components/Layouts/Footer";
 
 export class Abouts extends Component {
     constructor(props) {
@@ -57,7 +58,7 @@ export class Abouts extends Component {
                             </div>
                             <div className="col-md-6">
                                 <div className="text-right">
-                                    <img src="assets/img/about.jpg" className="img-responsive" alt="" />
+                                    <img src="Assets/Public/asets/img/about.jpg" className="img-responsive" alt="" />
                                 </div>
                                 <div className="quote">
                                     It is a long established fact that a reader will be distracted by the
@@ -113,7 +114,7 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
+                                    
                                     <div className="col-sm-4 team">
                                         <h2 className="team__number">02</h2>
                                         <div className="team__member">
@@ -143,7 +144,6 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
                                     <div className="col-sm-4 team">
                                         <h2 className="team__number">03</h2>
                                         <div className="team__member">
@@ -173,7 +173,7 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
+                                    
                                     <div className="col-sm-4 team">
                                         <h2 className="team__number">04</h2>
                                         <div className="team__member">
@@ -203,7 +203,7 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
+                                    
                                     <div className="col-sm-4 team">
                                         <h2 className="team__number">05</h2>
                                         <div className="team__member">
@@ -233,7 +233,6 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
                                     <div className="col-sm-4 team">
                                         <h2 className="team__number">06</h2>
                                         <div className="team__member">
@@ -263,7 +262,6 @@ export class Abouts extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.End of team */}
                                 </div>
                             </div>
                         </div>
@@ -291,7 +289,7 @@ export class Abouts extends Component {
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
                                             <img
-                                                src="assets/img/avatar-1.jpg"
+                                                src="Assets/Public/img/avatar-1.jpg"
                                                 className="quoteAvatar"
                                                 alt=""
                                             />
@@ -313,14 +311,12 @@ export class Abouts extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* /.testimonial-rating end */}
                                         <div className="testimonial--body">
                                             <p>
                                                 “ It is a long established fact that a reader will be distracted
                                                 by the readable content of a page when looking at its layout. ”
                                             </p>
                                         </div>
-                                        {/* /.testimonial-body end */}
                                     </div>
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
@@ -347,7 +343,6 @@ export class Abouts extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* /.testimonial-rating end */}
                                         <div className="testimonial--body">
                                             <p>
                                                 “ There are many variations of passages of Lorem Ipsum
@@ -355,7 +350,6 @@ export class Abouts extends Component {
                                                 form, by injected humour. ”
                                             </p>
                                         </div>
-                                        {/* /.testimonial-body end */}
                                     </div>
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
@@ -382,7 +376,6 @@ export class Abouts extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* /.testimonial-rating end */}
                                         <div className="testimonial--body">
                                             <p>
                                                 “ If you are going to use a passage of Lorem Ipsum, you need to
@@ -390,7 +383,6 @@ export class Abouts extends Component {
                                                 of text. ”
                                             </p>
                                         </div>
-                                        {/* /.testimonial-body end */}
                                     </div>
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
@@ -417,7 +409,6 @@ export class Abouts extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        {/* /.testimonial-rating end */}
                                         <div className="testimonial--body">
                                             <p>
                                                 “ Contrary to popular belief, Lorem Ipsum is not simply random
@@ -425,7 +416,6 @@ export class Abouts extends Component {
                                                 45 BC, making. ”
                                             </p>
                                         </div>
-                                        {/* /.testimonial-body end */}
                                     </div>
                                 </div>
                             </div>
@@ -504,13 +494,11 @@ export class Abouts extends Component {
                                         </a>
                                     </div>
                                 </div>
-                                {/* /.End of client logo */}
                             </div>
                         </div>
                     </div>
                 </div>
-
-
+                <Footer />
             </>
         )
     }
