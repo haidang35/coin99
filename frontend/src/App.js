@@ -12,12 +12,9 @@ import { Public } from "./Modules/Public/Public";
 function App() {
   return (
    <>
-      {/* <Admin />
+      <Admin /> 
       <Public />
-    */}
-    {/* <Coin99List /> */}
-    {/* <Dashboard /> */}
-    <BuySell />
+
       
       
    </>
