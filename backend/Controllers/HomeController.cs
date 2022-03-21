@@ -24,7 +24,7 @@ namespace backend.Controllers
         
         public async Task<ActionResult> Index()
         {
-            /*await firebaseService.Delete("coins/binance/-MyHzzqaXvzM-NgLCNUl");*/
+            /*await firebaseService.Delete("coins/binance");*/
             /*await binanceService.Get24hTickerPriceChange();*/
             /*await binanceService.Subcribe24PriceChange();*/
             return View();
