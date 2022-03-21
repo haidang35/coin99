@@ -9,7 +9,9 @@ import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
 import { Contact } from "./Contact/Contact";
 import { Abouts } from "./About/Abouts";
-
+import { LenDing } from "./Lending/LenDing";
+import { Blog } from "./Blog/Blog";
+import { BlogDetails } from "./Blog/BlogDetails";
 export function Public() {
   return (
     <>
@@ -30,6 +32,15 @@ export function Public() {
           </Route>
           <Route path="/Abouts" exact>
             <Abouts />
+          </Route>
+          <Route path="/Lending" exact>
+            <LenDing />
+          </Route>
+          <Route path="/Blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/Blog-details">
+            <BlogDetails />
           </Route>
         </Switch>
       </BrowserRouter>
