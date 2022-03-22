@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Coins } from "./Coins/Coins";
+import { Dashboard } from "./Dashboard/Components/Dashboard";
 import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
+
 
 export function Admin() {
   return (
@@ -10,12 +13,19 @@ export function Admin() {
      <Header />
       {/* START CONTAINER */}
       <div className="page-container row-fluid container-fluid">
+
        <Sidebar />
         {/* START CONTENT */}
         <section id="main-content" className=" ">
-          <switch>
-            
-          </switch>
+          <Switch>
+            <Route path="/Coins" exact>
+              <Coins />
+            </Route>
+            <Route path="/Dashboard" exact>
+              <Dashboard />
+            </Route>
+          </Switch>
+
         </section>
         {/* END CONTENT */}
         <div className="page-chatapi hideit">

@@ -54,7 +54,6 @@ export class Footer extends Component {
               </span>
             </a>
           </div>
-          {/* /.End of action button */}
           <div className="main_footer">
             <div className="container">
               <div className="row">
@@ -105,7 +104,9 @@ export class Footer extends Component {
                             <a href="#">Referral Program</a>
                           </li>
                           <li>
-                            <a href="#">About Us</a>
+                            <Link to="/Abouts">
+                              About Us
+                              </Link>
                           </li>
                           <li>
                             <a href="#">24/7 Support</a>
@@ -118,7 +119,9 @@ export class Footer extends Component {
                         <h3 className="footer-title">Service</h3>
                         <ul className="footer-list">
                           <li>
-                            <a href="about.html">About Us</a>
+                            <Link to="/Abouts">
+                              About Us
+                              </Link>
                           </li>
                           <li>
                             <a href="service.html">Service</a>
@@ -127,7 +130,9 @@ export class Footer extends Component {
                             <a href="exchange.html">Exchange Bitcoin</a>
                           </li>
                           <li>
-                            <a href="blog.html">Blog news</a>
+                            <Link to="/Blog">
+                              Blog news
+                            </Link>
                           </li>
                           <li>
                             <a href="#">Our Team Member</a>
