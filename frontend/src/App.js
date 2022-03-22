@@ -10,8 +10,8 @@ import { Public } from "./Modules/Public/Public";
 function App() {
   return (
    <>
-      <Admin /> 
-      {/* <Public /> */}
+      {/* <Admin />  */}
+      <Public />
    </>
   );
 }

@@ -34,7 +34,6 @@ export class CoinList extends Component {
 
   render() {
     const { coinList } = this.state;
-    console.log("🚀 ~ file: CoinList.jsx ~ line 20 ~ CoinList ~ render ~ coinList", coinList)
     return (
       <>
         <div className="currency-table">
