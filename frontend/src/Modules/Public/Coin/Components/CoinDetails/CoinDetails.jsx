@@ -24,19 +24,19 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Open Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.openPrice.toFixed(5) : ''}</span>
+                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.openPrice.toFixed(2) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
                                 <div className="info-cell-title">High Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.highPrice.toFixed(5) : ''}</span>
+                                    <span className="percent_positive">{coinDetails !== null ? coinDetails.highPrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
                                 <div className="info-cell-title">Low Price</div>
                                 <div className="info-cell-value">
-                                    <span className="percent_negative">{coinDetails !== null ? coinDetails.lowPrice.toFixed(5) : ''}</span>
+                                    <span className="percent_negative">{coinDetails !== null ? coinDetails.lowPrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">WeightedAvg Price</div>
                                 <div className="info-cell-value">
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.weightedAvgPrice.toFixed(5) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.weightedAvgPrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -71,13 +71,13 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Last Price</div>
                                 <div className="info-cell-value" >
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.lastPrice.toFixed(5) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.lastPrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
                                 <div className="info-cell-title">Close Price</div>
                                 <div className="info-cell-value">
-                                <span className="percent_negative">{coinDetails !== null ? coinDetails.prevClosePrice.toFixed(5) : ''}</span>
+                                <span className="percent_negative">{coinDetails !== null ? coinDetails.prevClosePrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                             <div className="info-cell">
@@ -89,7 +89,7 @@ export class CoinDetails extends Component {
                             <div className="info-cell">
                                 <div className="info-cell-title">Bid Price</div>
                                 <div className="info-cell-value">
-                                    <span>{coinDetails !== null ? coinDetails.bidPrice.toFixed(5) : ''}</span>
+                                    <span>{coinDetails !== null ? coinDetails.bidPrice.toFixed(3) : ''}</span>
                                 </div>
                             </div>
                          
