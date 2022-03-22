@@ -93,6 +93,7 @@ export class CoinListMarket extends Component {
                     </thead>
                     <tbody>
                       {coinList.map((coin, index) => {
+                        
                         return (
                           <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
                             <td>
