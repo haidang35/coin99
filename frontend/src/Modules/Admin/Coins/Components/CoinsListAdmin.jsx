@@ -1,11 +1,60 @@
+import { onValue, ref } from "firebase/database";
+import {  Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import { PATH_ENDPOINT, realtimeDb } from "../../../../Configs/firebase";
+import { coinLogo  } from "../../../../Helpers/logo";
 
 export class CoinsListAdmin extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            coinList: [],
+            isRedirect: false,
+            coinDetail: null
+        }
     }
+    componentDidMount = () => {
+        this.getCoinList();
+    }
+
+    getCoinList = () => {
+        const coinListRef = ref(realtimeDb, PATH_ENDPOINT.COINLIST_BINANCE);
+        onValue (coinListRef, (snapshot) => {
+            let coinListConverted = [];
+            snapshot.forEach((snapshotChild) => {
+                let coinValue = snapshotChild.val();
+                coinValue['symbol'] = coinValue['symbol'].replace('USDT', '');
+                coinValue['currency'] = '$';
+                coinListConverted.push(coinValue);
+            });
+            this.setState({
+                coinList: coinListConverted,
+            });
+        });
+    };
+
+    redirectToCoinDetail = (coin) => {
+        this.setState({
+            coinDetail: coin,
+            isRedirect: true
+        });
+      }
+      
+
+        
+
     render() {
+        const { coinList, coinDetail, isRedirect } = this.state;
+        console.log(coinDetail);
+        if(isRedirect) {
+            return <Redirect to={{
+                pathname: `/Coins-List-Admin/${coinDetail.symbol}`,
+                state: {
+                    coinKey: coinDetail.key
+                }
+            }} 
+            />
+        }
         return (
             <>
                 <div className="col-lg-12">
@@ -39,10 +88,54 @@ export class CoinsListAdmin extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            {coinList.map((coin, index) => {
+                        
+                        return (
+                          <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
+                            <td>
+                              <div className="logo-name">
+                                <div className="item-logo">
+                                  <img
+                                    src={coinLogo[coin.symbol]}
+                                    className="img-responsive"
+                                    alt=""
+                                  />
+                                </div>
+                                <span className="item_name_value">
+                                  {coin.symbol}
+                                </span>
+                              </div>
+                            </td>
+                            <td>
+                              <span className="value_ticker">
+                                { `${coin.currency} ${coin.lastPrice}`}
+                              </span>
+                            </td>
+                            <td>
+                              <span className="value_d1_return percent_positive">
+                                {coin.priceChangePercent}
+                              </span>
+                            </td>
+                            <td>
+                              <span className="value_graph">
+                                <svg viewBox="0 0 500 100" className="chart">
+                                  {" "}
+                                  <polyline
+                                    fill="none"
+                                    stroke="#35a947"
+                                    strokeWidth={5}
+                                    points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
+                                  />{" "}
+                                </svg>
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })};
                                                 <tr>
                                                     <td>
                                                         <div className="round img2">
-                                                            <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                            <img src="../Assets/data/crypto-dash/coin1.png" alt="" />
                                                         </div>
                                                         <div className="designer-info">
                                                             <h6>Bitcoin</h6>
