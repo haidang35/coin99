@@ -26,9 +26,9 @@ namespace backend.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\FPT\\AppData\\Local\\M" +
-            "icrosoft\\Microsoft SQL Server Local DB\\Instances\\MSSQLLocalDB\\Coin99.mdf\";Integr" +
-            "ated Security=True;Connect Timeout=30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\nguye\\AppData\\Local" +
+            "\\Microsoft\\Microsoft SQL Server Local DB\\Instances\\MSSQLLocalDB\\Coin99.mdf\";Inte" +
+            "grated Security=True;Connect Timeout=30")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
