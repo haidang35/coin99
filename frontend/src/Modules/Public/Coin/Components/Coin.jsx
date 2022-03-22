@@ -15,6 +15,7 @@ import { CoinPricing } from "./CoinPricing/CoinPricing";
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.getCoinDetails();
     }
 
