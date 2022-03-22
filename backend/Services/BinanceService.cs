@@ -67,7 +67,11 @@ namespace backend.Services
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.
-                var dataObjects = response.Content.ReadAsAsync<IEnumerable<BinanceCoin>>().Result.Where(c => c.symbol.Contains("USDT")).Take(50).ToList();  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                var dataObjects = response.Content.ReadAsAsync<IEnumerable<BinanceCoin>>().Result
+                                    .Where(c => c.symbol.Contains("USDT"))
+                                    .Where(c => c.lastPrice > 0)
+                                    .OrderByDescending(c => c.lastPrice)
+                                    .Take(50).ToList();  //Make sure to add a reference to System.Net.Http.Formatting.dll
                 foreach (var coinChange in dataObjects)
                 {
                     await firebaseService.Insert("coins/binance", coinChange);

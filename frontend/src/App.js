@@ -13,9 +13,6 @@ function App() {
       {/* <Admin />  */}
       <Public />
       
-
-      
-      
    </>
   );
 }
