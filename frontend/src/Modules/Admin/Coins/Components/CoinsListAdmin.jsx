@@ -166,8 +166,6 @@ export class CoinsListAdmin extends Component {
                         </div>
                     </section>
                 </div>
-
-
             </>
         )
     }

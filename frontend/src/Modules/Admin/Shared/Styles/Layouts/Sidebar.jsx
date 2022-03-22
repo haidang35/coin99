@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Sidebar extends Component {
     constructor(props) {
@@ -10,12 +11,11 @@ export class Sidebar extends Component {
         return(
             <>
         <div className="page-sidebar fixedscroll">
-          {/* MAIN MENU - START */}
           <div className="page-sidebar-wrapper crypto" id="main-menu-wrapper">
             <ul className="wraplist">
               <li className="menusection">Main</li>
               <li className="">
-                <a href="index-crypto-dashboard.html">
+                <Link to="/Dashboard">
                   <i className="img relative crypto-ic ">
                     <img
                       src="../data/crypto-dash/icons/1.png"
@@ -24,10 +24,10 @@ export class Sidebar extends Component {
                     />
                   </i>
                   <span className="title">Dashboard</span>
-                </a>
+                </Link>
               </li>
-              <li className="">
-                <a href="crypto-wallet.html">
+              <li>
+                <Link to="/Coins">
                   <i className="img">
                     <img
                       src="../data/crypto-dash/icons/2.png"
@@ -35,8 +35,9 @@ export class Sidebar extends Component {
                       className="width-20"
                     />
                   </i>
+                  
                   <span className="title">Coins</span>
-                </a>
+                </Link>
               </li>
               <li className="">
                 <a href="crypto-buy-sell.html">
