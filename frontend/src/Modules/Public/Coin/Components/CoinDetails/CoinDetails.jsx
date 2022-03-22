@@ -27,7 +27,7 @@ export class CoinDetails extends Component {
                                 </div>
                             </div>
                             <div className="info-cell">
-                                <div className="info-cell-title">1-Month Change</div>
+                                <div className="info-cell-title">1-Month Change </div>
                                 <div className="info-cell-value">
                                     <span className="percent_positive">+25.59%</span>
                                 </div>

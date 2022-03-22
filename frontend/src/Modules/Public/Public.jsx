@@ -22,7 +22,7 @@ export class Public extends Component {
             <>
                 <BrowserRouter >
                 <Navbar />
-                {/* <Slider /> */}
+                    <Slider />
                     <Switch>
                         <Route path="/" exact >
                             <Home />
