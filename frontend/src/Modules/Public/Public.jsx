@@ -7,35 +7,43 @@ import { Market } from "./Market/Market";
 import { Navbar } from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
-
-
-export class Public extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    render() {
-        return (
-            <>
-                <BrowserRouter >
-                <Navbar />
-                    <Slider />
-                    <Switch>
-                        <Route path="/" exact >
-                            <Home />
-                        </Route>
-                        <Route path="/coin-market" exact >
-                            <Market />
-                        </Route>
-                        <Route path="/coin-market/:symbol" exact >
-                            <Coin />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-            </>
-        )
-    }
+import { Contact } from "./Contact/Contact";
+import { Abouts } from "./About/Abouts";
+import { LenDing } from "./Lending/LenDing";
+import { Blog } from "./Blog/Blog";
+import { BlogDetails } from "./Blog/Components/BlogDetails";
+export function Public() {
+  return (
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/coin-market" exact>
+            <Market />
+          </Route>
+          <Route path="/coin-market/:symbol" exact>
+            <Coin />
+          </Route>
+          <Route path="/Contact" exact>
+            <Contact />
+          </Route>
+          <Route path="/Abouts" exact>
+            <Abouts />
+          </Route>
+          <Route path="/Lending" exact>
+            <LenDing />
+          </Route>
+          <Route path="/Blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/Blog-details" exact>
+            <BlogDetails />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
 }
