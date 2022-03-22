@@ -7,7 +7,8 @@ namespace backend.Models
 {
     public enum PostType
     {
-
+        Free = 1,
+        Premium = 2
     }
     public class Post
     {
