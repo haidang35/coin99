@@ -37,10 +37,10 @@ export class NewBlog extends Component {
                                                     <h2>TiTle</h2>
                                                     <input className="Name" type="name" />
                                                 </div>
-                                                <div className="mail_list col-xs-8">
+                                                <div className="mail_list col-xs-8 " >
                                                     <h2>Read Time</h2>
                                                     <input className="Name" type="name" />
-                                                    <button className="btn btn-primary">Publisch</button>
+                                                    <button className="btn btn-info">Publick</button>
 
                                                 </div>
 
@@ -50,7 +50,7 @@ export class NewBlog extends Component {
                                         <div className="col-lg-21 col-md-21 ">
                                             <div
                                                 className="img-affa-wrapper text-center no-mb mt-15"
-                                                style={{ padding: "50px 25px" }}>
+                                                style={{ padding: "50px 20px" }}>
 
                                                 <div className="">
                                                     <a href="#myModal" data-toggle="modal">

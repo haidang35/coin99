@@ -47,8 +47,8 @@ export function Public() {
           </Route>
           <Route path="/Login-admin" exact>
             <Logins />
-
           </Route>
+          
         </Switch>
       </BrowserRouter>
     </>
