@@ -74,6 +74,7 @@ export class Sidebar extends Component {
                     />
                   </i>
                   <span className="title">Setting</span>
+                  
                 </a>
                 </li>
             </ul>
