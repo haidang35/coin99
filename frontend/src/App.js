@@ -1,5 +1,8 @@
 import { Admin } from "./Modules/Admin/Admin";
 import { Dashboard } from "./Modules/Admin/Dashboard/Components/Dashboard";
+import { NewBlog } from "./Modules/Admin/Postt/Components/NewBlog";
+
+import { Post } from "./Modules/Admin/Postt/Post";
 import { Abouts } from "./Modules/Public/About/Abouts";
 import { Account } from "./Modules/Public/Account/Account";
 import { LogIn } from "./Modules/Admin/Login/LogIn";
@@ -14,7 +17,10 @@ function App() {
    <>
       {/* <Admin />  */}
       {/* <Public /> */}
-      <Logins />
+      {/* <Account /> */}
+      {/* <Post /> */}
+      <NewBlog />
+     
       
    </>
   );

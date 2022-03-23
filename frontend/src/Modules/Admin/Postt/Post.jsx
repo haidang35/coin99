@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { SingUp } from "./Components/SignUp";
+import { PostList } from "./Components/PostList";
 
-
-export class Account extends Component {
+export class Post extends Component {
     constructor(props){
         super(props);
         this.state ={}
@@ -10,7 +9,8 @@ export class Account extends Component {
     render(){
         return(
             <>
-            <SingUp />
+            <PostList />
+            
             </>
         )
     }

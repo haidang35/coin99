@@ -27,7 +27,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="../data/crypto-dash/s1.png"
+                                                        src="Assets/data/crypto-dash/s1.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
