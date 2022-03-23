@@ -16,6 +16,15 @@ export class Home extends Component {
 
   componentDidMount() {
     this.getCoinListBinance();
+    this.testCallApiPost();
+  }
+
+  testCallApiPost = () => {
+    fetch('https://localhost:44340/api/posts')
+    .then((res) => res.json())
+    .then((res) => {
+      console.log('data', res);
+    });
   }
 
   getCoinListBinance = async () => {
