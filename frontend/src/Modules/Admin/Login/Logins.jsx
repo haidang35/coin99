@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { LogIn } from "./LogIn";
+import { Register } from "./Register";
 
-export class LogIn extends Component {
+export class Logins extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +12,7 @@ export class LogIn extends Component {
     render() {
         return(
             <>
-           
+            <LogIn />
             </>
         )
     }
