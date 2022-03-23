@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 
+
 export class SingUp extends Component {
   constructor(props) {
     super(props);
@@ -9,117 +10,93 @@ export class SingUp extends Component {
   render() {
     return (
       <>
-          <div className="reg-wrapper">
-            <div className="container">
-              <div className="row">
-                <div className="col-sm-7 col-md-6">
-                  <div className="">
-                    <ul className="nav nav-tabs">
-                      <li className="active">
-                        <a href="#tab1" data-toggle="tab">
-                          Register
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#tab2" data-toggle="tab">
-                          Log in
-                        </a>
-                      </li>
-                    </ul>
-                    <div className="social_list">
-                      <a href="#" className="facebook-icon">
-                        <i className="fa fa-facebook" />
-                      </a>
-                      <a href="#" className="facebook-icon">
-                        <i className="fa fa-twitter" />
-                      </a>
-                      <a href="#" className="facebook-icon">
-                        <i className="fa fa-google-plus" />
-                      </a>
-                      <a href="#" className="facebook-icon">
-                        <i className="fa fa-linkedin" />
-                      </a>
+          <div className="container">
+            <div className="row">
+              <div className=" mt-90 col-lg-8 col-lg-offset-2">
+                <div className="row">
+                  <div className="login-wrapper crypto">
+                    <div className="col-lg-5 col-sm-12 hidden-sm no-padding-left  no-padding-right">
+                      <img src="../data/crypto-dash/login-img.png" alt="" />
                     </div>
-                    <div className="tab-content">
-                      <div className="tab-pane fade in active" id="tab1">
-                        <form>
-                          <span className="input">
-                            <input className="input__field" type="text" id="input-1" />
-                            <label className="input__label" htmlFor="input-1">
-                              <span
-                                className="input__label-content"
-                                data-content="E-MAIL"
-                              >
-                                E-MAIL
-                              </span>
-                            </label>
-                          </span>
-                          <div className="checkbox">
-                            <label>
-                              <input type="checkbox" /> I have read and accept Global
-                              Crypto{" "}
-                              <a href="#" className="checkbox-link">
-                                Privacy policy
-                              </a>{" "}
-                              and
-                              <br />
-                              <a href="#" className="checkbox-link">
-                                Terms of Use
-                              </a>
-                            </label>
+                    <div className="col-lg-7 col-sm-12">
+                      <div
+                        id="login"
+                        className="login loginpage mt-0 no-pl no-pr pt30 pb30"
+                      >
+                        <div className="login-form-header  flex align-items-center">
+                          <img
+                            src="../data/crypto-dash/padlock.png"
+                            alt="login-icon"
+                            style={{ maxWidth: 64 }}
+                          />
+                          <div className="login-header">
+                            <h4 className="bold">Login Now!</h4>
+                            <h4>
+                              <small>Enter your credentials to login.</small>
+                            </h4>
                           </div>
-                          <div className="checkbox">
-                            <label>
-                              <input type="checkbox" /> Your Password at Global Crypto
-                              are encrypted and Secured
-                            </label>
+                        </div>
+                        <div className="box login">
+                          <div className="content-body" style={{ paddingTop: 30 }}>
+                            <form
+                              id="msg_validate"
+                              action="#"
+                              noValidate="novalidate"
+                              className="no-mb no-mt"
+                            >
+                              <div className="row">
+                                <div className="col-xs-12">
+                                  <div className="form-group">
+                                    <label className="form-label">Email</label>
+                                    <div className="controls">
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                        name="formfield2"
+                                        placeholder="email"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="form-group">
+                                    <label className="form-label">Password</label>
+                                    <div className="controls">
+                                      <input
+                                        type="text"
+                                        className="form-control"
+                                        name="formfield1"
+                                        placeholder="password"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="text-center">
+                                    <a
+                                      href="index-crypto-dashboard.html"
+                                      className="btn btn-primary mt-10 btn-corner right-15"
+                                    >
+                                      Log in
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
                           </div>
-                          <button type="submit" className="btn btn-reg">
-                            Register
-                          </button>
-                        </form>
-                      </div>
-                      <div className="tab-pane fade" id="tab2">
-                        <form>
-                          <span className="input">
-                            <input className="input__field" type="text" id="input-2" />
-                            <label className="input__label" htmlFor="input-2">
-                              <span
-                                className="input__label-content"
-                                data-content="E-MAIL"
-                              >
-                                E-MAIL
-                              </span>
-                            </label>
-                          </span>
-                          <span className="input">
-                            <input
-                              className="input__field"
-                              type="password"
-                              id="input-3"
-                            />
-                            <label className="input__label" htmlFor="input-3">
-                              <span
-                                className="input__label-content"
-                                data-content="Password"
-                              >
-                                Password
-                              </span>
-                            </label>
-                          </span>
-                          <div className="checkbox">
-                            <label>
-                              <input type="checkbox" /> Don't have an account?{" "}
-                              <a href="#" className="checkbox-link">
-                                Sign up
-                              </a>{" "}
-                              Now
-                            </label>
-                          </div>
-                          <button type="submit" className="btn btn-reg">
-                            Log in
-                          </button>
-                        </form>
+                        </div>
+                        <p id="nav" className="over-h">
+                          <a
+                            className="pull-left blue-text"
+                            href="#"
+                            title="Password Lost and Found"
+                          >
+                            Forgot password?
+                          </a>
+                          <a
+                            className="pull-right blue-text"
+                            href="crypto-register.html"
+                            title="Sign Up"
+                          >
+                            Sign Up
+                          </a>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -128,6 +105,7 @@ export class SingUp extends Component {
             </div>
           </div>
         
+
       </>
     )
   }

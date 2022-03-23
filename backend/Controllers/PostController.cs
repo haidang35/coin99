@@ -14,7 +14,7 @@ using backend.Models;
 
 namespace backend.Controllers
 {
-    [EnableCors(origins:"http://localhost:3000",headers:"*", methods:"*")]
+    [EnableCors(origins:"https://coin99.cf, http://localhost:3000",headers:"*", methods:"*")]
     public class PostController : ApiController
     {
         private MyDbContext db = new MyDbContext();
@@ -29,7 +29,8 @@ namespace backend.Controllers
             return Ok(postList);
         }
         // GET: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        [Route("~/api/posts/{id:int}")]
+        [HttpGet]
         [ResponseType(typeof(Post))]
         public IHttpActionResult GetPost(int id)
         {
@@ -43,7 +44,7 @@ namespace backend.Controllers
         }
 
         // PUT: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        [Route("~/api/posts/{id:int}")]
         [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPost(int id, Post post)
@@ -97,7 +98,7 @@ namespace backend.Controllers
         }
 
         // DELETE: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        [Route("~/api/posts/{id:int}")]
         [ResponseType(typeof(Post))]
         [HttpDelete]
         public IHttpActionResult DeletePost(int id)
