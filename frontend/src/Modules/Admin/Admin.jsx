@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Register } from "./Account/Components/Register";
+import { LogIn } from "./Auth/Components/Login/LogIn";
 import { Coins } from "./Coins/Coins";
 import { Dashboard } from "./Dashboard/Components/Dashboard";
 import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
+import { Register } from "./Auth/Components/Register/Register";
 
 
 export function Admin() {
@@ -25,9 +26,7 @@ export function Admin() {
             <Route path="/Dashboard" exact>
               <Dashboard />
             </Route>
-            <Route path="/SignUp" exact>
-              <Register />
-            </Route>
+           
           </Switch>
 
         </section>
