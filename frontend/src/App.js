@@ -2,9 +2,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Admin } from "./Modules/Admin/Admin";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
-import { Dashboard } from "./Modules/Admin/Dashboard/Components/Dashboard";
 import { PostList } from "./Modules/Admin/Postt/Components/PostList";
-import { Post } from "./Modules/Admin/Postt/Post";
 import { Abouts } from "./Modules/Public/About/Abouts";
 import { Contact } from "./Modules/Public/Contact/Contact";
 import { CoinList } from "./Modules/Public/Home/Components/CoinList/CoinList";
@@ -12,7 +10,10 @@ import { Public } from "./Modules/Public/Public";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UploadFile } from "./Modules/Admin/Postt/Tests/UploadFile";
-import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
+import { CreateNewPost } from "./Modules/Admin/Postt/Components/CreateNewPost/CreateNewPost";
+import { Editor } from "./Modules/Admin/Postt/Tests/Editor";
+import { Load } from "./Modules/Admin/Postt/Tests/Load";
+
 
 
 function App() {
@@ -20,7 +21,10 @@ function App() {
    <>
    
       {/* <Public /> */}
-     
+      
+     {/* <Admin /> */}
+      
+{/*      
       <BrowserRouter>
       <Admin />
       <Switch>
@@ -32,7 +36,8 @@ function App() {
               <Register />
             </Route>
       </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <CreateNewPost />
    </>
   );
 }

@@ -131,7 +131,7 @@ export class CoinsListAdmin extends Component {
                                                                 </td>
                                                             </tr>
                                                         );
-                                                    })};
+                                                    })}
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">

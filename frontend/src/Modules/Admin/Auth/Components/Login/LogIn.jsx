@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import "./Login.scss";
 
 export class LogIn extends Component {
   constructor(props) {
