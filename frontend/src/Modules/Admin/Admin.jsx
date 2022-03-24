@@ -1,33 +1,41 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { LogIn } from "./Auth/Components/Login/LogIn";
 import { Coins } from "./Coins/Coins";
 import { Dashboard } from "./Dashboard/Components/Dashboard";
+import { Post } from "./Postt/Post";
 import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
+import { Register } from "./Auth/Components/Register/Register";
+import { CreateNewPost } from "./Postt/Components/CreateNewPost/CreateNewPost";
 
 
 export function Admin() {
   return (
     <BrowserRouter>
      <Header />
-      {/* START CONTAINER */}
       <div className="page-container row-fluid container-fluid">
-
        <Sidebar />
-        {/* START CONTENT */}
         <section id="main-content" className=" ">
           <Switch>
-            <Route path="/Coins" exact>
+            <Route path="/admin/coins" exact>
               <Coins />
             </Route>
-            <Route path="/Dashboard" exact>
+            <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
+            <Route path="/admin/signUp" exact>
+              <Register />
+            </Route>
+            <Route path="/admin/post" exact>
+              <Post />
+            </Route>
+            <Route path="/admin/newpost" exact>
+              <CreateNewPost />
+            </Route>
           </Switch>
-
         </section>
-        {/* END CONTENT */}
         <div className="page-chatapi hideit">
           <div className="search-bar">
             <input

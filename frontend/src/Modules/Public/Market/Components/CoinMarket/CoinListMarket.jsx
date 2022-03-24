@@ -2,7 +2,9 @@ import { onValue, ref } from "firebase/database";
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { PATH_ENDPOINT, realtimeDb } from "../../../../../Configs/firebase";
+import { formatCryptoUSDCurrency } from "../../../../../Helpers/helpers";
 import { coinLogo } from "../../../../../Helpers/logo";
+import "./CoinListMarket.scss";
 
 export class CoinListMarket extends Component {
   constructor(props) {
@@ -26,6 +28,7 @@ export class CoinListMarket extends Component {
           let coinValue = snapshotChild.val();
           coinValue['symbol'] = coinValue['symbol'].replace('USDT', '');
           coinValue['key'] = snapshotChild.key;
+          console.log(coinValue)
           coinValue['currency'] = '$';
          coinListConverted.push(coinValue);
       });
@@ -55,7 +58,7 @@ export class CoinListMarket extends Component {
     }
     return (
       <>
-        <div className="currency-table">
+        <div className="currency-table" id="coin-list-market">
           <div className="with-nav-tabs currency-tabs">
             <div className="tab-header">
               <ul className="nav nav-tabs">
@@ -88,14 +91,14 @@ export class CoinListMarket extends Component {
                         <th>Ticker</th>
                         <th>Price</th>
                         <th>24h change</th>
-                        <th>Graph</th>
+                        <th>24h Volume</th>
                       </tr>
                     </thead>
                     <tbody>
                       {coinList.map((coin, index) => {
                         
                         return (
-                          <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
+                          <tr data-href="#" className="coin-market-item" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
                             <td>
                               <div className="logo-name">
                                 <div className="item-logo">
@@ -112,26 +115,16 @@ export class CoinListMarket extends Component {
                             </td>
                             <td>
                               <span className="value_ticker">
-                                { `${coin.currency} ${coin.lastPrice}`}
+                                { `${ formatCryptoUSDCurrency(coin.lastPrice) }`}
                               </span>
                             </td>
                             <td>
-                              <span className="value_d1_return percent_positive">
-                                {coin.priceChangePercent}
+                              <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative' }>
+                                {`${coin.priceChangePercent} %`}
                               </span>
                             </td>
                             <td>
-                              <span className="value_graph">
-                                <svg viewBox="0 0 500 100" className="chart">
-                                  {" "}
-                                  <polyline
-                                    fill="none"
-                                    stroke="#35a947"
-                                    strokeWidth={5}
-                                    points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                  />{" "}
-                                </svg>
-                              </span>
+                              {`${formatCryptoUSDCurrency(coin.volume.toFixed(2))}M`}
                             </td>
                           </tr>
                         );

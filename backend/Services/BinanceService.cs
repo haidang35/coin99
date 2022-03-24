@@ -125,7 +125,8 @@ namespace backend.Services
                                         volume = dataConverted.v,
                                         quoteVolume = dataConverted.q,
                                         openPrice = dataConverted.o,
-                                        highPrice = dataConverted.h
+                                        highPrice = dataConverted.h,
+                                        lowPrice = dataConverted.l,
                                     };
                                     await firebaseService.Update("coins/binance/" + d.Key, binanceCoin);
                                 }

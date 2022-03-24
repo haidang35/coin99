@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using backend.Data;
+using backend.Dtos;
 using backend.Models;
 
 namespace backend.Controllers
 {
-    [EnableCors(origins:"http://localhost:3000",headers:"*", methods:"*")]
+    [EnableCors(origins:"https://coin99.cf, http://localhost:3000",headers:"*", methods:"*")]
     public class PostController : ApiController
     {
         private MyDbContext db = new MyDbContext();
@@ -28,8 +32,9 @@ namespace backend.Controllers
             var postList = db.Posts.ToList();
             return Ok(postList);
         }
-        // GET: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        // GET: api/Post/
+        [Route("~/api/posts/{id:int}")]
+        [HttpGet]
         [ResponseType(typeof(Post))]
         public IHttpActionResult GetPost(int id)
         {
@@ -43,22 +48,29 @@ namespace backend.Controllers
         }
 
         // PUT: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        [Route("~/api/posts/{id:int}")]
         [HttpPut]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPost(int id, Post post)
+        [ResponseType(typeof(Post))]
+        public IHttpActionResult PutPost(int id, PostDto postDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != post.Id)
+            var postDetails = db.Posts.Find(id);
+            if (postDetails == null)
             {
                 return BadRequest();
             }
-
-            db.Entry(post).State = EntityState.Modified;
+            postDetails.Title = postDto.Title;
+            postDetails.Thumbnail = postDto.Thumbnail;
+            postDetails.Body = postDto.Body;
+            postDetails.Category = postDto.Category;
+            postDetails.Description = postDto.Description;
+            postDetails.PostType = postDto.PostType;
+            postDetails.Authorld = postDto.Authorld;
+            postDetails.UpdateAt = DateTime.Now;
+            db.Entry(postDetails).State = EntityState.Modified;
 
             try
             {
@@ -76,7 +88,7 @@ namespace backend.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(postDetails);
         }
 
         // POST: api/Post
@@ -97,7 +109,7 @@ namespace backend.Controllers
         }
 
         // DELETE: api/Post/5
-        [Route("~/api/post/{id:int}")]
+        [Route("~/api/posts/{id:int}")]
         [ResponseType(typeof(Post))]
         [HttpDelete]
         public IHttpActionResult DeletePost(int id)
@@ -155,6 +167,45 @@ namespace backend.Controllers
             }
             return Ok(post);
             
+        }
+
+        [Route("~/api/test-upload-file")]
+        [HttpPost]
+        [ResponseType(typeof(string))]
+        public IHttpActionResult TestFileUpload()
+        {
+            Debug.WriteLine("Oke 0");
+            //Create the Directory.
+            string path = HttpContext.Current.Server.MapPath("~/Uploads/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            Debug.WriteLine("Oke 1");
+            //Fetch the File.
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files["myFile"];
+            Debug.WriteLine("Oke 2");
+            //Fetch the File Name.
+            /* string fileName = Path.GetFileName(postedFile.FileName);*//*
+
+            //Save the File.
+            *//*postedFile.SaveAs(path + fileName);*/
+
+            if (postedFile.ContentLength > 0)
+            {
+                string[] FileExtension = new string[] { ".jpg", ".png", ".jpeg", ".gif" };
+                if (FileExtension.Contains(postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."))))
+                {
+                    string imageName =  postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."));
+                    string PathDir = "~/Uploads";
+                    string pathImage = Path.Combine(HttpContext.Current.Server.MapPath(PathDir), imageName);
+                    postedFile.SaveAs(pathImage);
+                    return Ok(imageName);
+                }
+            }
+
+            //Send OK Response to Client.
+            return Ok("ok");
         }
 
     }
