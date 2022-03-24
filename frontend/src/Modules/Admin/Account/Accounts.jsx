@@ -14,6 +14,7 @@ export class Accounts extends Component {
         return(
             <>
            <LogIn />
+           
             </>
         )
     }

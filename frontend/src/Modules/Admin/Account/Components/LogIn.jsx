@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class LogIn extends Component {
   constructor(props) {
@@ -89,15 +90,15 @@ export class LogIn extends Component {
                           href="#"
                           title="Password Lost and Found"
                         >
-                           <input class="iCheck" type="checkbox"></input>
+                           <input class="iCheck"  type="checkbox"></input>
                           Remember Password
                         </a>
-                        <a  href="crypto-register.html"
+                        <Link to="/SignUp"
                           className="pull-right blue-text"
                           title="Sign Up"
                         >
                           Sign Up
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </div>

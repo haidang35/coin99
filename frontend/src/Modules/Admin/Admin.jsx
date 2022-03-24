@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Register } from "./Account/Components/Register";
 import { Coins } from "./Coins/Coins";
 import { Dashboard } from "./Dashboard/Components/Dashboard";
+import { Post } from "./Postt/Post";
 import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
@@ -12,26 +13,24 @@ export function Admin() {
   return (
     <BrowserRouter>
      <Header />
-      {/* START CONTAINER */}
       <div className="page-container row-fluid container-fluid">
-
        <Sidebar />
-        {/* START CONTENT */}
         <section id="main-content" className=" ">
           <Switch>
-            <Route path="/Coins" exact>
+            <Route path="/admin/coins" exact>
               <Coins />
             </Route>
-            <Route path="/Dashboard" exact>
+            <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
-            <Route path="/SignUp" exact>
+            <Route path="/admin/signUp" exact>
               <Register />
             </Route>
+            <Route path="/admin/post" exact>
+              <Post />
+            </Route>
           </Switch>
-
         </section>
-        {/* END CONTENT */}
         <div className="page-chatapi hideit">
           <div className="search-bar">
             <input
