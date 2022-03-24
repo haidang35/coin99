@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Register } from "./Account/Components/Register";
 import { Coins } from "./Coins/Coins";
 import { Dashboard } from "./Dashboard/Components/Dashboard";
 import styles from "./Shared/Styles/Admin.scss";
@@ -23,6 +24,9 @@ export function Admin() {
             </Route>
             <Route path="/Dashboard" exact>
               <Dashboard />
+            </Route>
+            <Route path="/SignUp" exact>
+              <Register />
             </Route>
           </Switch>
 

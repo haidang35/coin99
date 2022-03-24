@@ -7,23 +7,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using backend.Data;
 using backend.Models;
 
 namespace backend.Controllers
 {
+    [EnableCors(origins:"https://coin99.cf, http://localhost:3000",headers:"*", methods:"*")]
     public class PostController : ApiController
     {
         private MyDbContext db = new MyDbContext();
 
         // GET: api/Post
-        public IQueryable<Post> GetPosts()
+        [Route("~/api/posts")]
+        [HttpGet]
+        [ResponseType(typeof(ICollection<Post>))]
+        public IHttpActionResult GetPosts()
         {
-            return db.Posts;
+            var postList = db.Posts.ToList();
+            return Ok(postList);
         }
-
         // GET: api/Post/5
+        [Route("~/api/posts/{id:int}")]
+        [HttpGet]
         [ResponseType(typeof(Post))]
         public IHttpActionResult GetPost(int id)
         {
@@ -37,6 +44,8 @@ namespace backend.Controllers
         }
 
         // PUT: api/Post/5
+        [Route("~/api/posts/{id:int}")]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPost(int id, Post post)
         {
@@ -72,6 +81,8 @@ namespace backend.Controllers
         }
 
         // POST: api/Post
+        [Route("~/api/posts")]
+        [HttpPost]
         [ResponseType(typeof(Post))]
         public IHttpActionResult PostPost(Post post)
         {
@@ -80,14 +91,16 @@ namespace backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Posts.Add(post);
+            var newPost = db.Posts.Add(post);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
+            return Ok(newPost);
         }
 
         // DELETE: api/Post/5
+        [Route("~/api/posts/{id:int}")]
         [ResponseType(typeof(Post))]
+        [HttpDelete]
         public IHttpActionResult DeletePost(int id)
         {
             Post post = db.Posts.Find(id);
@@ -115,5 +128,35 @@ namespace backend.Controllers
         {
             return db.Posts.Count(e => e.Id == id) > 0;
         }
+        [Route("~/api/posts/{id:int}")]
+        [HttpPatch]
+        [ResponseType(typeof(Post))]
+        public IHttpActionResult PatchPost(int id)
+        {
+            Post post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            db.Entry(post).State = EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PostExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok(post);
+            
+        }
+
     }
 }
