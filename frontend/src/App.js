@@ -26,7 +26,7 @@ function App() {
    
       {/* <Public /> */}
       
-     {/* <Admin /> */}
+     <Admin />
       
 {/*      
       <BrowserRouter>
@@ -42,9 +42,9 @@ function App() {
       </Switch>
       </BrowserRouter> */}
       {/* <CreateNewPost /> */}
-      {/* <Load />
-       */}
-       <Dashboard />
+      {/* <Load /> */}
+      
+       {/* <Dashboard /> */}
    </>
   );
 }
