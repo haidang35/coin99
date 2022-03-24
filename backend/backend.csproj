@@ -341,6 +341,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\MyDbContext.cs" />
+    <Compile Include="Dtos\PostDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,6 +352,14 @@
     <Compile Include="Migrations\202203190428546_Initialize1.cs" />
     <Compile Include="Migrations\202203190428546_Initialize1.Designer.cs">
       <DependentUpon>202203190428546_Initialize1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203240146559_UpdatePost.cs" />
+    <Compile Include="Migrations\202203240146559_UpdatePost.designer.cs">
+      <DependentUpon>202203240146559_UpdatePost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203240150470_UpdatePost1.cs" />
+    <Compile Include="Migrations\202203240150470_UpdatePost1.designer.cs">
+      <DependentUpon>202203240150470_UpdatePost1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BinanceCoin.cs" />
@@ -472,6 +481,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203190428546_Initialize1.resx">
       <DependentUpon>202203190428546_Initialize1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203240146559_UpdatePost.resx">
+      <DependentUpon>202203240146559_UpdatePost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203240150470_UpdatePost1.resx">
+      <DependentUpon>202203240150470_UpdatePost1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

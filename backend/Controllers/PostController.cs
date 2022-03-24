@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using backend.Data;
+using backend.Dtos;
 using backend.Models;
 
 namespace backend.Controllers
@@ -28,7 +29,7 @@ namespace backend.Controllers
             var postList = db.Posts.ToList();
             return Ok(postList);
         }
-        // GET: api/Post/5
+        // GET: api/Post/
         [Route("~/api/posts/{id:int}")]
         [HttpGet]
         [ResponseType(typeof(Post))]
@@ -46,20 +47,27 @@ namespace backend.Controllers
         // PUT: api/Post/5
         [Route("~/api/posts/{id:int}")]
         [HttpPut]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPost(int id, Post post)
+        [ResponseType(typeof(Post))]
+        public IHttpActionResult PutPost(int id, PostDto postDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != post.Id)
+            var postDetails = db.Posts.Find(id);
+            if (postDetails == null)
             {
                 return BadRequest();
             }
-
-            db.Entry(post).State = EntityState.Modified;
+            postDetails.Title = postDto.Title;
+            postDetails.Thumbnail = postDto.Thumbnail;
+            postDetails.Body = postDto.Body;
+            postDetails.Category = postDto.Category;
+            postDetails.Description = postDto.Description;
+            postDetails.PostType = postDto.PostType;
+            postDetails.Authorld = postDto.Authorld;
+            postDetails.UpdateAt = DateTime.Now;
+            db.Entry(postDetails).State = EntityState.Modified;
 
             try
             {
@@ -77,7 +85,7 @@ namespace backend.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(postDetails);
         }
 
         // POST: api/Post
