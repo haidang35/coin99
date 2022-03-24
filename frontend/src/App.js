@@ -14,6 +14,10 @@ import { Public } from "./Modules/Public/Public";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UploadFile } from "./Modules/Admin/Postt/Tests/UploadFile";
+import { CreateNewPost } from "./Modules/Admin/Postt/Components/CreateNewPost/CreateNewPost";
+import { Editor } from "./Modules/Admin/Postt/Tests/Editor";
+import { Load } from "./Modules/Admin/Postt/Tests/Load";
+
 
 
 function App() {
@@ -21,10 +25,10 @@ function App() {
    <>
    
       {/* <Public /> */}
-      {/* <PostList /> */}
-      {/* <NewBlog /> */}
-      {/* <Logins /> */}
-     
+      
+     {/* <Admin /> */}
+      
+{/*      
       <BrowserRouter>
       <Admin />
       <Switch>
@@ -36,7 +40,11 @@ function App() {
               <Register />
             </Route>
       </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      {/* <CreateNewPost /> */}
+      {/* <Load />
+       */}
+       <Dashboard />
    </>
   );
 }

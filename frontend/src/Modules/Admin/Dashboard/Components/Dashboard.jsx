@@ -103,17 +103,13 @@ export class Dashboard extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* End .row */}
                             </div>
                         </section>
                     </div>
                     <div className="clearfix" />
-                    {/* MAIN CONTENT AREA STARTS */}
                     <div className="col-xs-12">
                         <div className="pull-left">
-                            {/* PAGE HEADING TAG - START */}
                             <h4 className="title boldy mb-5 mt-15">Crypto Balance</h4>
-                            {/* PAGE HEADING TAG - END */}
                         </div>
                     </div>
                     <div className="clearfix" />
@@ -222,7 +218,6 @@ export class Dashboard extends Component {
                                 </div>
                             </div>
                             <div className="apg-arrows">
-                                {/* Add Navigation */}
                                 <div className="swiper-button-prev" />
                                 <div className="swiper-button-next" />
                             </div>
@@ -360,7 +355,6 @@ export class Dashboard extends Component {
                                         </div>
                                     </div>
                                 </div>{" "}
-                                {/* End .row */}
                             </div>
                         </section>
                     </div>

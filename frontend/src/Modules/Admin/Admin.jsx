@@ -8,6 +8,7 @@ import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
 import { Register } from "./Auth/Components/Register/Register";
+import { CreateNewPost } from "./Postt/Components/CreateNewPost/CreateNewPost";
 
 
 export function Admin() {
@@ -29,6 +30,9 @@ export function Admin() {
             </Route>
             <Route path="/admin/post" exact>
               <Post />
+            </Route>
+            <Route path="/admin/newpost" exact>
+              <CreateNewPost />
             </Route>
           </Switch>
         </section>

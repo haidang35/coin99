@@ -57,52 +57,6 @@ export class CoinsListAdmin extends Component {
         }
         return (
             <>
-<<<<<<< HEAD
-
-                <div className="col-lg-12">
-                    <section className="box">
-                        <header className="panel_header">
-                            <h2 className="title pull-left">Transactions History</h2>
-                            <div className="actions panel_actions pull-right">
-                                <a className="box_toggle fa fa-chevron-down" />
-                                <a
-                                    className="box_setting fa fa-cog"
-                                    data-toggle="modal"
-                                    href="#section-settings"
-                                />
-                                <a className="box_close fa fa-times" />
-                            </div>
-                        </header>
-                        <div className="content-body">
-                            <div className="row">
-                                <div className="col-xs-12">
-                                    <div className="table-responsive" data-pattern="priority-columns">
-                                        <table
-                                            id="tech-companies-1"
-                                            className="table vm trans table-small-font no-mb table-bordered table-striped"
-                                        >
-                                            <thead>
-                                                <tr>
-                                                    <th>Crypto Trade</th>
-                                                    <th>Time</th>
-                                                    <th>Status</th>
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {coinList.map((coin, index) => {
-                        
-                        return (
-                          <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
-                            <td>
-                              <div className="logo-name">
-                                <div className="item-logo">
-                                  <img
-                                    src={coinLogo[coin.symbol]}
-                                    className="img-responsive"
-                                    alt=""
-                                  />
-=======
                 <div class=" wrapper main-wrapper row">
                     <div className="col-lg-12">
                         <section className="box">
@@ -116,7 +70,6 @@ export class CoinsListAdmin extends Component {
                                         href="#section-settings"
                                     />
                                     <a className="box_close fa fa-times" />
->>>>>>> development
                                 </div>
                             </header>
                             <div className="content-body">
@@ -178,7 +131,7 @@ export class CoinsListAdmin extends Component {
                                                                 </td>
                                                             </tr>
                                                         );
-                                                    })};
+                                                    })}
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
