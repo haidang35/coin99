@@ -112,8 +112,8 @@ export class CoinsListAdmin extends Component {
                                                                     </span>
                                                                 </td>
                                                                 <td>
-                                                                    <span className="value_d1_return percent_positive">
-                                                                        {coin.priceChangePercent}
+                                                                    <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative'}>
+                                                                        {`${coin.priceChangePercent} %`}
                                                                     </span>
                                                                 </td>
                                                                 <td>

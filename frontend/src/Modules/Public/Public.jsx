@@ -45,9 +45,8 @@ export function Public() {
           <Route path="/Blog-details" exact>
             <BlogDetails />
           </Route>
-          <Route path="/Login-admin" exact>
-            <Accounts />
-          </Route>
+         
+          
         </Switch>
       </BrowserRouter>
     </>
