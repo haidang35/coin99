@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { LogIn } from "./Components/LogIn";
+import { LogIn } from "../Components/Login/LogIn";
 
 
 
@@ -13,7 +13,13 @@ export class Accounts extends Component {
     render() {
         return(
             <>
+<<<<<<< HEAD:frontend/src/Modules/Admin/Auth/Tests/Accounts.jsx
+            <LogIn />
+            
+=======
            <LogIn />
+           
+>>>>>>> development:frontend/src/Modules/Admin/Account/Accounts.jsx
             </>
         )
     }

@@ -15,7 +15,7 @@ export class Sidebar extends Component {
             <ul className="wraplist">
               <li className="menusection">Main</li>
               <li className="">
-                <Link to="/Dashboard">
+                <Link to="/admin/dashboard">
                   <i className="img relative crypto-ic ">
                     <img
                       src="../data/crypto-dash/icons/1.png"
@@ -27,7 +27,7 @@ export class Sidebar extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/Coins">
+                <Link to="/admin/coins">
                   <i className="img">
                     <img
                       src="../data/crypto-dash/icons/2.png"
@@ -52,7 +52,7 @@ export class Sidebar extends Component {
                 </a>
               </li>
               <li className="">
-                <a href="crypto-ico-admin.html">
+                <Link to="/admin/post">
                   <i className="img">
                     <img
                       src="../data/crypto-dash/icons/4.png"
@@ -61,8 +61,8 @@ export class Sidebar extends Component {
                     />
                   </i>
                   <span className="title">Posts</span>
-                  <span className="label label-accent">HOT</span>
-                </a>
+                  <span className="label label-accent">HOT</span> 
+                </Link>
               </li>
               <li className="">
                 <a href="crypto-affiliate.html">

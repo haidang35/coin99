@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 export class ShowCoin extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ export class ShowCoin extends Component {
                 <div className="wrapper main-wrapper row" style={{}}>
                     <div className="clearfix" />
                     <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div className="statistics-box ref-bg1 mt-15" style={{ background: 'url(../../../../Assets/Admin/data/crypto-dash/icons/ref-bg1.png)'}}>
+                        <div className="statistics-box ref-bg1 mt-15" style={{ background: 'url(../../../../Assets/Admin/data/crypto-dash/ref-bg1.png)'}}>
                             <div className="mb-15">
                                 <div className="real-earn">
                                     <h2 className="w-text boldy mb-5">$1,456.98</h2>
@@ -117,13 +118,7 @@ export class ShowCoin extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                {/* MAIN CONTENT AREA ENDS */}
-
-
-
-
             </>
         )
     }
