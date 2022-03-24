@@ -22,7 +22,7 @@ function App() {
    
       {/* <Public /> */}
       
-     {/* <Admin /> */}
+     <Admin />
       
 {/*      
       <BrowserRouter>
