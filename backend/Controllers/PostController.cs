@@ -95,14 +95,17 @@ namespace backend.Controllers
         [Route("~/api/posts")]
         [HttpPost]
         [ResponseType(typeof(Post))]
-        public IHttpActionResult PostPost(Post post)
+        public IHttpActionResult PostPost(PostDto postDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var newPost = db.Posts.Add(post);
+           /* string fileName = UploadFile("thumbnail");
+            postDto.Thumbnail = fileName;*/
+            postDto.CreateAt = DateTime.Now;
+            postDto.UpdateAt = DateTime.Now;
+            var newPost = db.Posts.Add(postDto.ToPost());
             db.SaveChanges();
 
             return Ok(newPost);
@@ -206,6 +209,30 @@ namespace backend.Controllers
 
             //Send OK Response to Client.
             return Ok("ok");
+        }
+
+        public string UploadFile(string fileNameParam)
+        {
+            string path = HttpContext.Current.Server.MapPath("~/Uploads/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[fileNameParam];
+            if (postedFile.ContentLength > 0)
+            {
+                string[] FileExtension = new string[] { ".jpg", ".png", ".jpeg", ".gif" };
+                if (FileExtension.Contains(postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."))))
+                {
+                    string imageName = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."));
+                    string PathDir = "~/Uploads";
+                    string pathImage = Path.Combine(HttpContext.Current.Server.MapPath(PathDir), imageName);
+                    postedFile.SaveAs(pathImage);
+                    return imageName;
+                }
+            }
+            return null;
+
         }
 
     }
