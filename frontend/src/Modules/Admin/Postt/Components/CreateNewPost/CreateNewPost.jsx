@@ -1,98 +1,165 @@
 import React, { Component } from "react";
-import { CKEditor, CKEditorContext } from '@ckeditor/ckeditor5-react';
+import { CKEditor, CKEditorContext } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import "./NewPost.scss"
+import "./NewPost.scss";
 
 export class CreateNewPost extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        title: "",
+        body: "",
+        description: "",
+        thumbnail: "",
+        authorId: "",
+        categoryId: "",
+        status: "",
+      },
+    };
+  }
 
-        }
-    }
-    render() {
-        return (
-            <>
-                <div class=" wrapper main-wrapper row"></div>
-                <div className="box2">
-                    <div class="card">
-                        <div class=" wrapper main-wrapper row" style={{ padding: "50px 20px" }}>
-                            <div className="col-md-12">
-                                <h1>Create New Post</h1>
-                                <div className="mb-3">
-                                    <label>Title</label>
-                                    <input type="text" className="form-control" id="field-1" />
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <CKEditor
-                                            editor={ClassicEditor}
-                                            data="<p>Hello from CKEditor 5!</p>"
-                                            onReady={editor => {
+  handleChangeNewPost = (event) => {
+    const { name, value } = event.target;
+    let { form } = this.state;
+    form[[name]] = value;
+    this.setState({ form });
+  };
 
-                                                console.log('Editor is ready to use!', editor);
-                                            }}
-                                            onChange={(event, editor) => {
-                                                const data = editor.getData();
-                                                console.log({ event, editor, data });
-                                            }}
-                                            onBlur={(event, editor) => {
-                                                console.log('Blur.', editor);
-                                            }}
-                                            onFocus={(event, editor) => {
-                                                console.log('Focus.', editor);
-                                            }} />
-                                    </div>
-                                </div>
+  handleChangeFile = (event) => {
+    const file = event.target.files[0];
+    let { form } = this.state;
+    form["thumbnail"] = file;
+    this.setState({
+      form,
+    });
+  };
 
-                                <div>
-                                    <label>Description</label>
-                                    <input type="text" className="form-control" id="field-1" />
-                                </div>
-
-                                {/* </div> */}
-                            </div>
-                        </div>
-                    </div>
+  publishNewPost = () => {
+    const { form } = this.state;
+    console.log("🚀 ~ file: CreateNewPost.jsx ~ line 40 ~ CreateNewPost ~ form", form)
+    let formData = new FormData();
+    formData.append("thumbnail", form.thumbnail, 'hello.png');
+    const dataConverted = {
+        Title: form.title,
+        Thumbnail: 'hello.png',
+        Body: form.body,
+        CategoryId: form.categoryId,
+        Status: form.status,
+        Authorld: 1,
+        Description: form.description,
+        PostType: 1,
+        CreateAt: "2022-03-24T09:40:31.7989397+00:00",
+        UpdateAt: "2022-03-24T09:40:31.7989397+00:00",
+    };
+    const requestOptions = {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataConverted),
+    };
+    fetch("https://coin99.azurewebsites.net/api/posts", requestOptions)
+      .then((res) => res.json())
+      .then((res) => {
+          console.log(res);
+      });
+  };
+  render() {
+    const { title, body, description, thumbnail, categoryId, status } =
+      this.state.form;
+    return (
+      <>
+        <div className=" wrapper main-wrapper row">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="row" style={{ padding: "50px 20px" }}>
+                <div className="col-md-12">
+                  <h2>Create New Post</h2>
                 </div>
-                <div class="Thumnail" >
-                    <div class="col-lg-12">
-                        <div class="card" style={{ padding: "20px 30px" }}>
-                            {/* <div class="card-body"> */}
-                            <label>Thumnail</label>
-                            <div
-                                class="img-affa-wrapper text-center no-mb mt-15"
-                                style={{ padding: "50px 50px" }}>
-                                <div className="">
-                                    <i />
-                                    <a href="#myModal" data-toggle="modal">
-                                        <h4 className="no-mb mt-20">Up Load Image</h4>
-                                    </a>
+                <div className="col-md-12">
+                  <div className="mb-20">
+                    <label>Title</label>
+                    <input
+                      type="text"
+                      value={title}
+                      name="title"
+                      onChange={this.handleChangeNewPost}
+                      className="form-control"
+                    />
+                  </div>
 
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                  {/* </div> */}
                 </div>
-                <div class="Topics">
-                    <div class="col-md-20">
-                        <div class="card" style={{ padding: "20px 50px" }}>
-                            <div class="card-body">
-                                <label>Topics</label>
-                                <input type="text" className="form-control" id="field-1" />
-                                <label>Readtime</label>
-                                <input type="text" className="form-control" id="field-1" />
-                                <button class="btn btn-primary">Go </button>
-
-
-                            </div>
-                        </div>
-                    </div>
+                <div className="col-md-12 mb-30">
+                  <CKEditor
+                    editor={ClassicEditor}
+                    data={body}
+                    onReady={(editor) => {}}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      let { form } = this.state;
+                      form['body'] = data;
+                      this.setState({ form });
+                    }}
+                    onBlur={(event, editor) => {}}
+                    onFocus={(event, editor) => {}}
+                  />
                 </div>
-            </>
-
-
-        )
-    }
+                <div className="col-md-12">
+                  <label>Description</label>
+                  <textarea
+                    className="form-control"
+                    name="description"
+                    onChange={this.handleChangeNewPost}
+                    value={description}
+                    rows={5}
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="form-group">
+                <label>Thumbnail</label>
+                <input
+                  type="file"
+                  name="thumbnail"
+                  onChange={this.handleChangeFile}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label>Category</label>
+                <input
+                  type="text"
+                  name="categoryId"
+                  onChange={this.handleChangeNewPost}
+                  value={categoryId}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label>Status</label>
+                <input
+                  type="text"
+                  name="status"
+                  onChange={this.handleChangeNewPost}
+                  value={status}
+                  className="form-control"
+                />
+              </div>
+              <div>
+                <button
+                  className="btn btn-primary"
+                  onClick={this.publishNewPost}
+                >
+                  Publish
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
