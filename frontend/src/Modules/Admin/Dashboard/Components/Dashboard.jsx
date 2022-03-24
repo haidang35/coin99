@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 export class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -12,9 +13,7 @@ export class Dashboard extends Component {
                     <div className="col-xs-12">
                         <div className="page-title">
                             <div className="pull-left">
-                                {/* PAGE HEADING TAG - START */}
                                 <h1 className="title">Crypto Dashboard</h1>
-                                {/* PAGE HEADING TAG - END */}
                             </div>
                         </div>
                     </div>
@@ -27,7 +26,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="Assets/data/crypto-dash/s1.png"
+                                                        src="Assets/Admin/data/crypto-dash/coin1.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
@@ -47,7 +46,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="../data/crypto-dash/s2.png"
+                                                        src="../../../../Assets/Admin/data/crypto-dash/coin1.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />

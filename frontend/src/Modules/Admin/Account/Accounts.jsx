@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { LogIn } from "./LogIn";
-import { Register } from "./Register";
+import { LogIn } from "./Components/LogIn";
 
-export class Logins extends Component {
+
+
+export class Accounts extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +13,7 @@ export class Logins extends Component {
     render() {
         return(
             <>
-            <LogIn />
+           <LogIn />
             </>
         )
     }
