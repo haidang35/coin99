@@ -487,7 +487,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/08.png"
+                                                src="../../../../Assets/Admin/data/crypto-dash/08.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />

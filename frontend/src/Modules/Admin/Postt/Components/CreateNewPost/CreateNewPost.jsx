@@ -13,15 +13,18 @@ export class CreateNewPost extends Component {
     render() {
         return (
             <>
+                <div class=" wrapper main-wrapper row"></div>
                 <div className="box2">
                     <div class="card">
                         <div class=" wrapper main-wrapper row" style={{ padding: "50px 20px" }}>
-                            <div className="col-md-8">
+                            <div className="col-md-12">
                                 <h1>Create New Post</h1>
-                                <label>Title</label>
-                                <input type="text" className="form-control" id="field-1" />
-                                <div class="col-md-20">
-                                    <div className="App">
+                                <div className="mb-3">
+                                    <label>Title</label>
+                                    <input type="text" className="form-control" id="field-1" />
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-12">
                                         <CKEditor
                                             editor={ClassicEditor}
                                             data="<p>Hello from CKEditor 5!</p>"
@@ -39,15 +42,15 @@ export class CreateNewPost extends Component {
                                             onFocus={(event, editor) => {
                                                 console.log('Focus.', editor);
                                             }} />
-
-                                        <div class="col-md-14">
-                                            <label>Description</label>
-                                            <input type="text" className="form-control" id="field-1" />
-                                        </div>
-
-                                        {/* </div> */}
                                     </div>
                                 </div>
+
+                                <div>
+                                    <label>Description</label>
+                                    <input type="text" className="form-control" id="field-1" />
+                                </div>
+
+                                {/* </div> */}
                             </div>
                         </div>
                     </div>
@@ -76,18 +79,20 @@ export class CreateNewPost extends Component {
                     <div class="col-md-20">
                         <div class="card" style={{ padding: "20px 50px" }}>
                             <div class="card-body">
-                                <label>Topics</label>  
+                                <label>Topics</label>
                                 <input type="text" className="form-control" id="field-1" />
-                                <label>Readtime</label>  
+                                <label>Readtime</label>
                                 <input type="text" className="form-control" id="field-1" />
                                 <button class="btn btn-primary">Go </button>
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
-                    </div>
-                </>
-                )
+                </div>
+            </>
+
+
+        )
     }
 }

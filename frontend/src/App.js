@@ -37,7 +37,8 @@ function App() {
             </Route>
       </Switch>
       </BrowserRouter> */}
-      {/* <CreateNewPost /> */}
+      {/* <PostList /> */}
+      
    </>
   );
 }
