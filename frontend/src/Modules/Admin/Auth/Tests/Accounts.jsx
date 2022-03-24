@@ -13,8 +13,8 @@ export class Accounts extends Component {
     render() {
         return(
             <>
-           <LogIn />
-           
+            <LogIn />
+            
             </>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import "./Login.scss";
 
 export class LogIn extends Component {
   constructor(props) {
@@ -99,7 +99,7 @@ export class LogIn extends Component {
                           title="Sign Up"
                         >
                           Sign Up
-                        </Link>
+                        </a>
                       </p>
                     </div>
                   </div>
