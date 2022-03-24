@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class LogIn extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -92,7 +92,7 @@ export class LogIn extends Component {
                            <input class="iCheck" type="checkbox"></input>
                           Remember Password
                         </a>
-                        <a  href="crypto-register.html"
+                        <a  href="/register"
                           className="pull-right blue-text"
                           title="Sign Up"
                         >

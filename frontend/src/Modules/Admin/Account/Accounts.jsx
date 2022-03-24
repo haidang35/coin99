@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { LogIn } from "./Components/LogIn";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Login } from "./Components/Login";
+import { Register } from "./Components/Register";
 
 
 
@@ -12,9 +14,18 @@ export class Accounts extends Component {
     }
     render() {
         return(
-            <>
-           <LogIn />
-            </>
+            <BrowserRouter>
+              <Login />
+              <Switch>
+                 <Route path="/register" exact>
+                     <Register />
+
+                 </Route>
+              </Switch>
+            
+            </BrowserRouter>
+            
+            
         )
     }
 }
