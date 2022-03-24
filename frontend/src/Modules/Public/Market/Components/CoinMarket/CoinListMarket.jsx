@@ -28,6 +28,7 @@ export class CoinListMarket extends Component {
           let coinValue = snapshotChild.val();
           coinValue['symbol'] = coinValue['symbol'].replace('USDT', '');
           coinValue['key'] = snapshotChild.key;
+          console.log(coinValue)
           coinValue['currency'] = '$';
          coinListConverted.push(coinValue);
       });

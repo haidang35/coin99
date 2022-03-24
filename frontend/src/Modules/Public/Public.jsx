@@ -12,9 +12,7 @@ import { Abouts } from "./About/Abouts";
 import { LenDing } from "./Lending/LenDing";
 import { Blog } from "./Blog/Blog";
 import { BlogDetails } from "./Blog/Components/BlogDetails";
-import { Accounts } from "../Admin/Account/Accounts";
-import { LogIn } from "../Admin/Account/Components/Login";
-import { Register } from "../Admin/Account/Components/Register";
+import { Accounts } from "../Admin/Auth/Tests/Accounts";
 
 
 export function Public() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class NewBlog extends Component {
+export class NewPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,23 +10,19 @@ export class NewBlog extends Component {
     render() {
         return (
             <>
-
                 <div className="col-lg-12">
                     <div className="panel-heading " >
-                        <h1 >New Blog</h1>
+                        <h1 >New Post</h1>
                         <td className="">
                             <h2>TiTle</h2>
                             <input className="Name" type="name" />
                         </td>
-
                         <div className="box nobox ">
-
                             <div className="content-body">
                                 <div className="row">
                                     <div className="col-md-8 ">
                                     </div>
                                     <div className="col-md-3 ">
-
                                         <div className="mail_content">
                                             <div className="row">
                                                 <div className="col-xs-8">
@@ -40,10 +36,8 @@ export class NewBlog extends Component {
                                                 <div className="mail_list col-xs-8 " >
                                                     <h2>Read Time</h2>
                                                     <input className="Name" type="name" />
-                                                    <button className="btn btn-info">Publick</button>
-
+                                                    <button className="btn btn-primary">Publisch</button>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <h3>Up Load Image</h3>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+
 export class Register extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,7 @@ export class Register extends Component {
                 <div className="login-wrapper crypto">
                   <div className="col-lg-6 col-sm-12 over-h hidden-sm no-padding-left  no-padding-right">
                     <img
-                      src="../data/crypto-dash/login-img.png"
+                      src= {window.location.origin + '/Assets/Admin/data/crypto-dash/login-img.png'}
                       style={{ width: "105%" }}
                       alt=""
                     />
@@ -31,7 +32,7 @@ export class Register extends Component {
                     >
                       <div className="login-form-header flex align-items-center">
                         <img
-                          src="../data/crypto-dash/signup.png"
+                          src={window.location.origin + '/Assets/Admin/data/crypto-dash/signup.png'}
                           alt="login-icon"
                           style={{ maxWidth: 64 }}
                         />
