@@ -65,7 +65,7 @@ namespace backend.Controllers
             postDetails.Title = postDto.Title;
             postDetails.Thumbnail = postDto.Thumbnail;
             postDetails.Body = postDto.Body;
-            postDetails.Category = postDto.Category;
+            postDetails.CategoryId = postDto.CategoryId;
             postDetails.Description = postDto.Description;
             postDetails.PostType = postDto.PostType;
             postDetails.Authorld = postDto.Authorld;

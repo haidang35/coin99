@@ -49,7 +49,7 @@ namespace backend.Models
                 Title = this.Title,
                 Thumbnail = this.Thumbnail,
                 Body = this.Body,
-                Category = this.Category,
+                CategoryId = this.CategoryId,
                 Description = this.Description,
                 PostType = this.PostType,
                 Authorld = this.Authorld,

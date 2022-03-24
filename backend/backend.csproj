@@ -394,6 +394,10 @@
     <Compile Include="Migrations\202203240503444_UpdateDatabase.designer.cs">
       <DependentUpon>202203240503444_UpdateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203241453001_UpdatePostTale.cs" />
+    <Compile Include="Migrations\202203241453001_UpdatePostTale.designer.cs">
+      <DependentUpon>202203241453001_UpdatePostTale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BinanceCoin.cs" />
     <Compile Include="Models\BinanceMarketTickersStream.cs" />
@@ -401,7 +405,6 @@
     <Compile Include="Models\CoinMarket.cs" />
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\PostCategorie.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\UpgradePack.cs" />
@@ -524,6 +527,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203240503444_UpdateDatabase.resx">
       <DependentUpon>202203240503444_UpdateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203241453001_UpdatePostTale.resx">
+      <DependentUpon>202203241453001_UpdatePostTale.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

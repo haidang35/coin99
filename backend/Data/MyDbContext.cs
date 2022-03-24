@@ -17,7 +17,6 @@ namespace backend.Data
         public DbSet<CoinCategory> CoinCategories { get; set;}
         public DbSet<CoinMarket> CoinMarkets { get; set;}
         public DbSet<Notification> Notifications { get; set;}
-        public DbSet<PostCategorie> PostCategoryes { get; set;}
         public DbSet<UpgradePackPrice> UpgradePackPrices { get; set;}
         public DbSet<UserRegistedUpgrade> UserRegistedUpgrades { get; set;}
     }

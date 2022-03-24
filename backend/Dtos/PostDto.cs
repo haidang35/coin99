@@ -17,7 +17,7 @@ namespace backend.Dtos
         [Required]
         public string Body { get; set; }
         [Required]
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
@@ -36,7 +36,7 @@ namespace backend.Dtos
                 Title = this.Title,
                 Thumbnail = this.Thumbnail,
                 Body = this.Body,
-                Category = this.Category,
+                CategoryId = this.CategoryId,
                 Description = this.Description,
                 PostType = this.PostType,
                 Authorld = this.Authorld,
