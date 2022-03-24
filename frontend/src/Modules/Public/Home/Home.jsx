@@ -20,7 +20,7 @@ export class Home extends Component {
   }
 
   testCallApiPost = () => {
-    fetch('https://localhost:44340/api/posts')
+    fetch('https://coin99.azurewebsites.net/api/posts')
     .then((res) => res.json())
     .then((res) => {
       console.log('data', res);

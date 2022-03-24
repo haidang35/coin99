@@ -11,73 +11,112 @@ export class PostList extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <div className="panel panel-success">
-                        <div className="panel-heading">Blog List</div>
-                        <table className="table table-hover ">
-                            <thead>
-                                <tr>
-                                    <th style={{ width: '20%' }} className="text-center">#</th>
-                                    <th>Name</th>
-                                    <th style={{ width: '20%' }} className="text-center">Level</th>
-                                    <th style={{ width: '20%' }}>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="text-center">1</td>
-                                    <td>Tìm thấy mảnh vỡ máy bay rơi ở Iran làm 66 người chết</td>
-                                    <td className="text-center"><span className="label label-danger">High</span></td>
-                                    <td>
-                                        <button type="button" className="btn btn-danger btn-sm">Edit</button>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center">2</td>
-                                    <td>Không còn tranh cướp lộc hoa tre ở lễ hội đền Gióng 2018</td>
-                                    <td className="text-center"><span className="label label-default">Small</span></td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning btn-sm">Edit</button>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center">3</td>
-                                    <td>Hơn 37.000 người nhập viện vì tai nạn giao thông, đốt pháo</td>
-                                    <td className="text-center">
-                                        <span className="label label-info">
-                                            Medium
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning btn-sm">Edit</button>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center">4</td>
-                                    <td>Gần 200 người chết vì tai nạn giao thông 7 ngày nghỉ Tết</td>
-                                    <td className="text-center"><span className="label label-info">Medium</span></td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning btn-sm">Edit</button>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center">5</td>
-                                    <td>VFF giải ngân 15 tỷ đồng, tiền thưởng tới tay U23 VN trước Tết</td>
-                                    <td className="text-center"><span className="label label-info">Medium</span></td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning btn-sm">Edit</button>
-                                        <button type="button" className="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div class=" wrapper main-wrapper row">
+                <div className="col-lg-12">
+                    <section className="box">
+                        <header className="panel_header">
+                            <h2 className="title pull-left">Post List</h2>
+                            <div className="actions panel_actions pull-right">
+                                <a className="box_toggle fa fa-chevron-down" />
+                                
+                                <a className="box_close fa fa-times" />
+                            </div>
+                        </header>
+                        <div className="content-body">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="table-responsive" data-pattern="priority-columns">
+                                        <table
+                                            id="tech-companies-1"
+                                            className="table table-bordered table-striped"
+                                        >
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>ThumNail</th>
+                                                    <th>Crypto Trade</th>
+                                                    <th>Sender ID</th>
+                                                    <th>Transaction ID</th>
+                                                    <th>Time</th>
+                                                    <th>Status</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+
+                                                    </td>
+                                                    <td>
+                                                        2
+
+                                                    </td>
+                                                    <td>
+                                                        <div className="round img2">
+                                                            <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                        </div>
+                                                        <div className="designer-info">
+                                                            <h6>Bitcoin</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">gdh-34um3bbj</small>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">HJD9R034JNN3N43</small>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">10:23:45</small>
+                                                    </td>
+                                                    <td>
+                                                        <span className="badge  w-70 round-success">completed</span>
+                                                    </td>
+                                                    <td className="green-text boldy">+0,041BTC</td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        
+
+                                                    </td>
+                                                    <td>
+                                                        
+
+                                                    </td>
+                                                    <td>
+                                                        <div className="round img2">
+                                                            <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                        </div>
+                                                        <div className="designer-info">
+                                                            <h6>Bitcoin</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">gdh-34um3bbj</small>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">HJD9R034JNN3N43</small>
+                                                    </td>
+                                                    <td>
+                                                        <small className="text-muted">10:23:45</small>
+                                                    </td>
+                                                    <td>
+                                                        <span className="badge  w-70 round-success">completed</span>
+                                                    </td>
+                                                    <td className="green-text boldy">+0,041BTC</td>
+                                                </tr> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     </div>
                 </div>
-
+                
+                
+    
             </>
         )
     }

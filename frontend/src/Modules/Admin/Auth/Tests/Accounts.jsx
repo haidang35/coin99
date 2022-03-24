@@ -13,8 +13,13 @@ export class Accounts extends Component {
     render() {
         return(
             <>
+<<<<<<< HEAD:frontend/src/Modules/Admin/Auth/Tests/Accounts.jsx
             <LogIn />
             
+=======
+           <LogIn />
+           
+>>>>>>> development:frontend/src/Modules/Admin/Account/Accounts.jsx
             </>
         )
     }

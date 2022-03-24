@@ -118,13 +118,7 @@ export class ShowCoin extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                {/* MAIN CONTENT AREA ENDS */}
-
-
-
-
             </>
         )
     }

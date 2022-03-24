@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 
+
 export class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="Assets/Admin/data/crypto-dash/coin1.png"
+                                                        src="../../../../Assets/Admin/data/crypto-dash/s1.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
@@ -46,7 +47,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="../../../../Assets/Admin/data/crypto-dash/coin1.png"
+                                                        src="../../../../Assets/Admin/data/crypto-dash/s2.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
@@ -66,7 +67,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="../data/crypto-dash/s3.png"
+                                                        src="../../../../Assets/Admin/data/crypto-dash/s3.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
@@ -86,7 +87,7 @@ export class Dashboard extends Component {
                                             <div className="mb-15">
                                                 <i className="pull-left ico-icon icon-md icon-primary">
                                                     <img
-                                                        src="../data/crypto-dash/s4.png"
+                                                        src="../../../../Assets/Admin/data/crypto-dash/s4.png"
                                                         className="ico-icon-o"
                                                         alt=""
                                                     />
