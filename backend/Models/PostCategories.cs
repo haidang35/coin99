@@ -7,7 +7,7 @@ namespace backend.Models
 {
     public enum CategoryType {}
     public enum PostCategoryStatus { }
-    public class PostCategorie
+    public class PostCategories
     {
         public int Id { get; set; }
         public string Description { get; set; }

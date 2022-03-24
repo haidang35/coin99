@@ -15,7 +15,7 @@ namespace backend.Models
         public int Id { get; set; }
         public string Type { get; set; }
         public string Body { get; set; }
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
         public string Description { get; set; }
         public PostType PostType { get; set; }
         public int Authorld { get; set; }

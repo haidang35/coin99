@@ -18,22 +18,22 @@ namespace backend.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: api/PostCategories
-        [Route("~/api/postcategories")]
+        [Route("~/api/post-categories")]
         [HttpGet]
-        [ResponseType(typeof(PostCategorie))]
+        [ResponseType(typeof(PostCategories))]
         public IHttpActionResult GetPostCategoryes()
         {
-            var postCategoriesList = db.PostCategoryes.ToList();
+            var postCategoriesList = db.PostCategories.ToList();
             return Ok(postCategoriesList);
         }
 
         // GET: api/PostCategories/5
         [Route("~/api/postcategories/{id:int}")]
         [HttpGet]
-        [ResponseType(typeof(PostCategorie))]
-        public IHttpActionResult GetPostCategorie(int id)
+        [ResponseType(typeof(PostCategories))]
+        public IHttpActionResult GetPostCategories(int id)
         {
-            PostCategorie postCategorie = db.PostCategoryes.Find(id);
+            PostCategories postCategories = db.PostCategoryes.Find(id);
             if (postCategorie == null)
             {
                 return NotFound();
@@ -46,19 +46,19 @@ namespace backend.Controllers
         [Route("~/api/postcategories/{id:int}")]
         [HttpPut]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPostCategorie(int id, PostCategorie postCategorie)
+        public IHttpActionResult PutPostCategorie(int id, PostCategories postCategories)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != postCategorie.Id)
+            if (id != postCategories.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(postCategorie).State = EntityState.Modified;
+            db.Entry(postCategories).State = EntityState.Modified;
 
             try
             {
@@ -66,7 +66,7 @@ namespace backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PostCategorieExists(id))
+                if (!PostCategoriesExists(id))
                 {
                     return NotFound();
                 }
@@ -80,38 +80,38 @@ namespace backend.Controllers
         }
 
         // POST: api/PostCategories
-        [ResponseType(typeof(PostCategorie))]
+        [ResponseType(typeof(PostCategories))]
         [Route("~/api/postcategories")]
         [HttpPost]
-        public IHttpActionResult PostPostCategorie(PostCategorie postCategorie)
+        public IHttpActionResult PostPostCategories(PostCategorie postCategorie)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.PostCategoryes.Add(postCategorie);
+            db.PostCategories.Add(postCategories);
             db.SaveChanges();
 
-            return Ok(postCategorie);
+            return Ok(postCategories);
         }
 
         // DELETE: api/PostCategories/5
         [Route("~/api/postcategories/{id:int}")]
         [HttpDelete]
-        [ResponseType(typeof(PostCategorie))]
-        public IHttpActionResult DeletePostCategorie(int id)
+        [ResponseType(typeof(PostCategories))]
+        public IHttpActionResult DeletePostCategories(int id)
         {
-            PostCategorie postCategorie = db.PostCategoryes.Find(id);
+            PostCategories postCategories = db.PostCategories.Find(id);
             if (postCategorie == null)
             {
                 return NotFound();
             }
 
-            db.PostCategoryes.Remove(postCategorie);
+            db.PostCategories.Remove(postCategories);
             db.SaveChanges();
 
-            return Ok(postCategorie);
+            return Ok(postCategories);
         }
 
         protected override void Dispose(bool disposing)
@@ -119,13 +119,13 @@ namespace backend.Controllers
             if (disposing)
             {
                 db.Dispose();
-            }
+        
             base.Dispose(disposing);
         }
 
         private bool PostCategorieExists(int id)
         {
-            return db.PostCategoryes.Count(e => e.Id == id) > 0;
+            return db.PostCategories.Count(e => e.Id == id) > 0;
         }
     }
 }
