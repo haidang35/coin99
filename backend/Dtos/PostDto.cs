@@ -1,27 +1,15 @@
-﻿using backend.Dtos;
+﻿using backend.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace backend.Models
+namespace backend.Dtos
 {
-    public enum PostType
+ 
+    public class PostDto
     {
-        Free = 1,
-        Premium = 2
-    }
-
-    public enum PostStatus
-    {
-        Active = 1,
-        Deactive = 0
-    }
-    public class Post
-    {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
@@ -41,10 +29,9 @@ namespace backend.Models
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }
 
-
-        public PostDto TOPostDto()
+        public Post ToPost()
         {
-            var postDto = new PostDto()
+            var post = new Post()
             {
                 Title = this.Title,
                 Thumbnail = this.Thumbnail,
@@ -56,8 +43,9 @@ namespace backend.Models
                 Status = this.Status,
                 CreateAt = this.CreateAt,
                 UpdateAt = this.UpdateAt
+
             };
-            return postDto ;
+            return post;
         }
     }
 }
