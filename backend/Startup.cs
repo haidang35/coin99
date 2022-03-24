@@ -14,10 +14,10 @@ namespace backend
     {
         public void Configuration(IAppBuilder app)
         {
-          /*  JobStorage.Current = new SqlServerStorage("ConnectionString");
+            JobStorage.Current = new SqlServerStorage("ConnectionString");
             app.UseHangfireServer();
             BinanceService binanceService = new BinanceService();
-            RecurringJob.AddOrUpdate(() => binanceService.Subcribe24PriceChange(), Cron.Minutely);*/
+            RecurringJob.AddOrUpdate(() => binanceService.Subcribe24PriceChange(), Cron.Minutely);
         }
     }
 }
