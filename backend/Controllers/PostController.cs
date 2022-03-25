@@ -32,6 +32,7 @@ namespace backend.Controllers
             var postList = db.Posts.ToList();
             return Ok(postList);
         }
+
         // GET: api/Post/
         [Route("~/api/posts/{id:int}")]
         [HttpGet]

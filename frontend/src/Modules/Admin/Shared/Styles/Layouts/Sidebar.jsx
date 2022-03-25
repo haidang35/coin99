@@ -52,6 +52,19 @@ export class Sidebar extends Component {
                 </a>
               </li>
               <li className="">
+                <Link to="/admin/post-categories">
+                  <i className="img">
+                    <img
+                      src="../data/crypto-dash/icons/4.png"
+                      alt=""
+                      className="width-20"
+                    />
+                  </i>
+                  <span className="title">Post Categories</span>
+                  <span className="label label-accent">HOT</span> 
+                </Link>
+              </li>
+              <li className="">
                 <Link to="/admin/post">
                   <i className="img">
                     <img

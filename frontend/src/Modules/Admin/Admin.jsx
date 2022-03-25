@@ -9,6 +9,8 @@ import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
 import { Register } from "./Auth/Components/Register/Register";
 import { CreateNewPost } from "./Postt/Components/CreateNewPost/CreateNewPost";
+import { PostCategory } from "./PostCategory/PostCategory";
+import { CreatePostCategory } from "./PostCategory/Components/CreatePostCategory/CreatePostCategory";
 
 
 export function Admin() {
@@ -33,6 +35,12 @@ export function Admin() {
             </Route>
             <Route path="/admin/newpost" exact>
               <CreateNewPost />
+            </Route>
+            <Route path="/admin/post-categories" exact>
+                <PostCategory />
+            </Route>
+            <Route path="/admin/post-categories/create" exact>
+                <CreatePostCategory />
             </Route>
           </Switch>
         </section>
