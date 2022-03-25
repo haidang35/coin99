@@ -101,13 +101,10 @@ namespace backend.Controllers
             {
                 return BadRequest(ModelState);
             }
-           /* string fileName = UploadFile("thumbnail");
-            postDto.Thumbnail = fileName;*/
             postDto.CreateAt = DateTime.Now;
             postDto.UpdateAt = DateTime.Now;
             var newPost = db.Posts.Add(postDto.ToPost());
             db.SaveChanges();
-
             return Ok(newPost);
         }
 
@@ -211,14 +208,17 @@ namespace backend.Controllers
             return Ok("ok");
         }
 
-        public string UploadFile(string fileNameParam)
+        [Route("~/api/posts/upload-thumbnail")]
+        [HttpPost]
+        [ResponseType(typeof(string))]
+        public string UploadFile()
         {
             string path = HttpContext.Current.Server.MapPath("~/Uploads/");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            HttpPostedFile postedFile = HttpContext.Current.Request.Files[fileNameParam];
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files["fileUpload"];
             if (postedFile.ContentLength > 0)
             {
                 string[] FileExtension = new string[] { ".jpg", ".png", ".jpeg", ".gif" };
@@ -228,7 +228,7 @@ namespace backend.Controllers
                     string PathDir = "~/Uploads";
                     string pathImage = Path.Combine(HttpContext.Current.Server.MapPath(PathDir), imageName);
                     postedFile.SaveAs(pathImage);
-                    return imageName;
+                    return $"/Uploads/{imageName}";
                 }
             }
             return null;

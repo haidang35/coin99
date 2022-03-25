@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { CKEditor, CKEditorContext } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./NewPost.scss";
-
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { BASE_URL_SERVER } from "../../../../../Configs/server";
 export class CreateNewPost extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ export class CreateNewPost extends Component {
         categoryId: "",
         status: "",
       },
+      isRedirectSuccess: false
     };
   }
 
@@ -35,37 +38,48 @@ export class CreateNewPost extends Component {
     });
   };
 
-  publishNewPost = () => {
-    const { form } = this.state;
-    console.log("🚀 ~ file: CreateNewPost.jsx ~ line 40 ~ CreateNewPost ~ form", form)
+  publishNewPost = async () => {
+    let { form } = this.state;
     let formData = new FormData();
-    formData.append("thumbnail", form.thumbnail, 'hello.png');
-    const dataConverted = {
-        Title: form.title,
-        Thumbnail: 'hello.png',
-        Body: form.body,
-        CategoryId: form.categoryId,
-        Status: form.status,
-        Authorld: 1,
-        Description: form.description,
-        PostType: 1,
-        CreateAt: "2022-03-24T09:40:31.7989397+00:00",
-        UpdateAt: "2022-03-24T09:40:31.7989397+00:00",
+    formData.append("fileUpload", form.thumbnail, 'hello.png');
+    let dataConverted = {
+      Title: form.title,
+      Thumbnail: "",
+      Body: form.body,
+      CategoryId: form.categoryId,
+      Status: form.status,
+      Authorld: 1,
+      Description: form.description,
+      PostType: 1,
     };
-    const requestOptions = {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dataConverted),
-    };
-    fetch("https://coin99.azurewebsites.net/api/posts", requestOptions)
-      .then((res) => res.json())
-      .then((res) => {
-          console.log(res);
+    await axios
+      .post(`${BASE_URL_SERVER}/api/posts/upload-thumbnail`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(async (res) => {
+        console.log(res.data);
+        dataConverted.Thumbnail = res.data;
+        await axios.post(`${BASE_URL_SERVER}/api/posts`, dataConverted)
+          .then((res) => {
+            console.log(res.data);
+            this.setState({
+              isRedirectSuccess: true
+            });
+          }).catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   render() {
     const { title, body, description, thumbnail, categoryId, status } =
       this.state.form;
+    const { isRedirectSuccess } = this.state;
+    if(isRedirectSuccess) {
+      return <Redirect to={'/admin/post'} />
+    }
     return (
       <>
         <div className=" wrapper main-wrapper row">
@@ -97,7 +111,7 @@ export class CreateNewPost extends Component {
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       let { form } = this.state;
-                      form['body'] = data;
+                      form["body"] = data;
                       this.setState({ form });
                     }}
                     onBlur={(event, editor) => {}}
