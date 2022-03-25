@@ -18,7 +18,7 @@ export class CreateNewPost extends Component {
         categoryId: "",
         status: "",
       },
-      isRedirectSuccess: false
+      isRedirectSuccess: false,
     };
   }
 
@@ -41,7 +41,7 @@ export class CreateNewPost extends Component {
   publishNewPost = async () => {
     let { form } = this.state;
     let formData = new FormData();
-    formData.append("fileUpload", form.thumbnail, 'hello.png');
+    formData.append("fileUpload", form.thumbnail, "hello.png");
     let dataConverted = {
       Title: form.title,
       Thumbnail: "",
@@ -59,13 +59,15 @@ export class CreateNewPost extends Component {
       .then(async (res) => {
         console.log(res.data);
         dataConverted.Thumbnail = res.data;
-        await axios.post(`${BASE_URL_SERVER}/api/posts`, dataConverted)
+        await axios
+          .post(`${BASE_URL_SERVER}/api/posts`, dataConverted)
           .then((res) => {
             console.log(res.data);
             this.setState({
-              isRedirectSuccess: true
+              isRedirectSuccess: true,
             });
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
           });
       })
@@ -77,8 +79,8 @@ export class CreateNewPost extends Component {
     const { title, body, description, thumbnail, categoryId, status } =
       this.state.form;
     const { isRedirectSuccess } = this.state;
-    if(isRedirectSuccess) {
-      return <Redirect to={'/admin/post'} />
+    if (isRedirectSuccess) {
+      return <Redirect to={"/admin/post"} />;
     }
     return (
       <>
