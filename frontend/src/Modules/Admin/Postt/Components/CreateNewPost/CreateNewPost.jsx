@@ -5,6 +5,9 @@ import "./NewPost.scss";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { BASE_URL_SERVER } from "../../../../../Configs/server";
+
+
+
 export class CreateNewPost extends Component {
   constructor(props) {
     super(props);

@@ -20,9 +20,9 @@ function App() {
   return (
    <>
    
-      {/* <Public /> */}
+      <Public />
       
-     <Admin />
+     {/* <Admin /> */}
       
 {/*      
       <BrowserRouter>
