@@ -12,7 +12,7 @@ export class Coins extends Component {
         return(
             <>
             <CoinsListAdmin />
-            {/* <ShowCoin /> */}
+            <ShowCoin />
             </>
         )
     }

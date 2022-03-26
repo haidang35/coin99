@@ -11,22 +11,14 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { UploadFile } from "./Modules/Admin/Postt/Tests/UploadFile";
 import { CreateNewPost } from "./Modules/Admin/Postt/Components/CreateNewPost/CreateNewPost";
 import { Editor } from "./Modules/Admin/Postt/Tests/Editor";
-import { Load } from "./Modules/Admin/Postt/Tests/Load";
+
 
 function App() {
   return (
-<<<<<<< HEAD
-   <>
-   
-      <Public />
-      
-     {/* <Admin /> */}
-      
-{/*      
-=======
     <>
->>>>>>> development
-      <BrowserRouter>
+    <Admin />
+    {/* <Public /> */}
+      {/* <BrowserRouter>
         <Switch>
           <Route path="/admin">
             <Admin />
@@ -35,7 +27,9 @@ function App() {
             <Public />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
+   
+      
     </>
   );
 }
