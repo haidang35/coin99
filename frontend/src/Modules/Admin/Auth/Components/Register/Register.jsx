@@ -1,15 +1,42 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import authService from "../../Services/AuthService";
 
 
 export class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      form: {
+        FullName: '',
+        Birthday: '',
+        Email: '',
+        PhoneNumber: '',
+        Password: '',
+        ConfirmationPassword: ''
+      }
     }
   }
+
+  handleChangeSignup = (event) => {
+    const { name, value } = event.target;
+    let { form } = this.state;
+    form[[name]] = value;
+    this.setState({ form });
+  }
+
+  onSignup = async () => {
+    const { form } = this.state;
+    await authService.registerNewUser(form)
+      .then((res) => {
+         window.location.replace("/admin-login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   render() {
+    const { FullName, Birthday, Email, PhoneNumber, Password, ConfirmationPassword } = this.state.form;
     return (
 
       <>
@@ -45,22 +72,34 @@ export class Register extends Component {
                       </div>
                       <div className="box login">
                         <div className="content-body" style={{ paddingTop: 25 }}>
-                          <form
-                            id="msg_validate"
-                            action="#"
-                            noValidate="novalidate"
+                          <div
                             className="no-mb no-mt"
                           >
                             <div className="row">
                               <div className="col-xs-12">
                                 <div className="form-group">
-                                  <label className="form-label">User name</label>
+                                  <label className="form-label">Full Name</label>
                                   <div className="controls">
                                     <input
                                       type="text"
                                       className="form-control"
-                                      name="formfield2"
-                                      placeholder="enter username"
+                                      name="FullName"
+                                      placeholder="enter full name"
+                                      value={FullName}
+                                      onChange={this.handleChangeSignup}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <label className="form-label">Birthday</label>
+                                  <div className="controls">
+                                    <input
+                                      type="date"
+                                      className="form-control"
+                                      name="Birthday"
+                                      placeholder="enter birthday"
+                                      value={Birthday}
+                                      onChange={this.handleChangeSignup}
                                     />
                                   </div>
                                 </div>
@@ -70,8 +109,23 @@ export class Register extends Component {
                                     <input
                                       type="text"
                                       className="form-control"
-                                      name="formfield1"
+                                      name="Email"
                                       placeholder="enter email"
+                                      value={Email}
+                                      onChange={this.handleChangeSignup}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <label className="form-label">Phone Number</label>
+                                  <div className="controls">
+                                    <input
+                                      type="tel"
+                                      className="form-control"
+                                      name="PhoneNumber"
+                                      placeholder="enter phone number"
+                                      value={PhoneNumber}
+                                      onChange={this.handleChangeSignup}
                                     />
                                   </div>
                                 </div>
@@ -81,8 +135,10 @@ export class Register extends Component {
                                     <input
                                       type="password"
                                       className="form-control"
-                                      name="formfield2"
+                                      name="Password"
                                       placeholder="enter password"
+                                      value={Password}
+                                      onChange={this.handleChangeSignup}
                                     />
                                   </div>
                                 </div>
@@ -94,27 +150,30 @@ export class Register extends Component {
                                     <input
                                       type="password"
                                       className="form-control"
-                                      name="formfield1"
+                                      name="ConfirmationPassword"
                                       placeholder="repeat password"
+                                      value={ConfirmationPassword}
+                                      onChange={this.handleChangeSignup}
                                     />
                                   </div>
                                 </div>
                                 <div className="text-center">
-                                  <Link to="/SignUp"
+                                  <button
+                                    onClick={this.onSignup}
                                     className="btn btn-primary mt-10 btn-corner right-15"
                                   >
                                     Sign up
-                                  </Link>
-                                  <a
-                                    href="crypto-login.html"
+                                  </button>
+                                  <Link
+                                    to={'/admin-login'}
                                     className="btn mt-10 btn-corner signup"
                                   >
                                     Login
-                                  </a>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
-                          </form>
+                          </div>
                         </div>
                       </div>
                     </div>

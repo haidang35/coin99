@@ -27,9 +27,7 @@ export function Admin() {
             <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
-            <Route path="/admin/signUp" exact>
-              <Register />
-            </Route>
+         
             <Route path="/admin/post" exact>
               <Post />
             </Route>
