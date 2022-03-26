@@ -4,22 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace backend.Models
+namespace backend.Dtos
 {
-    public enum UserStatus
+    public class UserRegisterDto
     {
-        Active = 1, 
-        Deactive = 0,
-    }
-
-    public enum AccountType
-    {
-        Normal = 1,
-        Premium = 2
-    }
-    public class User
-    {
-        public int Id { get; set; }
         [Required]
         public string FullName { get; set; }
         [Required]
@@ -28,12 +16,11 @@ namespace backend.Models
         public string Email { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
-        [Required]
-        public AccountType AccountType { get; set; }
+        public string AccountType { get; set; }
         [Required]
         public string Password { get; set; }
-        public UserStatus Status { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        [Required]
+        [Compare("Password", ErrorMessage = "Password and Confirmation Password must match.")]
+        public string ConfirmationPassword { get; set; }
     }
 }
