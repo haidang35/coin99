@@ -121,11 +121,20 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.Headers.2.1.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Cors.4.1.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -364,17 +373,27 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Auth\ApiAuthorizationServerProvider.cs" />
+    <Compile Include="Auth\ApiAuthorizeAttribute.cs" />
+    <Compile Include="Auth\AuthenticationStartup.cs" />
     <Compile Include="Controllers\BinanceMarketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostCategoryController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\MyDbContext.cs" />
     <Compile Include="Dtos\PostCategoryDto.cs" />
     <Compile Include="Dtos\PostDto.cs" />
+    <Compile Include="Dtos\UserTokenDto.cs" />
+    <Compile Include="Dtos\UserLoginDto.cs" />
+    <Compile Include="Dtos\UserRegisterDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Hash.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.Designer.cs">
       <DependentUpon>202203190420046_Initialize.cs</DependentUpon>
@@ -407,6 +426,22 @@
     <Compile Include="Migrations\202203251523561_UpdatePostCategory1.Designer.cs">
       <DependentUpon>202203251523561_UpdatePostCategory1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203260338415_UpdateUserTable.cs" />
+    <Compile Include="Migrations\202203260338415_UpdateUserTable.Designer.cs">
+      <DependentUpon>202203260338415_UpdateUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203261400218_UpdateRoleTable.cs" />
+    <Compile Include="Migrations\202203261400218_UpdateRoleTable.Designer.cs">
+      <DependentUpon>202203261400218_UpdateRoleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203261635509_UpdateUserTable1.cs" />
+    <Compile Include="Migrations\202203261635509_UpdateUserTable1.Designer.cs">
+      <DependentUpon>202203261635509_UpdateUserTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203261702029_UpdateUserTable2.cs" />
+    <Compile Include="Migrations\202203261702029_UpdateUserTable2.Designer.cs">
+      <DependentUpon>202203261702029_UpdateUserTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BinanceCoin.cs" />
     <Compile Include="Models\BinanceMarketTickersStream.cs" />
@@ -417,6 +452,7 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostCategory.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Models\UpgradePack.cs" />
     <Compile Include="Models\UpgradePackPrice.cs" />
     <Compile Include="Models\User.cs" />
@@ -546,6 +582,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203251523561_UpdatePostCategory1.resx">
       <DependentUpon>202203251523561_UpdatePostCategory1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203260338415_UpdateUserTable.resx">
+      <DependentUpon>202203260338415_UpdateUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203261400218_UpdateRoleTable.resx">
+      <DependentUpon>202203261400218_UpdateRoleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203261635509_UpdateUserTable1.resx">
+      <DependentUpon>202203261635509_UpdateUserTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203261702029_UpdateUserTable2.resx">
+      <DependentUpon>202203261702029_UpdateUserTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
