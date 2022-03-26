@@ -21,8 +21,13 @@ export class CreateNewPost extends Component {
         categoryId: "",
         status: "",
       },
-      isRedirectSuccess: false
+      postCategoryList: [],
+      isRedirectSuccess: false,
     };
+  }
+
+  componentDidMount() {
+    this.getPostCategoryList();
   }
 
   handleChangeNewPost = (event) => {
@@ -41,10 +46,22 @@ export class CreateNewPost extends Component {
     });
   };
 
+  getPostCategoryList = async () => {
+    await axios
+    .get("https://coin99.azurewebsites.net/api/post-categories")
+    .then((res) => {
+      console.log(res.data);
+      this.setState({
+        postCategoryList: res.data,
+      });
+    })
+    .catch((err) => {});
+  }
+
   publishNewPost = async () => {
     let { form } = this.state;
     let formData = new FormData();
-    formData.append("fileUpload", form.thumbnail, 'hello.png');
+    formData.append("fileUpload", form.thumbnail, "hello.png");
     let dataConverted = {
       Title: form.title,
       Thumbnail: "",
@@ -62,13 +79,15 @@ export class CreateNewPost extends Component {
       .then(async (res) => {
         console.log(res.data);
         dataConverted.Thumbnail = res.data;
-        await axios.post(`${BASE_URL_SERVER}/api/posts`, dataConverted)
+        await axios
+          .post(`${BASE_URL_SERVER}/api/posts`, dataConverted)
           .then((res) => {
             console.log(res.data);
             this.setState({
-              isRedirectSuccess: true
+              isRedirectSuccess: true,
             });
-          }).catch((err) => {
+          })
+          .catch((err) => {
             console.log(err);
           });
       })
@@ -79,9 +98,9 @@ export class CreateNewPost extends Component {
   render() {
     const { title, body, description, thumbnail, categoryId, status } =
       this.state.form;
-    const { isRedirectSuccess } = this.state;
-    if(isRedirectSuccess) {
-      return <Redirect to={'/admin/post'} />
+    const { isRedirectSuccess, postCategoryList } = this.state;
+    if (isRedirectSuccess) {
+      return <Redirect to={"/admin/post"} />;
     }
     return (
       <>
@@ -147,23 +166,24 @@ export class CreateNewPost extends Component {
               </div>
               <div className="form-group">
                 <label>Category</label>
-                <input
-                  type="text"
-                  name="categoryId"
-                  onChange={this.handleChangeNewPost}
-                  value={categoryId}
-                  className="form-control"
-                />
+                <select name="categoryId" className="form-control" onChange={this.handleChangeNewPost}>
+                   <option>Select category</option>
+                   {
+                     postCategoryList.map((category) => {
+                       return(
+                         <option value={category.Id}>{category.Name}</option>
+                       )
+                     })
+                   }
+                </select>
               </div>
               <div className="form-group">
                 <label>Status</label>
-                <input
-                  type="text"
-                  name="status"
-                  onChange={this.handleChangeNewPost}
-                  value={status}
-                  className="form-control"
-                />
+                <select name="status" className="form-control" onChange={this.handleChangeNewPost}>
+                  <option>Choose Status</option>
+                  <option value={1}>Active</option>
+                  <option value={0}>Deactive</option>
+                </select>
               </div>
               <div>
                 <button

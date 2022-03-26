@@ -28,9 +28,10 @@ namespace backend.Models
         public string Thumbnail { get; set; }
         [Required]
         public string Body { get; set; }
-         [Required]
+        [Required]
         public int CategoryId { get; set; }
-         [Required]
+        public virtual PostCategory Category { get; set; }
+        [Required]
         public string Description { get; set; }
         [Required]
         public PostType PostType { get; set; }

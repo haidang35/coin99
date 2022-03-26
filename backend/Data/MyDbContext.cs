@@ -12,6 +12,7 @@ namespace backend.Data
         public MyDbContext() : base("ConnectionString") { }
         public DbSet<User> Users { get; set;}
         public DbSet<Post> Posts { get; set;}
+        public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<UpgradePack> UpgradePacks { get; set;}
         public DbSet<Coin> Coins { get; set;}
         public DbSet<CoinCategory> CoinCategories { get; set;}
