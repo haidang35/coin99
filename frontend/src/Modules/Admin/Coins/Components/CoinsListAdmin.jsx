@@ -40,9 +40,6 @@ export class CoinsListAdmin extends Component {
         });
     }
 
-
-
-
     render() {
         const { coinList, coinDetail, isRedirect } = this.state;
         console.log(coinDetail);

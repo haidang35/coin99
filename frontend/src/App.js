@@ -3,7 +3,9 @@ import { Admin } from "./Modules/Admin/Admin";
 import { Public } from "./Modules/Public/Public";
 import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
-import { Updatepost } from "./Modules/Admin/Postt/Components/Updatepost/Updatepost";
+
+
+
 
 const isLogged =
   localStorage.getItem("access_token") !== null &&
@@ -13,7 +15,7 @@ const isLogged =
 function App() {
   return (
     <>
-    {/* <Admin /> */}
+    <Admin />
     {/* <Public /> */}
       {/* <BrowserRouter>
         <Switch>
@@ -31,7 +33,9 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter> */}
-      <Updatepost />
+    
+    
+     
    
       
     </>

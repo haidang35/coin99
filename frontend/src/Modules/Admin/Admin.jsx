@@ -11,6 +11,7 @@ import { Register } from "./Auth/Components/Register/Register";
 import { CreateNewPost } from "./Postt/Components/CreateNewPost/CreateNewPost";
 import { PostCategory } from "./PostCategory/PostCategory";
 import { CreatePostCategory } from "./PostCategory/Components/CreatePostCategory/CreatePostCategory";
+import { Updatepost } from "./Postt/Components/Updatepost/Updatepost";
 
 
 export function Admin() {
@@ -27,7 +28,6 @@ export function Admin() {
             <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
-         
             <Route path="/admin/post" exact>
               <Post />
             </Route>
@@ -39,6 +39,9 @@ export function Admin() {
             </Route>
             <Route path="/admin/post-categories/create" exact>
                 <CreatePostCategory />
+            </Route>
+            <Route path="/admin/post/updatepost" exact>
+              <Updatepost />
             </Route>
           </Switch>
         </section>
