@@ -1,26 +1,19 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Admin } from "./Modules/Admin/Admin";
 import { Public } from "./Modules/Public/Public";
-<<<<<<< HEAD
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { UploadFile } from "./Modules/Admin/Postt/Tests/UploadFile";
-import { CreateNewPost } from "./Modules/Admin/Postt/Components/CreateNewPost/CreateNewPost";
-import { Editor } from "./Modules/Admin/Postt/Tests/Editor";
-=======
 import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
+import { Updatepost } from "./Modules/Admin/Postt/Components/Updatepost/Updatepost";
 
 const isLogged =
   localStorage.getItem("access_token") !== null &&
   localStorage.getItem("access_token") !== "";
->>>>>>> development
 
 
 function App() {
   return (
     <>
-    <Admin />
+    {/* <Admin /> */}
     {/* <Public /> */}
       {/* <BrowserRouter>
         <Switch>
@@ -38,6 +31,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter> */}
+      <Updatepost />
    
       
     </>
