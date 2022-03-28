@@ -1,4 +1,6 @@
-﻿using System;
+﻿using backend.Dtos;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -31,9 +33,26 @@ namespace backend.Models
         [Required]
         public AccountType AccountType { get; set; }
         [Required]
+        [JsonIgnore]
         public string Password { get; set; }
         public UserStatus Status { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        public UserDto ToUserDto()
+        {
+            return new UserDto()
+            {
+                Id = this.Id,
+                FullName = this.FullName,
+                Birthday = this.Birthday,
+                Email = this.Email,
+                PhoneNumber = this.PhoneNumber,
+                AccountType = this.AccountType,
+                Status = this.Status,
+                CreatedAt = this.CreatedAt,
+                UpdatedAt = this.UpdatedAt,
+            };
+        }
     }
 }

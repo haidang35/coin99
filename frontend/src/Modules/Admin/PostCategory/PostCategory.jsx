@@ -4,6 +4,7 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import "./PostCategory.scss";
+import postCategoryService from "./Services/PostCategoryService";
 
 export class PostCategory extends Component {
   constructor(props) {
@@ -18,15 +19,15 @@ export class PostCategory extends Component {
   }
 
   getPostCategoryList = async () => {
-    await axios
-      .get("https://coin99.azurewebsites.net/api/post-categories")
+    await postCategoryService.getList()
       .then((res) => {
-        console.log(res.data);
         this.setState({
-          postCategoryList: res.data,
+          postCategoryList: res.data
         });
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   render() {

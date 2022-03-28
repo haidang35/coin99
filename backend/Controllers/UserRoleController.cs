@@ -20,9 +20,11 @@ namespace backend.Controllers
 
         // GET: api/UserRole
         [Route("~/api/user-roles")]
-        public IQueryable<UserRole> GetUserRoles()
+        [HttpGet]
+        [ResponseType(typeof(ICollection<UserRole>))]
+        public IHttpActionResult GetUserRoles()
         {
-            return db.UserRoles;
+            return Ok(db.UserRoles.ToList());
         }
 
         // GET: api/UserRole/5

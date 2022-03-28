@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Header.scss";
 
 export class Header extends Component {
     constructor(props) {
@@ -7,9 +8,10 @@ export class Header extends Component {
 
     }
     render() {
+        const { currentUser } = this.props;
         return (
             <>
-                <div className="page-topbar gradient-blue1">
+                <div className="page-topbar gradient-blue1" id="top-bar-admin">
                     <div className="logo-area crypto"></div>
                     <div className="quick-area">
                         <div className="pull-left">
@@ -65,7 +67,7 @@ export class Header extends Component {
                                         <li className="total">
                                             <span className="small">
                                                 You have <strong>3</strong> new notifications.
-                                                <a href="javascript:;" className="pull-right">
+                                                <a href="#" className="pull-right">
                                                     Mark all as Read
                                                 </a>
                                             </span>
@@ -74,7 +76,7 @@ export class Header extends Component {
                                             <ul className="dropdown-menu-list list-unstyled ps-scrollbar">
                                                 <li className="unread available">
 
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="notice-icon">
                                                             <i className="fa fa-check" />
                                                         </div>
@@ -90,7 +92,7 @@ export class Header extends Component {
                                                 </li>
                                                 <li className="unread away">
 
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="notice-icon">
                                                             <i className="fa fa-clock-o" />
                                                         </div>
@@ -103,7 +105,7 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" busy">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="notice-icon">
                                                             <i className="fa fa-times" />
                                                         </div>
@@ -117,7 +119,7 @@ export class Header extends Component {
                                                 </li>
                                                 <li className=" available">
 
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="notice-icon">
                                                             <i className="fa fa-check" />
                                                         </div>
@@ -132,7 +134,7 @@ export class Header extends Component {
                                             </ul>
                                         </li>
                                         <li className="external">
-                                            <a href="javascript:;">
+                                            <a href="#">
                                                 <span>Read All Notifications</span>
                                             </a>
                                         </li>
@@ -147,10 +149,10 @@ export class Header extends Component {
                                         <li className="list">
                                             <ul className="dropdown-menu-list list-unstyled ps-scrollbar">
                                                 <li className="unread status-available">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-1.png"
+                                                                src={ window.location.origin + "Assets/Admin/data/profile/avatar-1.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -170,10 +172,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-away">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-2.png"
+                                                                src={ window.location.origin + "Assets/Admin/data/profile/avatar-2.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -193,10 +195,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-busy">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-3.png"
+                                                                src={ window.location.origin + "Assets/Admin/data/profile/avatar-3.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -214,10 +216,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-offline">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-4.png"
+                                                                src={ window.location.origin + "/Assets/Admin/data/profile/avatar-4.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -237,10 +239,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-offline">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-5.png"
+                                                                src={ window.location.origin + "/Assets/Admin/data/profile/avatar-5.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -258,10 +260,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-available">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-1.png"
+                                                                src={ window.location.origin + "/Assets/Admin/data/profile/avatar-1.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -279,10 +281,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-busy">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-2.png"
+                                                                src={ window.location.origin + "/Assets/Admin/data/profile/avatar-2.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -300,10 +302,10 @@ export class Header extends Component {
                                                     </a>
                                                 </li>
                                                 <li className=" status-away">
-                                                    <a href="javascript:;">
+                                                    <a href="#">
                                                         <div className="user-img">
                                                             <img
-                                                                src="../data/profile/avatar-3.png"
+                                                                src={ window.location.origin + "/Assets/Admin/data/profile/avatar-3.png"}
                                                                 alt="user-image"
                                                                 className="img-circle img-inline"
                                                             />
@@ -323,7 +325,7 @@ export class Header extends Component {
                                             </ul>
                                         </li>
                                         <li className="external">
-                                            <a href="javascript:;">
+                                            <a href="#">
                                                 <span>Read All Messages</span>
                                             </a>
                                         </li>
@@ -332,12 +334,12 @@ export class Header extends Component {
                                 <li className="profile">
                                     <a href="#" data-toggle="dropdown" className="toggle">
                                         <img
-                                            src="../data/profile/profile.jpg"
+                                            src={ window.location.origin + "/Assets/Admin/data/profile/profile.jpg"}
                                             alt="user-image"
                                             className="img-circle img-inline"
                                         />
                                         <span>
-                                            Arnold Ramsy <i className="fa fa-angle-down" />
+                                            {currentUser !== null ? currentUser.FullName : 'Loading ...'} <i className="fa fa-angle-down" />
                                         </span>
                                     </a>
                                     <ul className="dropdown-menu profile animated fadeIn">
@@ -367,7 +369,6 @@ export class Header extends Component {
                         </div>
                     </div>
                 </div>
-                {/* END TOPBAR */}
             </>
         )
     }

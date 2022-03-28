@@ -1,35 +1,63 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { LogIn } from "./Auth/Components/Login/LogIn";
 import { Coins } from "./Coins/Coins";
 import { Dashboard } from "./Dashboard/Components/Dashboard";
-import { Post } from "./Postt/Post";
+import { Post } from "./Post/Post";
 import styles from "./Shared/Styles/Admin.scss";
 import { Header } from "./Shared/Styles/Layouts/Header";
 import { Sidebar } from "./Shared/Styles/Layouts/Sidebar";
 import { Register } from "./Auth/Components/Register/Register";
-import { CreateNewPost } from "./Postt/Components/CreateNewPost/CreateNewPost";
+import { CreateNewPost } from "./Post/Components/CreateNewPost/CreateNewPost";
 import { PostCategory } from "./PostCategory/PostCategory";
 import { CreatePostCategory } from "./PostCategory/Components/CreatePostCategory/CreatePostCategory";
+import { useState } from "react";
+import authService from "./Auth/Services/AuthService";
+import UpdatePost  from "./Post/Components/UpdatePost/UpdatePost";
+import { TrashPost } from "./Post/Components/TrashPost/TrashPost";
+import { User } from "./User/User";
+import { NewUser } from "./User/Components/NewUser/NewUser";
+import UserDetails from "./User/Components/UserDetails/UserDetails";
 
 
 export function Admin() {
+  const [currentUser, setCurrentUser] = useState({});
+  useState(async () => {
+    const accessToken = localStorage.getItem('access_token');
+    await authService.getAuthUser(accessToken)
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem('current_user_id', res.data.Id);
+        setCurrentUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [] );
   return (
     <BrowserRouter>
-     <Header />
+     <Header currentUser={currentUser}/>
       <div className="page-container row-fluid container-fluid">
        <Sidebar />
         <section id="main-content" className=" ">
           <Switch>
+            <Route path="/admin" exact>
+                <Redirect to="/admin/dashboard" />
+            </Route>
             <Route path="/admin/coins" exact>
               <Coins />
             </Route>
             <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
-         
-            <Route path="/admin/post" exact>
+            <Route path="/admin/posts" exact>
               <Post />
+            </Route>
+            <Route path="/admin/posts/trash" exact>
+              <TrashPost />
+            </Route>
+            <Route path="/admin/posts/:id" exact>
+              <UpdatePost />
             </Route>
             <Route path="/admin/newpost" exact>
               <CreateNewPost />
@@ -39,6 +67,15 @@ export function Admin() {
             </Route>
             <Route path="/admin/post-categories/create" exact>
                 <CreatePostCategory />
+            </Route>
+            <Route path="/admin/users" exact>
+                <User />
+            </Route>
+            <Route path="/admin/users/:id" exact>
+              <UserDetails />
+            </Route>
+            <Route path="/admin/users/create" exact>
+                <NewUser />
             </Route>
           </Switch>
         </section>
