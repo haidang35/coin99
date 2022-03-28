@@ -15,8 +15,8 @@ const isLogged =
 function App() {
   return (
     <>
-    <Admin />
-    {/* <Public /> */}
+    {/* <Admin /> */}
+    <Public />
       {/* <BrowserRouter>
         <Switch>
           <Route path="/admin">
