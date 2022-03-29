@@ -5,10 +5,31 @@ import { Link } from "react-router-dom";
 export class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isScroll: false,
+    };
   }
 
+  componentDidMount() {
+    this.scrollChangeStyle();
+    window.addEventListener("scroll", this.scrollChangeStyle);
+  }
+
+  scrollChangeStyle = (event) => {
+    if (window.scrollY >= 200) {
+      this.setState({
+        isScroll: true,
+      });
+    }
+    if(window.scrollY === 0) {
+      this.setState({
+        isScroll: false,
+      });
+    }
+  };
+
   render() {
+    const { isScroll } = this.state;
     return (
       <>
         {/* <div id="loader-wrapper">
@@ -17,7 +38,14 @@ export class Navbar extends Component {
             <div className="loader-section section-right" />
           </div> */}
         {/* /.End of loader wrapper*/}
-        <nav className="navbar navbar-default navbar-fixed navbar-transparent bootsnav">
+        <nav
+          id="navbar-public"
+          className="navbar navbar-default navbar-fixed navbar-transparent bootsnav"
+          style={{
+            backgroundColor: isScroll ? "#0a0f58" : "",
+            transition: "background-color 200ms linear",
+          }}
+        >
           {/* Start Top Search */}
           <div className="top-search">
             <div className="container">
@@ -80,31 +108,20 @@ export class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbar-menu">
               <ul className="nav navbar-nav" data-in="" data-out="">
                 <li className="active">
-                  <Link to="/" >
-                    Home
-                  </Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/Lending">
-                    Lending
-                  </Link>
+                  <Link to="/Lending">Lending</Link>
                 </li>
                 <li>
-                  <Link to="/coin-market">
-                    Coin Market
-                  </Link>
+                  <Link to="/coin-market">Coin Market</Link>
                 </li>
                 <li>
-                  <Link to="/Contact">
-                    Contact
-                  </Link>
+                  <Link to="/Contact">Contact</Link>
                 </li>
-                 <li>
-                  <Link to="/Blog">
-                    Blog
-                  </Link>
-                  </li>
-                  
+                <li>
+                  <Link to="/Blog">Blog</Link>
+                </li>
               </ul>
             </div>
           </div>
