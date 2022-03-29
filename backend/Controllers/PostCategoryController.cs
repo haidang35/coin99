@@ -29,6 +29,14 @@ namespace backend.Controllers
             return Ok(db.PostCategories.ToList());
         }
 
+        [AllowAnonymous]
+        [Route("~/api/post-categories/public")]
+        [HttpGet] 
+        [ResponseType(typeof(ICollection<PostCategory>))]
+        public IHttpActionResult GetPostCategoriesPublic()
+        {
+            return Ok(db.PostCategories.ToList());
+        }
         // GET: api/PostCategory/5
         [Route("~/api/post-categories/{id}")]
         [HttpGet]
