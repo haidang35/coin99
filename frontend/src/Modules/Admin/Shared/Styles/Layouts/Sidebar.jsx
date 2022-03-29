@@ -40,7 +40,7 @@ export class Sidebar extends Component {
                 </Link>
               </li>
               <li className="">
-                <a href="crypto-buy-sell.html">
+                <Link to="/admin/users">
                   <i className="img">
                     <img
                       src="../data/crypto-dash/icons/6.png"
@@ -49,7 +49,7 @@ export class Sidebar extends Component {
                     />
                   </i>
                   <span className="title">Users</span>
-                </a>
+                </Link>
               </li>
               <li className="">
                 <Link to="/admin/post-categories">
@@ -65,7 +65,7 @@ export class Sidebar extends Component {
                 </Link>
               </li>
               <li className="">
-                <Link to="/admin/post">
+                <Link to="/admin/posts">
                   <i className="img">
                     <img
                       src="../data/crypto-dash/icons/4.png"

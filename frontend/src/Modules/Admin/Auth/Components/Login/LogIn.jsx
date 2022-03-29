@@ -29,8 +29,8 @@ export class LogIn extends Form {
       console.log(this.state.form);
       const params = new URLSearchParams();
       params.append("grant_type", "password");
-      params.append("username", email);
-      params.append("password", password);
+      params.append("username", email.value);
+      params.append("password", password.value);
       await authService
         .accessAuthToken(params)
         .then((res) => {
@@ -66,7 +66,7 @@ export class LogIn extends Form {
               <div className=" mt-90 col-lg-8 col-lg-offset-2">
                 <div className="row">
                   {message !== "" ? (
-                    <Alert type="danger" message={this.state.message} />
+                    <Alert type="error" message={this.state.message} />
                   ) : (
                     ""
                   )}

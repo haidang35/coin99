@@ -387,13 +387,16 @@
     <Compile Include="Data\MyDbContext.cs" />
     <Compile Include="Dtos\PostCategoryDto.cs" />
     <Compile Include="Dtos\PostDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Dtos\UserTokenDto.cs" />
     <Compile Include="Dtos\UserLoginDto.cs" />
     <Compile Include="Dtos\UserRegisterDto.cs" />
+    <Compile Include="Dtos\UserUpdate.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Hash.cs" />
+    <Compile Include="Helpers\XString.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.Designer.cs">
       <DependentUpon>202203190420046_Initialize.cs</DependentUpon>
@@ -441,6 +444,38 @@
     <Compile Include="Migrations\202203261702029_UpdateUserTable2.cs" />
     <Compile Include="Migrations\202203261702029_UpdateUserTable2.Designer.cs">
       <DependentUpon>202203261702029_UpdateUserTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203280256085_UpdatePostTable.cs" />
+    <Compile Include="Migrations\202203280256085_UpdatePostTable.Designer.cs">
+      <DependentUpon>202203280256085_UpdatePostTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203280423451_UpdatePostTable1.cs" />
+    <Compile Include="Migrations\202203280423451_UpdatePostTable1.Designer.cs">
+      <DependentUpon>202203280423451_UpdatePostTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203280430160_UpdatePostTable2.cs" />
+    <Compile Include="Migrations\202203280430160_UpdatePostTable2.Designer.cs">
+      <DependentUpon>202203280430160_UpdatePostTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203280747517_UpdateUserTable3.cs" />
+    <Compile Include="Migrations\202203280747517_UpdateUserTable3.Designer.cs">
+      <DependentUpon>202203280747517_UpdateUserTable3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203280948078_UpdateUserRole.cs" />
+    <Compile Include="Migrations\202203280948078_UpdateUserRole.Designer.cs">
+      <DependentUpon>202203280948078_UpdateUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203281407253_UpdateUserRole1.cs" />
+    <Compile Include="Migrations\202203281407253_UpdateUserRole1.Designer.cs">
+      <DependentUpon>202203281407253_UpdateUserRole1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203281409581_UpdateUserRole2.cs" />
+    <Compile Include="Migrations\202203281409581_UpdateUserRole2.Designer.cs">
+      <DependentUpon>202203281409581_UpdateUserRole2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203281422047_UpdateUser.cs" />
+    <Compile Include="Migrations\202203281422047_UpdateUser.Designer.cs">
+      <DependentUpon>202203281422047_UpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BinanceCoin.cs" />
@@ -594,6 +629,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203261702029_UpdateUserTable2.resx">
       <DependentUpon>202203261702029_UpdateUserTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280256085_UpdatePostTable.resx">
+      <DependentUpon>202203280256085_UpdatePostTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280423451_UpdatePostTable1.resx">
+      <DependentUpon>202203280423451_UpdatePostTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280430160_UpdatePostTable2.resx">
+      <DependentUpon>202203280430160_UpdatePostTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280747517_UpdateUserTable3.resx">
+      <DependentUpon>202203280747517_UpdateUserTable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280948078_UpdateUserRole.resx">
+      <DependentUpon>202203280948078_UpdateUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203281407253_UpdateUserRole1.resx">
+      <DependentUpon>202203281407253_UpdateUserRole1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203281409581_UpdateUserRole2.resx">
+      <DependentUpon>202203281409581_UpdateUserRole2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203281422047_UpdateUser.resx">
+      <DependentUpon>202203281422047_UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

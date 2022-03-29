@@ -14,6 +14,7 @@ namespace backend.Dtos
         public string Title { get; set; }
         [Required]
         public string Thumbnail { get; set; }
+        public string Slug { get; set; }
         [Required]
         public string Body { get; set; }
         [Required]
@@ -23,7 +24,7 @@ namespace backend.Dtos
         [Required]
         public PostType PostType { get; set; }
         [Required]
-        public int Authorld { get; set; }
+        public int AuthorId { get; set; }
         [Required]
         public PostStatus Status { get; set; }
         public DateTime CreateAt { get; set; }
@@ -34,12 +35,13 @@ namespace backend.Dtos
             var post = new Post()
             {
                 Title = this.Title,
+                Slug = this.Slug,
                 Thumbnail = this.Thumbnail,
                 Body = this.Body,
                 CategoryId = this.CategoryId,
                 Description = this.Description,
                 PostType = this.PostType,
-                Authorld = this.Authorld,
+                AuthorId = this.AuthorId,
                 Status = this.Status,
                 CreateAt = this.CreateAt,
                 UpdateAt = this.UpdateAt
