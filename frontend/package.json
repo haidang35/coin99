@@ -5,6 +5,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^33.0.0",
     "@ckeditor/ckeditor5-react": "^4.0.0",
+    "@mui/styled-engine-sc": "^5.5.2",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.5.2",
@@ -14,6 +15,7 @@
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "firebase": "^9.6.9",
+    "font-awesome": "^4.7.0",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.1",
     "react-dom": "^17.0.2",
@@ -21,6 +23,7 @@
     "react-scripts": "5.0.0",
     "recharts": "^2.1.9",
     "sass": "^1.49.9",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

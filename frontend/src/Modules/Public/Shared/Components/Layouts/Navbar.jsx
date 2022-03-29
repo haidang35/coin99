@@ -53,14 +53,14 @@ export class Navbar extends Component {
                   </select>
                 </li>
                 <li>
-                  <a href="register.html" className="btn nav-btn">
+                  <Link to="/signin" className="btn nav-btn">
                     Login
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="register.html" className="btn nav-btn btn-orange">
+                  <Link to="/signup" className="btn nav-btn btn-orange">
                     Sign Up
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -104,6 +104,7 @@ export class Navbar extends Component {
                     Blog
                   </Link>
                   </li>
+                  
               </ul>
             </div>
           </div>

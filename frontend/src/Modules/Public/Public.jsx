@@ -13,6 +13,8 @@ import { LenDing } from "./Lending/LenDing";
 import { Blog } from "./Blog/Blog";
 import { BlogDetails } from "./Blog/Components/BlogDetails";
 import { Accounts } from "../Admin/Auth/Tests/Accounts";
+import { SingUp } from "./Account/Components/SignUp/SignUp";
+import { SignIn } from "./Account/Components/SignIn/SignIn";
 
 
 export function Public() {
@@ -45,8 +47,12 @@ export function Public() {
           <Route path="/Blog-details" exact>
             <BlogDetails />
           </Route>
-         
-          
+          <Route path="/signin" exact >
+            <SignIn />
+          </Route>
+          <Route path="/signup" exact>
+            <SingUp />
+          </Route>
         </Switch>
       </BrowserRouter>
     </>

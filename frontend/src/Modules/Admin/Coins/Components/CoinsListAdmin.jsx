@@ -40,9 +40,6 @@ export class CoinsListAdmin extends Component {
         });
     }
 
-
-
-
     render() {
         const { coinList, coinDetail, isRedirect } = this.state;
         console.log(coinDetail);
@@ -152,7 +149,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin8.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin8.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Litecoin</h6>
@@ -169,7 +166,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin2.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin2.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Ethereum</h6>
@@ -186,7 +183,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin4.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin4.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Ripple</h6>
@@ -203,7 +200,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin1.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Bitcoin</h6>
@@ -220,7 +217,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin3.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin3.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Dashcoin</h6>
@@ -237,7 +234,7 @@ export class CoinsListAdmin extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin5.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin5.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Bitdash</h6>

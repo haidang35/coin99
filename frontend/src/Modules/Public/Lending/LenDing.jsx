@@ -12,7 +12,6 @@ export class LenDing extends Component {
     render() {
         return (
             <>
-                <>
                     <nav className="navbar navbar-default navbar-fixed navbar-transparent bootsnav">
                         <div className="top-search">
                             <div className="container">
@@ -101,7 +100,7 @@ export class LenDing extends Component {
                     </nav>
                     <div
                         className="page_header"
-                        data-parallax-bg-image="assets/img/1920x650-2.jpg"
+                        data-parallax-bg-image="../../../../AssetsHome/assets/img/1920x650-2.jpg"
                         data-parallax-direction=""
                     >
                         <div className="header-content">
@@ -305,8 +304,6 @@ export class LenDing extends Component {
                     </div>
                  <Footer />
                 </>
-
-            </>
         )
     }
 }
