@@ -17,7 +17,7 @@ export class BlogContent extends Component {
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="blog-details.html">
-                                            <img src="assets/img/blog/290x232-1.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-1.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -47,11 +47,10 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="blog-details.html">
-                                            <img src="assets/img/blog/290x232-2.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-2.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -81,11 +80,10 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-3.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-3.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -115,11 +113,10 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-4.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-4.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -149,11 +146,10 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-5.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-5.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -183,11 +179,10 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="#">
-                                            <img src="assets/img/blog/290x232-6.jpg" alt="" />
+                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-6.jpg" alt="" />
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -217,7 +212,6 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /.End of post list */}
                                 <ul className="pagination">
                                     <li className="disabled">
                                         <a href="#">⇽</a>
@@ -243,7 +237,6 @@ export class BlogContent extends Component {
                                         <a href="#">⇾</a>
                                     </li>
                                 </ul>
-                                {/* /.End of pagination */}
                             </main>
                             <aside className="col-sm-4 p_l_40">
                                 <div className="widget">
@@ -264,13 +257,12 @@ export class BlogContent extends Component {
                                         </div>
                                     </form>
                                 </div>
-                                {/* /.End of sidebar search */}
                                 <div className="widget">
                                     <h4 className="widget_title">Recent Post</h4>
                                     <div className="post post_list post_list_sm">
                                         <div className="post_img">
                                             <a href="#">
-                                                <img src="assets/img/blog/100x75-1.jpg" alt="" />
+                                                <img src="../../../../AssetsHome/assets/img/blog/100x75-1.jpg" alt="" />
                                             </a>
                                         </div>
                                         <div className="post_body">
@@ -286,11 +278,10 @@ export class BlogContent extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* End of post list */}
                                     <div className="post post_list post_list_sm">
                                         <div className="post_img">
                                             <a href="#">
-                                                <img src="assets/img/blog/100x75-2.jpg" alt="" />
+                                                <img src="../../../../AssetsHome/assets/img/blog/100x75-2.jpg" alt="" />
                                             </a>
                                         </div>
                                         <div className="post_body">
@@ -306,11 +297,10 @@ export class BlogContent extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* End of post list */}
                                     <div className="post post_list post_list_sm">
                                         <div className="post_img">
                                             <a href="#">
-                                                <img src="assets/img/blog/100x75-3.jpg" alt="" />
+                                                <img src="../../../../AssetsHome/assets/img/blog/100x75-3.jpg" alt="" />
                                             </a>
                                         </div>
                                         <div className="post_body">
@@ -326,9 +316,7 @@ export class BlogContent extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* End of post list */}
                                 </div>
-                                {/*   /.End of recent post */}
                                 <div className="widget">
                                     <h4 className="widget_title">My Social link</h4>
                                     <div className="social_icon">
@@ -350,17 +338,15 @@ export class BlogContent extends Component {
                                         </a>
                                     </div>
                                 </div>
-                                {/* /.End of social link */}
                                 <div className="widget">
                                     <div className="widget_banner">
                                         <img
-                                            src="assets/img/ad-300x250-1.png"
+                                            src="../../../../AssetsHome/assets/img/ad-300x250-1.png"
                                             className="img-responsive"
                                             alt=""
                                         />
                                     </div>
                                 </div>
-                                {/* /.End of banner */}
                                 <div className="widget">
                                     <h4 className="widget_title">Categories</h4>
                                     <ul className="widget_category">
@@ -401,13 +387,10 @@ export class BlogContent extends Component {
                                         </li>
                                     </ul>
                                 </div>
-                                {/* /.End of category */}
                             </aside>
                         </div>
                     </div>
                 </div>
-
-
             </>
         )
     }

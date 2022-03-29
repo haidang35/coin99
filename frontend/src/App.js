@@ -7,6 +7,8 @@ import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
 
 
 
+
+
 const isLogged =
   localStorage.getItem("access_token") !== null &&
   localStorage.getItem("access_token") !== "";
@@ -33,6 +35,8 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter> */}
+     
+     
     
     
      

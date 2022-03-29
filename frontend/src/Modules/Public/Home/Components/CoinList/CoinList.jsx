@@ -3,6 +3,7 @@ import React from "react";
 import { Component } from "react";
 import { PATH_ENDPOINT, realtimeDb } from "../../../../../Configs/firebase";
 
+
 export class CoinList extends Component {
   constructor(props) {
     super(props);
@@ -80,7 +81,7 @@ export class CoinList extends Component {
                               <div className="logo-name">
                                 <div className="item-logo">
                                   <img
-                                    src="../../../../../Assets/Public/assets/img/coin-logo/BTC.svg"
+                                    src="../../../../../../AssetsHome/assets/img/coin-logo/BTC.svg"
                                     className="img-responsive"
                                     alt=""
                                   />
@@ -137,7 +138,7 @@ export class CoinList extends Component {
                           <div className="logo-name">
                             <div className="item-logo">
                               <img
-                                src="assets/img/coin-logo/EURGBP.svg"
+                                src="../../../../../../AssetsHome/assets/img/coin-logo/EURGBP.svg"
                                 className="img-responsive"
                                 alt=""
                               />
@@ -201,7 +202,7 @@ export class CoinList extends Component {
                           <div className="logo-name">
                             <div className="item-logo">
                               <img
-                                src="assets/img/coin-logo/AAPL.svg"
+                                src="../../../../AssetsHome/assets/img/coin-logo/AAPL.svg"
                                 className="img-responsive"
                                 alt=""
                               />
@@ -703,7 +704,7 @@ export class CoinList extends Component {
                           <div className="logo-name">
                             <div className="item-logo">
                               <img
-                                src="assets/img/coin-logo/neo.svg"
+                                src="../../../../AssetsHome/assets/img/coin-logo/neo.svg"
                                 className="img-responsive"
                                 alt=""
                               />
