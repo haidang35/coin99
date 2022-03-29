@@ -21,6 +21,7 @@ export class CreateNewPost extends Form {
         categoryId: "",
         status: "",
         thumbnail: "",
+        postType:""
       }),
       content: "",
       postCategoryList: [],
@@ -29,6 +30,7 @@ export class CreateNewPost extends Form {
   }
 
   componentDidMount() {
+    console.log(this.state.form)
     this.getPostCategoryList();
   }
 
@@ -69,7 +71,7 @@ export class CreateNewPost extends Form {
         Status: form.status.value,
         AuthorId: currentUserId,
         Description: form.desc.value,
-        PostType: 1,
+        PostType: form.postType.value,
       };
 
       await postService
@@ -94,7 +96,7 @@ export class CreateNewPost extends Form {
     }
   };
   render() {
-    const { title, desc, categoryId, status, thumbnail } = this.state.form;
+    const { title, desc, categoryId, status, thumbnail,postType } = this.state.form;
     const { isRedirectSuccess, postCategoryList, content } = this.state;
     if (isRedirectSuccess) {
       return <Redirect to={"/admin/post"} />;
@@ -225,6 +227,27 @@ export class CreateNewPost extends Form {
                 {status.err === "*" ? (
                   <ErrorForm message="Status cannot be empty" />
                 ) : <ErrorForm message={status.err} /> ? (
+                  ""
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="form-group">
+                <label>Post Type</label>
+                <select
+                  name="postType"
+                  required
+                  className="form-control"
+                  value={postType.value}
+                  onChange={(ev) => this._setValue(ev, "postType")}
+                >
+                  <option value={""}>Choose Post Type</option>
+                  <option value={1}>FREE</option>
+                  <option value={2}>PREMIUM</option>
+                </select>
+                {postType.err === "*" ? (
+                  <ErrorForm message="Post Type cannot be empty" />
+                ) : <ErrorForm message={postType.err} /> ? (
                   ""
                 ) : (
                   ""
