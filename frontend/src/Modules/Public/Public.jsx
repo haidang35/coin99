@@ -13,8 +13,8 @@ import { LenDing } from "./Lending/LenDing";
 import { Blog } from "./Blog/Blog";
 import { BlogDetails } from "./Blog/Components/BlogDetails";
 import { Accounts } from "../Admin/Auth/Tests/Accounts";
-import { SignIn } from "./Account/Components/SignIn";
-import { SingUp } from "./Account/Components/SignUp";
+import { SingUp } from "./Account/Components/SignUp/SignUp";
+import { SignIn } from "./Account/Components/SignIn/SignIn";
 
 
 export function Public() {
