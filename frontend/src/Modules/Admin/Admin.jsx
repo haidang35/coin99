@@ -11,9 +11,6 @@ import { Register } from "./Auth/Components/Register/Register";
 import { CreateNewPost } from "./Post/Components/CreateNewPost/CreateNewPost";
 import { PostCategory } from "./PostCategory/PostCategory";
 import { CreatePostCategory } from "./PostCategory/Components/CreatePostCategory/CreatePostCategory";
-<<<<<<< HEAD
-import { Updatepost } from "./Postt/Components/Updatepost/Updatepost";
-=======
 import { useState } from "react";
 import authService from "./Auth/Services/AuthService";
 import UpdatePost  from "./Post/Components/UpdatePost/UpdatePost";
@@ -21,7 +18,6 @@ import { TrashPost } from "./Post/Components/TrashPost/TrashPost";
 import { User } from "./User/User";
 import { NewUser } from "./User/Components/NewUser/NewUser";
 import UserDetails from "./User/Components/UserDetails/UserDetails";
->>>>>>> development
 
 
 export function Admin() {
@@ -54,11 +50,7 @@ export function Admin() {
             <Route path="/admin/dashboard" exact>
               <Dashboard />
             </Route>
-<<<<<<< HEAD
-            <Route path="/admin/post" exact>
-=======
             <Route path="/admin/posts" exact>
->>>>>>> development
               <Post />
             </Route>
             <Route path="/admin/posts/trash" exact>
@@ -76,10 +68,6 @@ export function Admin() {
             <Route path="/admin/post-categories/create" exact>
                 <CreatePostCategory />
             </Route>
-<<<<<<< HEAD
-            <Route path="/admin/post/updatepost" exact>
-              <Updatepost />
-=======
             <Route path="/admin/users" exact>
                 <User />
             </Route>
@@ -88,7 +76,6 @@ export function Admin() {
             </Route>
             <Route path="/admin/users/create" exact>
                 <NewUser />
->>>>>>> development
             </Route>
           </Switch>
         </section>
