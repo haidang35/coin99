@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -78,6 +79,34 @@ namespace backend.Controllers
                 return NotFound();
             }
 
+            return Ok(post);
+        }
+
+
+        [Route("~/api/posts/{slug}")]
+        [HttpGet]
+        [ResponseType(typeof(Post))]
+        [AllowAnonymous]
+        public IHttpActionResult GetPostBySlug(string slug)
+        {
+            var post = db.Posts.Where(p => p.Slug == slug).FirstOrDefault();
+            if(post == null)
+            {
+                return BadRequest("Post doesn't exist");
+            }
+            var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            var currentUserIdentity = identity.FindFirst("currentUserId");
+            Debug.WriteLine(currentUserIdentity);
+            if(currentUserIdentity != null)
+            {
+                Debug.WriteLine("Check");
+                var currentUserId = currentUserIdentity.Value;
+                var currentUser = db.Users.Find(Int32.Parse(currentUserId));
+                if (post.PostType == PostType.Premium && currentUser.AccountType != AccountType.Premium)
+                {
+                    return BadRequest("Account need update to premium account");
+                }
+            }
             return Ok(post);
         }
 

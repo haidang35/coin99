@@ -5,15 +5,9 @@ import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
 import "./Shared/Styles/App.scss";
 
-
-
-
-
-
 const isLogged =
   localStorage.getItem("access_token") !== null &&
   localStorage.getItem("access_token") !== "";
-
 
 function App() {
   return (
@@ -34,13 +28,6 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-     
-     
-    
-    
-     
-   
-      
     </>
   );
 }
