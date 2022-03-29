@@ -1,13 +1,28 @@
 import React, { Component } from "react";
+import publicService from "../../Shared/Services/PublicService";
 
 export class BlogContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name:'lamsondepzai',
+            postList: []
         }
     }
+
+    componentDidMount() {
+        this.getPostList();
+    }
+
+    getPostList = async () => {
+        await publicService.getPostList()
+            .then((res) => {
+                this.setState({
+                    postList: res.data
+                })
+            });
+    }
     render() {
+        const { postList } = this.state;
         return (
             <>
                 <div className="blog_wrapper">
@@ -17,7 +32,11 @@ export class BlogContent extends Component {
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="blog-details.html">
+<<<<<<< HEAD
                                             <img src="../../../../AssetsHome/assets/img/blog/290x232-1.jpg" alt="" />
+=======
+                                            <img src="Assets/Public/assets/img/blog/290x232-1.jpg" alt="" />
+>>>>>>> development
                                         </a>
                                     </div>
                                     <div className="post_body">
@@ -47,6 +66,7 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div className="post post_list post_list_lg">
                                     <div className="post_img">
                                         <a href="blog-details.html">
@@ -212,6 +232,9 @@ export class BlogContent extends Component {
                                         </div>
                                     </div>
                                 </div>
+=======
+                                {/* /.End of post list */}
+>>>>>>> development
                                 <ul className="pagination">
                                     <li className="disabled">
                                         <a href="#">⇽</a>

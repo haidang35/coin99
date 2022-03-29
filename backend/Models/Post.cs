@@ -16,7 +16,8 @@ namespace backend.Models
     public enum PostStatus
     {
         Active = 1,
-        Deactive = 0
+        Deactive = 0,
+        Draft = 2,
     }
     public class Post
     {
@@ -24,6 +25,8 @@ namespace backend.Models
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
+        [Required]
+        public string Slug { get; set; }
         [Required]
         public string Thumbnail { get; set; }
         [Required]
@@ -36,7 +39,8 @@ namespace backend.Models
         [Required]
         public PostType PostType { get; set; }
         [Required]
-        public int Authorld { get; set; }
+        public int AuthorId { get; set; }
+        public virtual User Author {get; set; }
         [Required]
         public PostStatus Status { get; set; }
         public DateTime CreateAt { get; set; }
@@ -53,7 +57,7 @@ namespace backend.Models
                 CategoryId = this.CategoryId,
                 Description = this.Description,
                 PostType = this.PostType,
-                Authorld = this.Authorld,
+                AuthorId = this.AuthorId,
                 Status = this.Status,
                 CreateAt = this.CreateAt,
                 UpdateAt = this.UpdateAt

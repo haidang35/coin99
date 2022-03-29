@@ -15,7 +15,6 @@ using backend.Models;
 
 namespace backend.Controllers
 {
-    [EnableCors(origins: "https://coin99.cf, http://localhost:3000", headers: "*", methods: "*")]
     public class PostCategoryController : ApiController
     {
         private MyDbContext db = new MyDbContext();

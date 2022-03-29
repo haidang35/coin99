@@ -14,11 +14,11 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using backend.Data;
 using backend.Dtos;
+using backend.Helpers;
 using backend.Models;
 
 namespace backend.Controllers
 {
-    [EnableCors(origins:"https://coin99.cf, http://localhost:3000",headers:"*", methods:"*")]
     [Authorize]
     public class PostController : ApiController
     {
@@ -28,10 +28,42 @@ namespace backend.Controllers
         [Route("~/api/posts")]
         [HttpGet]
         [ResponseType(typeof(ICollection<Post>))]
-        public IHttpActionResult GetPosts()
+        public IHttpActionResult GetPosts(string status, string search)
         {
-            var postList = db.Posts.ToList();
+            var postList = new List<Post>();
+            Debug.WriteLine($"Status {status}");
+            if (!string.IsNullOrEmpty(status))
+            {
+                switch(status)
+                {
+                    case "active":
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Active).ToList();
+                        break;
+                    case "deactive":
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Deactive).ToList();
+                        break;
+                    case "draft":
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Draft).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(!string.IsNullOrEmpty(search))
+            {
+                postList = postList.Where(p => p.Title.Contains(search)).ToList();
+            }
             return Ok(postList);
+        }
+
+        [Route("~/api/posts/public")]
+        [HttpGet]
+        [ResponseType(typeof(ICollection<Post>))]
+        [AllowAnonymous]
+        public IHttpActionResult GetPostsPublic()
+        {
+            var posts = db.Posts.Where(p => p.Status == PostStatus.Active).ToList();
+            return Ok(posts);
         }
 
         // GET: api/Post/
@@ -65,13 +97,15 @@ namespace backend.Controllers
                 return BadRequest();
             }
             postDetails.Title = postDto.Title;
+            postDetails.Slug = XString.Slugify(postDto.Title);
             postDetails.Thumbnail = postDto.Thumbnail;
             postDetails.Body = postDto.Body;
             postDetails.CategoryId = postDto.CategoryId;
             postDetails.Description = postDto.Description;
             postDetails.PostType = postDto.PostType;
-            postDetails.Authorld = postDto.Authorld;
+            postDetails.AuthorId = postDto.AuthorId;
             postDetails.UpdateAt = DateTime.Now;
+            postDetails.Status = postDto.Status;
             db.Entry(postDetails).State = EntityState.Modified;
 
             try
@@ -93,6 +127,8 @@ namespace backend.Controllers
             return Ok(postDetails);
         }
 
+
+
         // POST: api/Post
         [Route("~/api/posts")]
         [HttpPost]
@@ -103,11 +139,44 @@ namespace backend.Controllers
             {
                 return BadRequest(ModelState);
             }
+            postDto.Slug = XString.Slugify(postDto.Title);
             postDto.CreateAt = DateTime.Now;
             postDto.UpdateAt = DateTime.Now;
             var newPost = db.Posts.Add(postDto.ToPost());
             db.SaveChanges();
             return Ok(newPost);
+        }
+
+        [Route("~/api/posts/{id:int}/update-status")]
+        [HttpGet]
+        [ResponseType(typeof(Post))]
+        public IHttpActionResult UpdateStatus(int id, string status)
+        {
+            Post post = db.Posts.Find(id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+            if(! string.IsNullOrEmpty(status))
+            {
+                switch(status)
+                {
+                    case "active":
+                        post.Status = PostStatus.Active;
+                        break;
+                    case "deactive":
+                        post.Status = PostStatus.Deactive;
+                        break;
+                    case "draft":
+                        post.Status = PostStatus.Draft;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            db.Entry(post).State = EntityState.Modified;
+            db.SaveChanges();
+            return Ok(post);
         }
 
         // DELETE: api/Post/5
@@ -121,10 +190,8 @@ namespace backend.Controllers
             {
                 return NotFound();
             }
-
             db.Posts.Remove(post);
             db.SaveChanges();
-
             return Ok(post);
         }
 
@@ -183,10 +250,8 @@ namespace backend.Controllers
             {
                 Directory.CreateDirectory(path);
             }
-            Debug.WriteLine("Oke 1");
             //Fetch the File.
             HttpPostedFile postedFile = HttpContext.Current.Request.Files["myFile"];
-            Debug.WriteLine("Oke 2");
             //Fetch the File Name.
             /* string fileName = Path.GetFileName(postedFile.FileName);*//*
 

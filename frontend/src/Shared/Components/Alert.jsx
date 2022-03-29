@@ -11,8 +11,7 @@ export class Alert extends Component {
     const { type, message } = this.props;
     return (
       <>
-        {type === "danger" ? (
-          <div className="alert alert-error alert-dismissible fade in">
+          <div className={`alert alert-${type} alert-dismissible fade in`}>
             <button
               type="button"
               className="close"
@@ -23,9 +22,6 @@ export class Alert extends Component {
             </button>
             <strong>Error:</strong> {message}
           </div>
-        ) : (
-          ""
-        )}
       </>
     );
   }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Security.Claims;
 using System.Text;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -19,7 +22,6 @@ using Newtonsoft.Json;
 
 namespace backend.Controllers
 {
-   
     [Authorize]
     public class UserController : ApiController
     {
@@ -42,8 +44,8 @@ namespace backend.Controllers
                 Birthday = userRegister.Birthday,
                 AccountType  = AccountType.Normal,
                 Status = UserStatus.Active,
-                CreateAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
                 Password = Hash.Make(userRegister.Password),
             };
             db.Users.Add(newUser);
@@ -58,9 +60,29 @@ namespace backend.Controllers
             return Ok(newUser);
         }
 
+        [Route("~/api/auth-user")]
+        [HttpGet]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUserAuth()
+        {
+            var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            var currentUserId = identity.FindFirst("currentUserId").Value;
+            var currentUser = db.Users.Find(Int32.Parse(currentUserId));
+            return Ok(currentUser);
+        }
+
+        [Route("~/api/users/{id}/roles")]
+        [HttpGet]
+        [ResponseType(typeof(ICollection<UserRole>))]
+        public IHttpActionResult GetUserRoles(int id)
+        {
+            var userRoles = db.UserRoles.Where(u => u.UserId == id).ToList();
+            return Ok(userRoles);
+        }
+
         
         [Route("~/api/users")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
@@ -83,54 +105,82 @@ namespace backend.Controllers
         // PUT: api/Users/5
         [Route("~/api/users/{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        [HttpPut]
+        public IHttpActionResult PutUser(int id, UserUpdate userUpdate)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            var user = db.Users.Find(id);
+            if(user == null)
             {
-                return BadRequest();
+                return BadRequest("User doesn't exist !");
             }
+            user.FullName = userUpdate.FullName;
+            user.Birthday = userUpdate.Birthday;
+            user.Email = userUpdate.Email;
+            user.PhoneNumber = userUpdate.PhoneNumber;
+            user.AccountType = userUpdate.AccountType;
+            user.Status = userUpdate.Status;
+            var userRole = db.UserRoles.Where(u => u.UserId == id).FirstOrDefault();
+            if(userRole != null)
+            {
+                userRole.RoleId = userUpdate.RoleId;
+                db.Entry(userRole).State = EntityState.Modified;
 
+            }
             db.Entry(user).State = EntityState.Modified;
-
             try
             {
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest();
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(user);
         }
 
         // POST: api/Users
         [Route("~/api/users")]
+        [HttpPost]
         [ResponseType(typeof(User))]
         [AllowAnonymous]
-        public IHttpActionResult PostUser(User user)
+        public IHttpActionResult PostUser(UserDto userRegister)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Users.Add(user);
+            var user = db.Users.Where(u => u.Email == userRegister.Email).FirstOrDefault();
+            if(user != null)
+            {
+                return BadRequest("Email already exists !!");
+            }
+            var newUser = new User()
+            {
+                FullName = userRegister.FullName,
+                Email = userRegister.Email,
+                PhoneNumber = userRegister.PhoneNumber,
+                Birthday = userRegister.Birthday,
+                AccountType = userRegister.AccountType,
+                Status = userRegister.Status,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                Password = Hash.Make(userRegister.Password),
+            };
+            db.Users.Add(newUser);
+            var userRole = new UserRole()
+            {
+                UserId = newUser.Id,
+                RoleId = userRegister.RoleId,
+            };
+            db.UserRoles.Add(userRole);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return Ok(newUser);
         }
 
         // DELETE: api/Users/5
