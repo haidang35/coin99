@@ -18,9 +18,7 @@ const isLogged =
 function App() {
   return (
     <>
-    {/* <Admin /> */}
-    <Public />
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Switch>
           <Route path="/admin">
             {isLogged ? <Admin /> : <Redirect to="/admin-login" />}
@@ -35,7 +33,7 @@ function App() {
             <Public />
           </Route>
         </Switch>
-      </BrowserRouter> */}
+      </BrowserRouter>
      
      
     
