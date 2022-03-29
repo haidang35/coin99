@@ -15,6 +15,7 @@ using backend.Models;
 
 namespace backend.Controllers
 {
+    [Authorize]
     public class PostCategoryController : ApiController
     {
         private MyDbContext db = new MyDbContext();

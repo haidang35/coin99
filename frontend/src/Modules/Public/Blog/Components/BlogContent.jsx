@@ -1,232 +1,83 @@
 import React, { Component } from "react";
+import { BASE_URL_SERVER } from "../../../../Configs/server";
 import publicService from "../../Shared/Services/PublicService";
 
 export class BlogContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            postList: []
+            postList: [],
+            categoriesList: []
         }
     }
 
     componentDidMount() {
         this.getPostList();
+        this.getCategoriesList();
     }
 
+    getCategoriesList= async () => {
+        await publicService.getCategoriesList()
+            .then((res) => {
+                this.setState({
+                    categoriesList: res.data
+                });
+                console.log(res.data)
+            });
+    }
     getPostList = async () => {
         await publicService.getPostList()
             .then((res) => {
                 this.setState({
                     postList: res.data
-                })
+                });
+                console.log(res.data)
             });
     }
     render() {
-        const { postList } = this.state;
+        const { postList, categoriesList } = this.state;
         return (
             <>
                 <div className="blog_wrapper">
                     <div className="container">
                         <div className="row">
                             <main className="col-sm-8">
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="blog-details.html">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-1.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="blog-details.html">
-                                                <strong>Aliquam</strong> <span className="dash">—</span> rutrum
-                                                neque scelerisque mauris placerat, sed mollis.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
+                                {postList.map((post, index) => {
+                                    return (
+                                        <div key={index} className="post post_list post_list_lg">
+                                            <div className="post_img">
+                                                <a href="blog-details.html">
+                                                    <img src= {BASE_URL_SERVER + post.Thumbnail} />
                                                 </a>
-                                            </span>
+                                            </div>
+                                            <div className="post_body">
+                                                <div className="post-cat">
+                                                    <a href="#">{post.Title}</a>
+                                                </div>
+                                                <h3 className="post_heading">
+                                                    <a href="blog-details.html">
+                                                        <strong>{post.Category.Name}</strong> <span className="dash">—</span>{post.Title}
+                                                    </a>
+                                                </h3>
+                                                <p>
+                                                    {post.Description}
+                                                </p>
+                                                <div className="post_meta">
+                                                    <span className="post_date">
+                                                        <i className="fa fa-calendar-o" />
+                                                        <time >{post.CreateAt}</time>
+                                                    </span>
+                                                    <span className="comment_link">
+                                                        <a href="#">
+                                                            <i className="fa fa-comment-o" />
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="blog-details.html">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-2.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Adventure</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="blog-details.html">
-                                                <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                tortor et lacus volutpat euismod in nec erat.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="#">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-3.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Crypto</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="#">
-                                                <strong>Established</strong> <span className="dash">—</span>{" "}
-                                                fact that a reader will be distracted by the readable.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="#">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-4.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Lifestyle</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="#">
-                                                <strong>Aenean</strong> <span className="dash">—</span>{" "}
-                                                hendrerit felis vitae neque malesuada, at condimentum.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="#">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-5.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Traditional</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="#">
-                                                <strong>Suspendisse</strong> <span className="dash">—</span> eu
-                                                justo maximus, pellentesque enim efficitur.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="post post_list post_list_lg">
-                                    <div className="post_img">
-                                        <a href="#">
-                                            <img src="../../../../AssetsHome/assets/img/blog/290x232-6.jpg" alt="" />
-                                        </a>
-                                    </div>
-                                    <div className="post_body">
-                                        <div className="post-cat">
-                                            <a href="#">Traditional</a>
-                                        </div>
-                                        <h3 className="post_heading">
-                                            <a href="#">
-                                                <strong>Suspendisse</strong> <span className="dash">—</span> eu
-                                                justo maximus, pellentesque enim efficitur.
-                                            </a>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod tempor incididunt ut labore et dolore ...
-                                        </p>
-                                        <div className="post_meta">
-                                            <span className="post_date">
-                                                <i className="fa fa-calendar-o" />
-                                                <time dateTime="2018-01-21T19:00">Jan 21, 2018</time>
-                                            </span>
-                                            <span className="comment_link">
-                                                <a href="#">
-                                                    <i className="fa fa-comment-o" />9 Comments
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                )
+                                })}
+                                {/* /.End of post list */}
                                 <ul className="pagination">
                                     <li className="disabled">
                                         <a href="#">⇽</a>
@@ -337,7 +188,7 @@ export class BlogContent extends Component {
                                     <div className="social_icon">
                                         <a href="#" className="facebook">
                                             <i className="fa fa-facebook" />
-                                            
+
                                         </a>
                                         <a href="#" className="twitter">
                                             <i className="fa fa-twitter" />
@@ -364,43 +215,15 @@ export class BlogContent extends Component {
                                 </div>
                                 <div className="widget">
                                     <h4 className="widget_title">Categories</h4>
-                                    <ul className="widget_category">
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>Trends
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>Hosting
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>Wordpress
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>Lifestyle
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>Computering
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>WebsiteDesign
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>#</span>PHP
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    
+                                       {categoriesList.map((category, index) => {
+                                           return(
+                                            <ul className="widget_category">
+                                            <li>#{category.Name}</li>
+                                            </ul>
+                                           )
+                                       })
+                                       }
                                 </div>
                             </aside>
                         </div>

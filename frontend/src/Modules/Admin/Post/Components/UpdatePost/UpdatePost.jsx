@@ -20,6 +20,7 @@ class UpdatePost extends Form {
         desc: "",
         categoryId: "",
         status: "",
+        postType:""
       }),
       thumbnail: "",
       content: "",
@@ -40,12 +41,13 @@ class UpdatePost extends Form {
     await postService
       .getDetails(postId)
       .then((res) => {
-        const { Title, Body, Status, Description, CategoryId, Thumbnail } =
+        const { Title, Body, Status, Description, CategoryId, Thumbnail, PostType } =
           res.data;
         form.title.value = Title;
         form.status.value = Status;
         form.desc.value = Description;
         form.categoryId.value = CategoryId;
+        form.postType.value = PostType;
         this.setState({ form, content: Body, thumbnailLink: Thumbnail });
       })
       .catch((err) => {
@@ -87,7 +89,7 @@ class UpdatePost extends Form {
         Status: form.status.value,
         AuthorId: currentUserId,
         Description: form.desc.value,
-        PostType: 1,
+        PostType: form.postType.value,
       };
       if (thumbnail !== "") {
         let formData = new FormData();
@@ -122,7 +124,7 @@ class UpdatePost extends Form {
     }
   };
   render() {
-    const { title, desc, categoryId, status } = this.state.form;
+    const { title, desc, categoryId, status, postType } = this.state.form;
     const { isRedirectSuccess, postCategoryList, content } = this.state;
     if (isRedirectSuccess) {
       return <Redirect to={"/admin/posts"} />;
@@ -248,6 +250,27 @@ class UpdatePost extends Form {
                 {status.err === "*" ? (
                   <ErrorForm message="Status cannot be empty" />
                 ) : <ErrorForm message={status.err} /> ? (
+                  ""
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="form-group">
+                <label>PostType</label>
+                <select
+                  name="postType"
+                  required
+                  className="form-control"
+                  value={postType.value}
+                  onChange={(ev) => this._setValue(ev, "postType")}
+                >
+                  <option value={""}>Choose Post Type</option>
+                  <option value={1}>FREE</option>
+                  <option value={2}>PREMIUM</option>
+                </select>
+                {postType.err === "*" ? (
+                  <ErrorForm message="Post Type cannot be empty" />
+                ) : <ErrorForm message={postType.err} /> ? (
                   ""
                 ) : (
                   ""
