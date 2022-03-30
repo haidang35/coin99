@@ -22,7 +22,7 @@ using Newtonsoft.Json;
 
 namespace backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class UserController : ApiController
     {
         private MyDbContext db = new MyDbContext();
@@ -74,6 +74,17 @@ namespace backend.Controllers
             var currentUserId = identity.FindFirst("currentUserId").Value;
             var currentUser = db.Users.Find(Int32.Parse(currentUserId));
             return Ok(currentUser);
+        }
+
+        [Route("~/api/auth-user/roles")]
+        [HttpGet]
+        [ResponseType(typeof(ICollection<UserRole>))]
+        public IHttpActionResult GetUserRolesAuth()
+        {
+            var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            var currentUserId = Int32.Parse(identity.FindFirst("currentUserId").Value);
+            var userRoles = db.UserRoles.Where(u => u.UserId == currentUserId).ToList();
+            return Ok(userRoles);
         }
 
         [Route("~/api/users/{id}/roles")]
@@ -135,6 +146,14 @@ namespace backend.Controllers
                 userRole.RoleId = userUpdate.RoleId;
                 db.Entry(userRole).State = EntityState.Modified;
 
+            }else
+            {
+                var newUserRole = new UserRole()
+                {
+                    RoleId = userUpdate.RoleId,
+                    UserId = user.Id,
+                };
+                db.UserRoles.Add(newUserRole);
             }
             db.Entry(user).State = EntityState.Modified;
             try

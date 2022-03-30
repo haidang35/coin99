@@ -13,36 +13,37 @@ import { PostCategory } from "./PostCategory/PostCategory";
 import { CreatePostCategory } from "./PostCategory/Components/CreatePostCategory/CreatePostCategory";
 import { useState } from "react";
 import authService from "./Auth/Services/AuthService";
-import UpdatePost  from "./Post/Components/UpdatePost/UpdatePost";
+import UpdatePost from "./Post/Components/UpdatePost/UpdatePost";
 import { TrashPost } from "./Post/Components/TrashPost/TrashPost";
 import { User } from "./User/User";
 import { NewUser } from "./User/Components/NewUser/NewUser";
 import UserDetails from "./User/Components/UserDetails/UserDetails";
 
-
 export function Admin() {
   const [currentUser, setCurrentUser] = useState({});
   useState(async () => {
-    const accessToken = localStorage.getItem('access_token');
-    await authService.getAuthUser(accessToken)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem('current_user_id', res.data.Id);
-        setCurrentUser(res.data);
+    const accessToken = localStorage.getItem("access_token");
+    await authService
+      .getAuthUser(accessToken)
+      .then(async (res) => {
+        const currentUserData = res.data;
+        localStorage.setItem("current_user_id", res.data.Id);
+        setCurrentUser(currentUserData);
+      
       })
       .catch((err) => {
         console.log(err);
-      })
-  }, [] );
+      });
+  }, []);
   return (
     <BrowserRouter>
-     <Header currentUser={currentUser}/>
+      <Header currentUser={currentUser} />
       <div className="page-container row-fluid container-fluid">
-       <Sidebar />
+        <Sidebar />
         <section id="main-content" className=" ">
           <Switch>
             <Route path="/admin" exact>
-                <Redirect to="/admin/dashboard" />
+              <Redirect to="/admin/dashboard" />
             </Route>
             <Route path="/admin/coins" exact>
               <Coins />
@@ -63,29 +64,25 @@ export function Admin() {
               <CreateNewPost />
             </Route>
             <Route path="/admin/post-categories" exact>
-                <PostCategory />
+              <PostCategory />
             </Route>
             <Route path="/admin/post-categories/create" exact>
-                <CreatePostCategory />
+              <CreatePostCategory />
             </Route>
             <Route path="/admin/users" exact>
-                <User />
+              <User />
             </Route>
             <Route path="/admin/users/:id" exact>
               <UserDetails />
             </Route>
             <Route path="/admin/users/create" exact>
-                <NewUser />
+              <NewUser />
             </Route>
           </Switch>
         </section>
         <div className="page-chatapi hideit">
           <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search"
-              className="form-control"
-            />
+            <input type="text" placeholder="Search" className="form-control" />
           </div>
           <div className="chat-wrapper">
             <h4 className="group-head">Favourites</h4>

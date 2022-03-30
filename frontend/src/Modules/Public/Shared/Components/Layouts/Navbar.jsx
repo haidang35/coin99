@@ -21,15 +21,22 @@ export class Navbar extends Component {
         isScroll: true,
       });
     }
-    if(window.scrollY === 0) {
+    if (window.scrollY === 0) {
       this.setState({
         isScroll: false,
       });
     }
   };
 
+  onLogout = () => {
+    localStorage.removeItem('access_token');
+    window.location.replace('/');
+  }
+
   render() {
     const { isScroll } = this.state;
+    const { currentUser } = this.props;
+    console.log("🚀 ~ file: Navbar.jsx ~ line 38 ~ Navbar ~ render ~ currentUser", currentUser)
     return (
       <>
         {/* <div id="loader-wrapper">
@@ -66,31 +73,43 @@ export class Navbar extends Component {
           </div>
           <div className="container">
             <div className="attr-nav">
-              <ul>
-                <li className="nav-language">
-                  <select className="selectpicker" data-width="auto">
-                    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>
-                      English
-                    </option>
-                    <option data-content='<span class="flag-icon flag-icon-mx"></span> Español'>
-                      Español
-                    </option>
-                    <option data-content='<span class="flag-icon flag-icon-bd"></span> বাংলা'>
-                      বাংলা{" "}
-                    </option>
-                  </select>
-                </li>
-                <li>
-                  <Link to="/signin" className="btn nav-btn">
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup" className="btn nav-btn btn-orange">
-                    Sign Up
-                  </Link>
-                </li>
-              </ul>
+              {currentUser == '' || currentUser == null ? (
+                <ul>
+                  <li>
+                    <Link to="/signin" className="btn nav-btn">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/signup" className="btn nav-btn btn-orange">
+                      Sign Up
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                  <li style={{ display: "flex" }}>
+                    <a href="#">
+                      <span style={{ paddingRight: "0.5rem" }}>Hi, </span>
+                      <strong>{currentUser.FullName}</strong>
+                    </a>
+                  </li>
+                  <li>
+                    {currentUser.AccountType === 1 ? (
+                      <button className="btn btn-sm btn-primary">FREE</button>
+                    ) : (
+                      <button className="btn btn-sm btn-warning">PREMIUM</button>
+                    )}
+                  </li>
+                  <li>
+                    <button onClick={this.onLogout} className="btn btn-sm btn-danger">Logout</button>
+                  </li>
+                </ul>
+              )}
             </div>
             <div className="navbar-header">
               <button
