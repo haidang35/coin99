@@ -4,6 +4,7 @@ import { Component } from "react";
 import { PATH_ENDPOINT, realtimeDb } from "../../../../../Configs/firebase";
 
 
+
 export class CoinList extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +47,7 @@ export class CoinList extends Component {
                     Crypto
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#forex" data-toggle="tab">
                     Forex
                   </a>
@@ -55,7 +56,7 @@ export class CoinList extends Component {
                   <a href="#stocks" data-toggle="tab">
                     Stocks
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="container">
@@ -81,7 +82,7 @@ export class CoinList extends Component {
                               <div className="logo-name">
                                 <div className="item-logo">
                                   <img
-                                    src="../../../../../../AssetsHome/assets/img/coin-logo/BTC.svg"
+                                    src="Assets/Public/assets/img/coin-logo/BTC.svgd"
                                     className="img-responsive"
                                     alt=""
                                   />

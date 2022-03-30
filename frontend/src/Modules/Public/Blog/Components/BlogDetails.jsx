@@ -4,6 +4,7 @@ import { BASE_URL_SERVER } from "../../../../Configs/server";
 import authService from "../../../Admin/Auth/Services/AuthService";
 import publicService from "../../Shared/Services/PublicService";
 
+
 class BlogDetails extends Component {
   constructor(props) {
     super(props);
@@ -181,7 +182,7 @@ class BlogDetails extends Component {
                   <div className="media">
                     <div className="media-left">
                       <img
-                        src="../../../../AssetsHome/assets/img/blog/img_avatar1.png"
+                        src="../../../../../Assets/Public/assets/img/blog/img_avatar1.png"
                         alt=""
                         className="media-object"
                       />
@@ -225,7 +226,7 @@ class BlogDetails extends Component {
                   <div className="media">
                     <div className="media-left">
                       <img
-                        src="../../../../AssetsHome/assets/img/blog/img_avatar1.png"
+                        src="../../../../../Assets/Public/assets/img/blog/img_avatar1.png"
                         alt=""
                         className="media-object"
                       />
@@ -319,7 +320,7 @@ class BlogDetails extends Component {
                     <div className="post_img">
                       <a href="#">
                         <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-1.jpg"
+                          src="../../../../../Assets/Public/assets/img/blog/100x75-1.jpg"
                           alt=""
                         />
                       </a>
@@ -343,7 +344,7 @@ class BlogDetails extends Component {
                     <div className="post_img">
                       <a href="#">
                         <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-2.jpg"
+                          src="../../../../../Assets/Public/assets/img/blog/100x75-2.jpg"
                           alt=""
                         />
                       </a>
@@ -367,7 +368,7 @@ class BlogDetails extends Component {
                     <div className="post_img">
                       <a href="#">
                         <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-3.jpg"
+                          src="../../../../../Assets/Public/assets/img/blog/100x75-3.jpg"
                           alt=""
                         />
                       </a>

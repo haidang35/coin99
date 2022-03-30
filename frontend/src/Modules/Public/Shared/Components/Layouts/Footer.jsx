@@ -39,20 +39,20 @@ export class Footer extends Component {
             </div>
           </div>
           <div className="action_btn_inner">
-            <a href="register.html#tab1" className="action_btn">
+            <Link to="/signup" className="action_btn">
               <span className="action_title">Register</span>
               <span className="lnr lnr-chevron-right action_icon" />
               <span className="action_sub_title">
                 Join the new era of cryptocurrency exchange
               </span>
-            </a>
-            <a href="register.html#tab2" className="action_btn">
+            </Link>
+            <Link to="/signin" className="action_btn">
               <span className="action_title">Sign in</span>
               <span className="lnr lnr-chevron-right action_icon" />
               <span className="action_sub_title">
                 Access the cryptocurrency experience you deserve
               </span>
-            </a>
+            </Link>
           </div>
           <div className="main_footer">
             <div className="container">
@@ -61,18 +61,16 @@ export class Footer extends Component {
                   <div className="widget-contact">
                     <ul className="list-icon">
                       <li>
-                        <i className="fa fa-map-marker" /> 1355 Market Street,
-                        Suite 900
+                        <i className="fa fa-map-marker" /> Số 8, Tôn Thất Thuyết, Mỹ đình, Hà Nội
                         <br />
-                        San Francisco, CA 94103
                       </li>
                       <li>
-                        <i className="fa fa-phone" /> (123) 456-7890{" "}
+                        <i className="fa fa-phone" /> 0888999JQK{" "}
                       </li>
                       <li>
                         <i className="fa fa-envelope" />{" "}
                         <a href="mailto:first.last@example.com">
-                          first.last@example.com
+                          bietdoithangnam@gmail.com
                         </a>
                       </li>
                       <li>
@@ -178,7 +176,7 @@ export class Footer extends Component {
                   <div className="social-content">
                     <div className="social-row">
                       <div className="social_icon">
-                        <a href="#" className="">
+                        <a href="https://www.facebook.com/Bi%E1%BB%87t-%C4%90%E1%BB%99i-Th%C3%A1ng-N%C4%83m-107298318604154" className="">
                           <i className="fa fa-facebook" />
                         </a>
                         <a href="#" className="">
