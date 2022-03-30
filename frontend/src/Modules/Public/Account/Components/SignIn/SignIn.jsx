@@ -35,9 +35,10 @@ export class SignIn extends Form {
         await authService.accessAuthToken(params)
             .then((res) => {
                 localStorage.setItem('access_token', res.data.access_token);
-                this.setState({
-                    isRedirect: true
-                });
+                // this.setState({
+                //     isRedirect: true
+                // });
+                window.location.replace('/');
             })
             .catch((err) => {
               let { message } = this.state;

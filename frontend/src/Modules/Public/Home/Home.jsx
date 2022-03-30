@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { Market } from "../Market/Market";
+import { CoinBar } from "../Shared/Components/CoinBar/CoinBar";
 import { Footer } from "../Shared/Components/Layouts/Footer";
 import { Navbar } from "../Shared/Components/Layouts/Navbar";
 import { Slider } from "../Shared/Components/Slider/Slider";
@@ -16,15 +17,6 @@ export class Home extends Component {
 
   componentDidMount() {
     this.getCoinListBinance();
-    this.testCallApiPost();
-  }
-
-  testCallApiPost = () => {
-    fetch('https://coin99.azurewebsites.net/api/posts')
-    .then((res) => res.json())
-    .then((res) => {
-      console.log('data', res);
-    });
   }
 
   getCoinListBinance = async () => {
@@ -43,6 +35,7 @@ export class Home extends Component {
     return (
       <>
         <Slider />
+        <CoinBar coinListBinance={coinListBinance}/>
         <CoinList coinListBinance={coinListBinance} />
         <Footer />
       </>

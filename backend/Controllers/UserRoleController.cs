@@ -13,7 +13,7 @@ using backend.Models;
 
 namespace backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Super Admin")]
     public class UserRoleController : ApiController
     {
         private MyDbContext db = new MyDbContext();
