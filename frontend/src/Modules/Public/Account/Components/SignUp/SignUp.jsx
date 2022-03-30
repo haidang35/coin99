@@ -87,8 +87,6 @@ export class SingUp extends Form {
               </div>
               <div className="right">
                 <div className="right-text">
-                  <h2>LONYX</h2>
-                  <h5>A UX BASED CREATIVE AGENCEY</h5>
                 </div>
                 <div className="right-inductor">
                   <img
