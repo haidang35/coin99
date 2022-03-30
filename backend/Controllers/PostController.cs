@@ -38,13 +38,13 @@ namespace backend.Controllers
                 switch(status)
                 {
                     case "active":
-                        postList = db.Posts.Where(p => p.Status == PostStatus.Active).ToList();
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Active).OrderByDescending(u => u.CreateAt).ToList();
                         break;
                     case "deactive":
-                        postList = db.Posts.Where(p => p.Status == PostStatus.Deactive).ToList();
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Deactive).OrderByDescending(u => u.CreateAt).ToList();
                         break;
                     case "draft":
-                        postList = db.Posts.Where(p => p.Status == PostStatus.Draft).ToList();
+                        postList = db.Posts.Where(p => p.Status == PostStatus.Draft).OrderByDescending(u => u.UpdateAt).ToList();
                         break;
                     default:
                         break;
@@ -52,7 +52,7 @@ namespace backend.Controllers
             }
             if(!string.IsNullOrEmpty(search))
             {
-                postList = postList.Where(p => p.Title.Contains(search)).ToList();
+                postList = postList.Where(p => p.Title.Contains(search)).OrderByDescending(u => u.CreateAt).ToList();
             }
             return Ok(postList);
         }
@@ -63,7 +63,7 @@ namespace backend.Controllers
         [AllowAnonymous]
         public IHttpActionResult GetPostsPublic()
         {
-            var posts = db.Posts.Where(p => p.Status == PostStatus.Active).ToList();
+            var posts = db.Posts.Where(p => p.Status == PostStatus.Active).OrderByDescending(u => u.CreateAt).ToList();
             return Ok(posts);
         }
 

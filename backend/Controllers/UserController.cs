@@ -36,6 +36,11 @@ namespace backend.Controllers
             {
                 return BadRequest();
             }
+            var user = db.Users.Where(u => u.Email == userRegister.Email).FirstOrDefault();
+            if(user != null)
+            {
+                return BadRequest("Email already exist !!");
+            }
             var newUser = new User()
             {
                 FullName = userRegister.FullName,
