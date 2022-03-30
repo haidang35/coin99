@@ -96,7 +96,7 @@ export class SignIn extends Form {
                       </div>
 
                       <button className="submit" onClick={this.onSigin}>
-                        LET'S GO
+                        START 
                       </button>
                     </div>
                   </div>
@@ -104,8 +104,8 @@ export class SignIn extends Form {
               </div>
               <div className="right">
                 <div className="right-text">
-                  <h2>LONYX</h2>
-                  <h5>A UX BASED CREATIVE AGENCEY</h5>
+                  {/* <h2>LONYX</h2> */}
+                  {/* <h5>A UX BASED CREATIVE AGENCEY</h5> */}
                 </div>
                 <div className="right-inductor">
                   <img

@@ -46,7 +46,7 @@ export class CoinList extends Component {
                     Crypto
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#forex" data-toggle="tab">
                     Forex
                   </a>
@@ -55,7 +55,7 @@ export class CoinList extends Component {
                   <a href="#stocks" data-toggle="tab">
                     Stocks
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="container">
