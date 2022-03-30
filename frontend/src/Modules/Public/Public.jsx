@@ -32,13 +32,13 @@ export function Public() {
           <Route path="/coin-market/:symbol" exact>
             <Coin />
           </Route>
-          <Route path="/Contact" exact>
+          <Route path="/contact" exact>
             <Contact />
           </Route>
-          <Route path="/Abouts" exact>
+          <Route path="/abouts" exact>
             <Abouts />
           </Route>
-          <Route path="/Lending" exact>
+          <Route path="/lending" exact>
             <LenDing />
           </Route>
           <Route path="/blog" exact>

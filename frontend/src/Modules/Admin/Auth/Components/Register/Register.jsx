@@ -38,7 +38,6 @@ export class Register extends Component {
   render() {
     const { FullName, Birthday, Email, PhoneNumber, Password, ConfirmationPassword } = this.state.form;
     return (
-
       <>
         <div className="container">
           <div className="row">

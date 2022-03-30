@@ -4,6 +4,8 @@ import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import Form from "../../../../../Shared/Components/Form";
 import authService from "../../../../Admin/Auth/Services/AuthService";
 import "./Signin.scss";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 export class SignIn extends Form {
   constructor(props) {
@@ -13,7 +15,12 @@ export class SignIn extends Form {
         email: "",
         password: "",
       }),
-      isRedirect: false
+      isRedirect: false,
+      message: {
+        type: "",
+        content: "",
+        isDisplay: false,
+      }
     };
   }
 
@@ -33,12 +40,19 @@ export class SignIn extends Form {
                 });
             })
             .catch((err) => {
-
+              let { message } = this.state;
+              message.isDisplay = true;
+              message.type = "error";
+              message.content = "Vui lòng kiểm tra lại tải khoản hoặc mật khẩu";
+              this.setState({
+                message
+              });
             });
     } else {
     }
   };
   render() {
+    const { message } = this.state;
     const { email, password } = this.state.form;
     const { isRedirect } = this.state;
     if(isRedirect) {
@@ -50,6 +64,15 @@ export class SignIn extends Form {
           <section className="login">
             <div className="login_box">
               <div className="left">
+              {
+                  message.isDisplay ? (<Stack sx={{ width: '100%' }} spacing={2}>
+                    <Alert severity={message.type}> {message.content}  
+                    </Alert>
+                  </Stack>
+                  ) : (
+                    ""
+                  )}
+
                 <div className="contact">
                   <div class="row">
                     <div class="col-md-12">

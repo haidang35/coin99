@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Footer } from "../Shared/Components/Layouts/Footer";
 
 
@@ -32,9 +33,9 @@ export class Abouts extends Component {
                                         predefined chunks as necessary, making this the first true
                                         generator.
                                     </p>
-                                    <a href="#" className="btn btn-default mr-20 mb-10">
+                                    <Link to="/contact" className="btn btn-default mr-20 mb-10">
                                         Contact us
-                                    </a>
+                                    </Link>
                                     <div className="play-button">
                                         <a
                                             href="http://www.youtube.com/watch?v=0O2aH4XLbto"

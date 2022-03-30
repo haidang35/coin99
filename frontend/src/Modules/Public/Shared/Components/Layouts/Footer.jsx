@@ -39,20 +39,20 @@ export class Footer extends Component {
             </div>
           </div>
           <div className="action_btn_inner">
-            <a href="register.html#tab1" className="action_btn">
+            <Link to="/signup" className="action_btn">
               <span className="action_title">Register</span>
               <span className="lnr lnr-chevron-right action_icon" />
               <span className="action_sub_title">
                 Join the new era of cryptocurrency exchange
               </span>
-            </a>
-            <a href="register.html#tab2" className="action_btn">
+            </Link>
+            <Link to="/signin" className="action_btn">
               <span className="action_title">Sign in</span>
               <span className="lnr lnr-chevron-right action_icon" />
               <span className="action_sub_title">
                 Access the cryptocurrency experience you deserve
               </span>
-            </a>
+            </Link>
           </div>
           <div className="main_footer">
             <div className="container">

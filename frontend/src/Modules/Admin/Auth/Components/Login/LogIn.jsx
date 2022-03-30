@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Alert } from "../../../../../Shared/Components/Alert";
 import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import Form from "../../../../../Shared/Components/Form";
@@ -195,13 +195,13 @@ export class LogIn extends Form {
                             <input class="iCheck" type="checkbox"></input>
                             Remember Password
                           </a>
-                          <a
-                            href="/admin/register"
+                          <Link
+                            to="/admin-register"
                             className="pull-right blue-text"
                             title="Sign Up"
                           >
                             Sign Up
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
