@@ -9,6 +9,7 @@ const API_ENDPOINT = {
     GET_DETAILS: '/api/users/',
     GET_USER_ROLES: '/api/users/',
     UPDATE_USER: '/api/users/',
+    DELETE_USER: '/api/users/',
 }
 
 const configs = {
@@ -39,6 +40,11 @@ class UserService {
     updateUser = async (userId, data) => {
         return await axios.put(BASE_URL_SERVER + API_ENDPOINT.UPDATE_USER + userId, data, configs);
     }
+
+    deleteUser = async (id) => {
+        return await axios.delete(BASE_URL_SERVER + API_ENDPOINT.DELETE_USER + id, configs); 
+    }
+
 }
 
 const userService = new UserService();

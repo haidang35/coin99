@@ -32,7 +32,7 @@ export class TrashPost extends Component {
 
   getTrashPostList = async () => {
     await postService
-      .getList(POST_STATUS.DEACTIVE)
+      .getList(POST_STATUS.DEACTIVE) 
       .then((res) => {
         console.log(res.data);
         this.setState({
@@ -54,13 +54,13 @@ export class TrashPost extends Component {
     });
   };
 
-  onDeletePost = async (postId) => {
+  onDeletePost = async (postId) => { 
     let { message } = this.state;
     await postService.delete(postId).then((res) => {
       message.type = "success";
       message.content = "Delete post successful !";
       this.setState({ message });
-      this.getTrashPostList();
+      this.getTrashPostList(); 
     });
   };
 
@@ -78,7 +78,6 @@ export class TrashPost extends Component {
 
   render() {
     const { postList, message, isOpenDiaglog } = this.state;
-
     return (
       <>
         <div className=" wrapper main-wrapper row">
