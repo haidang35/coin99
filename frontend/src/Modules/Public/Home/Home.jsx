@@ -7,6 +7,7 @@ import { Navbar } from "../Shared/Components/Layouts/Navbar";
 import { Slider } from "../Shared/Components/Slider/Slider";
 import firebaseService from "../Shared/Services/FirebaseService";
 import { CoinList } from "./Components/CoinList/CoinList";
+import { Introduction } from "./Introduction/Introduction";
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +38,7 @@ export class Home extends Component {
         <Slider />
         <CoinBar coinListBinance={coinListBinance}/>
         <CoinList coinListBinance={coinListBinance} />
+        <Introduction />
         <Footer />
       </>
     );
