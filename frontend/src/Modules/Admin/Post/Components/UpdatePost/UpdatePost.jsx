@@ -75,6 +75,7 @@ class UpdatePost extends Form {
     });
   };
 
+  // update info 
   updatePost = async () => {
     this._validateForm();
     console.log(this.state.form);
@@ -98,6 +99,7 @@ class UpdatePost extends Form {
           .uploadThumbnail(formData)
           .then(async (res) => {
             dataConverted.Thumbnail = res.data;
+            // goi service update category details
             await postService
               .updateDetails(postId, dataConverted)
               .then((res) => {

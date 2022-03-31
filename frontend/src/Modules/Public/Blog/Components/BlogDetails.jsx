@@ -9,6 +9,7 @@ class BlogDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      categoriesList: [],
       blog: "",
       isRedirect: false,
     };
@@ -16,7 +17,16 @@ class BlogDetails extends Component {
 
   componentDidMount() {
     this.getPostDetails();
+    this.getCategoriesList();
   }
+  getCategoriesList = async () => {
+    await publicService.getCategoriesList().then((res) => {
+      this.setState({
+        categoriesList: res.data,
+      });
+      console.log(res.data);
+    });
+  };
 
   getPostDetails = async () => {
     const { params } = this.props.match;
@@ -35,7 +45,7 @@ class BlogDetails extends Component {
       });
   };
   render() {
-    const { blog, isRedirect } = this.state;
+    const { blog, isRedirect, categoriesList   } = this.state;
     if (isRedirect) {
       return <Redirect to="/blog" />;
     }
@@ -53,7 +63,7 @@ class BlogDetails extends Component {
                 <div className="col-sm-8 col-sm-offset-2">
                   <div className="haeder-text">
                     <h1>{blog !== "" ? blog.Title : ""}</h1>
-                    <p>{blog !== "" ? blog.Description : ""}</p>
+                    
                   </div>
                 </div>
               </div>
@@ -420,43 +430,13 @@ class BlogDetails extends Component {
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">Categories</h4>
-                  <ul className="widget_category">
-                    <li>
-                      <a href="#">
-                        <span>#</span>Trends
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>Hosting
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>Wordpress
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>Lifestyle
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>Computering
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>WebsiteDesign
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span>#</span>PHP
-                      </a>
-                    </li>
-                  </ul>
+                  {categoriesList.map((category, index) => {
+                    return (
+                      <ul className="widget_category">
+                        <li>#{category.Name}</li>
+                      </ul>
+                    );
+                  })}
                 </div>
               </aside>
             </div>

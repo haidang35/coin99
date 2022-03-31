@@ -18,6 +18,7 @@ import { TrashPost } from "./Post/Components/TrashPost/TrashPost";
 import { User } from "./User/User";
 import { NewUser } from "./User/Components/NewUser/NewUser";
 import UserDetails from "./User/Components/UserDetails/UserDetails";
+import UpdateCategory from "./PostCategory/UpdateCategory/UpdateCategory";
 
 export function Admin() {
   const [currentUser, setCurrentUser] = useState({});
@@ -65,6 +66,9 @@ export function Admin() {
             </Route>
             <Route path="/admin/post-categories" exact>
               <PostCategory />
+            </Route>
+            <Route path="/admin/post-categories/:id" exact>
+              <UpdateCategory/>
             </Route>
             <Route path="/admin/post-categories/create" exact>
               <CreatePostCategory />
