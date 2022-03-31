@@ -43,6 +43,7 @@ function App() {
           <Route path="/">
             <Public />
           </Route>
+          
         </Switch>
       </BrowserRouter>
     </>

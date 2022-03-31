@@ -138,11 +138,9 @@ export class BlogContent extends Component {
               <div className="row">
                 <div className="col-sm-8 col-sm-offset-2">
                   <div className="haeder-text">
-                    <h1>Blog details</h1>
+                    <h1>Blog</h1>
                     <p>
-                      It is a long established fact that a reader will be distracted by
-                      the readable content of a page when looking at its layout. The
-                      point of using Lorem Ipsum is tha
+                    Synthesize information about the coin market, new news about the coin market.
                     </p>
                   </div>
                 </div>
