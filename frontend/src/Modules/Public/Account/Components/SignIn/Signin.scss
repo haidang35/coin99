@@ -84,11 +84,14 @@
   
   
   .right {
-    background: url(https://img.freepik.com/free-vector/purple-web-development-background_76964-167.jpg);
+    background: url(https://images.pexels.com/photos/7788009/pexels-photo-7788009.jpeg?auto=compress&cs=tinysrgb&w=600); 
     color: #fff;
     position: relative;
     background-repeat: no-repeat;
     min-height: 100%;
+    background-size: cover;
+    background-position: center;
+
   }
   
   .right .right-text{
