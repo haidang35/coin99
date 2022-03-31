@@ -32,7 +32,7 @@ export class TrashPost extends Component {
 
   getTrashPostList = async () => {
     await postService
-      .getList(POST_STATUS.DEACTIVE)
+      .getList(POST_STATUS.DEACTIVE) 
       .then((res) => {
         console.log(res.data);
         this.setState({

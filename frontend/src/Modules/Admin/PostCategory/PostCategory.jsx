@@ -67,7 +67,7 @@ export class PostCategory extends Component {
                             </tr>
                           </thead>
                           <tbody>
-                            {postCategoryList.map((category) => {
+                            {postCategoryList.map((category, index) => {
                               return (
                                 <tr key={category.Id}>
                                   <td>{category.Id}</td>
@@ -76,7 +76,19 @@ export class PostCategory extends Component {
                                   <td>{category.Status === 1 ? 'Active' : 'Deactive'}</td>
                                   <td>{category.CreatedAt}</td>
                                   <td>{category.UpdatedAt}</td>
+                                  <td><button>Edit</button></td>
+                                  <td><Link to={`/admin/post-categories/${category.Id}`}>
+                                    <button className="btn btn-sm btn-primary">
+                                      Update
+                                    </button>
+                                  </Link></td>
+                                  <td>
+                                    <button className="btn btn-sm btn-danger">
+                                      Delete
+                                    </button>
+                                  </td>
                                 </tr>
+                                
                               );
                             })}
                           </tbody>

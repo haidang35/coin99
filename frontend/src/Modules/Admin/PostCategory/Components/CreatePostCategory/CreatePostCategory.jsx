@@ -42,7 +42,7 @@ export class CreatePostCategory extends Component {
             <div className="card">
               <div className="row" style={{ padding: "50px 20px" }}>
                 <div className="col-md-12">
-                  <h2>Create New Post Category</h2>
+                  <h2>Update New Post Category</h2>
                 </div>
                 <div className="col-md-12">
                   <div className="mb-20">
