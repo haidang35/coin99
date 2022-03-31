@@ -119,7 +119,7 @@ export class Register extends Form {
                                     {FullName.err !== "" ? (
                                       FullName.err === "*" ? (
                                         <ErrorForm
-                                          message={"Email cannot be empty"}
+                                          message={"Full Name  cannot be empty"}
                                         />
                                       ) : (
                                         <ErrorForm message={FullName.err} />

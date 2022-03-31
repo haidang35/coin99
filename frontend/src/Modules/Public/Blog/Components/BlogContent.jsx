@@ -217,7 +217,6 @@ export class BlogContent extends Component {
                     </div>
                   );
                 })}
-                {/* /.End of post list */}
                 <ul className="pagination">
                   <li className="disabled">
                     <a href="#">⇽</a>
