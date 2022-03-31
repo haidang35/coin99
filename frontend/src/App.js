@@ -1,42 +1,51 @@
-
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Admin } from "./Modules/Admin/Admin";
+import { Public } from "./Modules/Public/Public";
 import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
-import { Dashboard } from "./Modules/Admin/Dashboard/Components/Dashboard";
-import { PostList } from "./Modules/Admin/Postt/Components/PostList";
-import { Post } from "./Modules/Admin/Postt/Post";
-import { Abouts } from "./Modules/Public/About/Abouts";
-import { Contact } from "./Modules/Public/Contact/Contact";
-import { CoinList } from "./Modules/Public/Home/Components/CoinList/CoinList";
-import { Public } from "./Modules/Public/Public";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { UploadFile } from "./Modules/Admin/Postt/Tests/UploadFile";
+import "./Shared/Styles/App.scss";
+import { useEffect } from "react";
+import authService from "./Modules/Admin/Auth/Services/AuthService";
+import { useState } from "react";
 
+let isLogged =
+  localStorage.getItem("access_token") !== null &&
+  localStorage.getItem("access_token") !== "";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(async () =>  {
+    const accessToken = localStorage.getItem("access_token");
+    await authService.getUserRoles(accessToken)
+      .then((res) => {
+        const userRoles = res.data;
+        userRoles.forEach((userRole) => {
+            if(userRole.RoleId === 1 || userRole.RoleId === 2) {
+              setIsAdmin(true);
+            }
+        });
+      })
+  }, []);
   return (
-   <>
-   
-      {/* <Public /> */}
-      {/* <PostList /> */}
-      {/* <NewBlog /> */}
-      {/* <Logins /> */}
-     
+    <>
       <BrowserRouter>
-      <Admin />
-      <Switch>
-        <Route path="/admin/login">
-          <LogIn /> 
-
-        </Route>
-      <Route path="/admin/register" exact>
-              <Register />
-            </Route>
-      </Switch>
+        <Switch>
+          <Route path="/admin">
+            {isLogged && isAdmin ? <Admin /> : <Redirect to="/admin-login" />}
+          </Route>
+          <Route path="/admin-login">
+            {isLogged && isAdmin ? <Redirect to="/admin" /> : <LogIn />}
+          </Route>
+          <Route path="/admin-register">
+            <Register />
+          </Route>
+          <Route path="/">
+            <Public />
+          </Route>
+        </Switch>
       </BrowserRouter>
-   </>
+    </>
   );
 }
 

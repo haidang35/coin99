@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-
 export class ShowCoin extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +21,7 @@ export class ShowCoin extends Component {
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div className="statistics-box ref-bg2 mt-15">
+                        <div className="statistics-box ref-bg2 mt-15"  style={{ background: 'url(../../../../Assets/Admin/data/crypto-dash/ref-bg2.png)'}}>
                             <div className="mb-15">
                                 <div className="real-earn">
                                     <h2 className="w-text boldy mb-5">$1,017.24</h2>
@@ -32,7 +31,7 @@ export class ShowCoin extends Component {
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div className="statistics-box ref-bg3 mt-15">
+                        <div className="statistics-box ref-bg3 mt-15" style={{ background: 'url(../../../../Assets/Admin/data/crypto-dash/ref-bg3.png)'}}> 
                             <div className="mb-15">
                                 <div className="real-earn">
                                     <h2 className="w-text boldy mb-5">$734.02</h2>
@@ -71,7 +70,7 @@ export class ShowCoin extends Component {
                             <div className="mb-15">
                                 <h3 className="bold mb-5">310</h3>
                                 <img
-                                    src="../data/crypto-dash/ref1.png"
+                                    src="../../../../Assets/Admin/data/crypto-dash/ref1.png"
                                     className="ico-icon-o mt-10 mb-10"
                                     alt=""
                                 />
@@ -84,7 +83,7 @@ export class ShowCoin extends Component {
                             <div className="mb-15">
                                 <h3 className="bold mb-5">250</h3>
                                 <img
-                                    src="../data/crypto-dash/ref2.png"
+                                    src="../../../../Assets/Admin/data/crypto-dash/ref2.png"
                                     className="ico-icon-o mt-10 mb-10"
                                     alt=""
                                 />
@@ -97,7 +96,7 @@ export class ShowCoin extends Component {
                             <div className="mb-15">
                                 <h3 className="bold mb-5">$934.47</h3>
                                 <img
-                                    src="../data/crypto-dash/ref3.png"
+                                    src="../../../../Assets/Admin/data/crypto-dash/ref3.png"
                                     className="ico-icon-o mt-10 mb-10"
                                     alt=""
                                 />
@@ -110,7 +109,7 @@ export class ShowCoin extends Component {
                             <div className="mb-15">
                                 <h3 className="bold mb-5">0.03837 BTC</h3>
                                 <img
-                                    src="../data/crypto-dash/ref4.png"
+                                    src="../../../../Assets/Admin/data/crypto-dash/ref4.png"
                                     className="ico-icon-o mt-10 mb-10"
                                     alt=""
                                 />
@@ -120,6 +119,8 @@ export class ShowCoin extends Component {
                     </div>
                 </div>
             </>
+            
+
         )
     }
 }

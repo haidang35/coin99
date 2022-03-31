@@ -17,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const realtimeDb = getDatabase(app);
 
-
+  
 export const PATH_ENDPOINT = {
   COINLIST_BINANCE: 'coins/binance'
 }

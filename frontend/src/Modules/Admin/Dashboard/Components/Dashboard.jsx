@@ -1,13 +1,24 @@
 import React, { Component } from "react";
-
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 
 export class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            data: [
+                { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
+                { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },
+                { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
+                { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 },
+                { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
+                { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
+                { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
+            ]
+        }
     }
     render() {
+        const { data } = this.state;
         return (
             <>
                 <div className="wrapper main-wrapper row" style={{}}>
@@ -103,17 +114,13 @@ export class Dashboard extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* End .row */}
                             </div>
                         </section>
                     </div>
                     <div className="clearfix" />
-                    {/* MAIN CONTENT AREA STARTS */}
                     <div className="col-xs-12">
                         <div className="pull-left">
-                            {/* PAGE HEADING TAG - START */}
                             <h4 className="title boldy mb-5 mt-15">Crypto Balance</h4>
-                            {/* PAGE HEADING TAG - END */}
                         </div>
                     </div>
                     <div className="clearfix" />
@@ -124,7 +131,7 @@ export class Dashboard extends Component {
                                     <div className="swiper-slide">
                                         <div className="coin-box flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin1.png" alt="" />
                                             </div>
                                             <div className="coin-balance text-left">
                                                 <h5 className="coin-name boldy">Bitcoin Balance</h5>
@@ -138,7 +145,7 @@ export class Dashboard extends Component {
                                     <div className="swiper-slide">
                                         <div className="coin-box flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin2.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin2.png" alt="" />
                                             </div>
                                             <div className="coin-balance text-left">
                                                 <h5 className="coin-name boldy">Eth Balance</h5>
@@ -152,7 +159,7 @@ export class Dashboard extends Component {
                                     <div className="swiper-slide">
                                         <div className="coin-box flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin3.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin3.png" alt="" />
                                             </div>
                                             <div className="coin-balance text-left">
                                                 <h5 className="coin-name boldy">Dash Balance</h5>
@@ -194,7 +201,7 @@ export class Dashboard extends Component {
                                     <div className="swiper-slide">
                                         <div className="coin-box flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin6.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin6.png" alt="" />
                                             </div>
                                             <div className="coin-balance text-left">
                                                 <h5 className="coin-name boldy">Doge Balance</h5>
@@ -208,7 +215,7 @@ export class Dashboard extends Component {
                                     <div className="swiper-slide">
                                         <div className="coin-box flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin7.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin7.png" alt="" />
                                             </div>
                                             <div className="coin-balance text-left">
                                                 <h5 className="coin-name boldy">Monero Balance</h5>
@@ -222,7 +229,6 @@ export class Dashboard extends Component {
                                 </div>
                             </div>
                             <div className="apg-arrows">
-                                {/* Add Navigation */}
                                 <div className="swiper-button-prev" />
                                 <div className="swiper-button-next" />
                             </div>
@@ -233,7 +239,7 @@ export class Dashboard extends Component {
                         <button
                             type="button"
                             className="btn btn-primary gradient-blue"
-                            style={{ width: "100%" }}
+
                         >
                             <div>
                                 <span className="add-plus fa fa-plus" />{" "}
@@ -241,7 +247,7 @@ export class Dashboard extends Component {
                             Add More
                         </button>
                     </div>
-                    <div className="clearfix" />
+
                     <div className="col-lg-8">
                         <section className="box" style={{ overflow: "hidden" }}>
                             <header className="panel_header">
@@ -255,6 +261,22 @@ export class Dashboard extends Component {
                                     />
                                     <a className="box_close fa fa-times" />
                                 </div>
+                                <ResponsiveContainer className="chart" height={400}>
+                                    <LineChart
+                                        width={100}
+                                        height={300}
+                                        data={data}
+                                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                                    >
+                                        <XAxis dataKey="name" />
+                                        <YAxis />
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <Tooltip />
+                                        <Legend />
+                                        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+                                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                                    </LineChart>
+                                </ResponsiveContainer>
                             </header>
                             <div className="content-body">
                                 <div className="row">
@@ -263,8 +285,8 @@ export class Dashboard extends Component {
                                             <div
                                                 id="demoarea-container"
                                                 style={{
-                                                    width: "100%",
-                                                    height: 380,
+                                                    width: "1",
+                                                    height: 50,
                                                     textAlign: "center",
                                                     margin: "0 auto"
                                                 }}
@@ -294,7 +316,7 @@ export class Dashboard extends Component {
                                     <div className="col-xs-12">
                                         <div className="coin-box2 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin1.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Bitcoin</h5>
                                             <h5 className="coin-price boldy">$8.958</h5>
@@ -305,7 +327,7 @@ export class Dashboard extends Component {
                                         </div>
                                         <div className="coin-box2 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin2.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin2.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Ethereum</h5>
                                             <h5 className="coin-price boldy">$1.958</h5>
@@ -316,7 +338,7 @@ export class Dashboard extends Component {
                                         </div>
                                         <div className="coin-box2 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin3.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin3.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Dashcoin</h5>
                                             <h5 className="coin-price boldy">$838,45</h5>
@@ -327,7 +349,7 @@ export class Dashboard extends Component {
                                         </div>
                                         <div className="coin-box2 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin8.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin8.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Litecoin</h5>
                                             <h5 className="coin-price boldy">$308,09</h5>
@@ -338,7 +360,7 @@ export class Dashboard extends Component {
                                         </div>
                                         <div className="coin-box2 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin6.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin6.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Dogecoin</h5>
                                             <h5 className="coin-price boldy">$0.0846</h5>
@@ -349,7 +371,7 @@ export class Dashboard extends Component {
                                         </div>
                                         <div className="coin-box2 mb-0 flex align-items-center">
                                             <div className="coin-icon mr-10">
-                                                <img src="../data/crypto-dash/coin7.png" alt="" />
+                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin7.png" alt="" />
                                             </div>
                                             <h5 className="coin-name boldy">Monero</h5>
                                             <h5 className="coin-price boldy">$475.048</h5>
@@ -360,7 +382,6 @@ export class Dashboard extends Component {
                                         </div>
                                     </div>
                                 </div>{" "}
-                                {/* End .row */}
                             </div>
                         </section>
                     </div>
@@ -382,7 +403,7 @@ export class Dashboard extends Component {
                             <div className="content-body pb10">
                                 <div className="row">
                                     <div className="col-xs-8 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 mb-20">
-                                        <canvas id="donut-chartjs" width={400} height={400} />
+                                        <canvas id="donut-chartjs" width={400} height={130} />
                                     </div>
                                     <div className="col-md-6 col-xs-12">
                                         <div className="token-info">
@@ -450,7 +471,7 @@ export class Dashboard extends Component {
                             <div className="col-lg-6 col-xs-12">
                                 <div className="r1_graph1 db_box db_box_large has-shadow2 mt-15">
                                     <div className="promp-box text-center">
-                                        <img src="../data/crypto-dash/crypto-wallet.png" alt="" />
+                                        <img src="../../../../Assets/Admin/data/crypto-dash/crypto-wallet.png" alt="" />
                                         <h4 className="boldy mt-20 mb-10">Start crypto trading Today</h4>
                                         <p>
                                             Lorem ipsum dolor sit amet, Eveniet magni sit explicabo Quo nihil
@@ -473,7 +494,7 @@ export class Dashboard extends Component {
                             <div className="col-lg-12">
                                 <div className="ask-box active">
                                     <div className="ask-circle">
-                                        <img src="../data/crypto-dash/crypto-buy.png" alt="" />
+                                        <img src="../../../../Assets/Admin/data/crypto-dash/crypto-buy.png" alt="" />
                                     </div>
                                     <div className="ask-info">
                                         <h3 className="w-text bold">
@@ -527,7 +548,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/p1.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p1.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Buy Record</h6>
@@ -546,7 +567,26 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/p2.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p1.png" alt="" />
+                                                            </div>
+                                                            <div className="designer-info">
+                                                                <h6>Buy Record</h6>
+                                                                <small className="text-muted">
+                                                                    <span className="mr-10">11-26</span> 10:23:45
+                                                                </small>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <span className="badge  w-70 round-success">
+                                                                completed
+                                                            </span>
+                                                        </td>
+                                                        <td className="green-text boldy">+3,800$</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div className="round img2">
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p2.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Sell Record</h6>
@@ -563,7 +603,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/p3.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p3.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Exchange Record</h6>
@@ -582,7 +622,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/p1.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p1.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Buy Record</h6>
@@ -599,7 +639,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/p2.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/p2.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Buy Record</h6>
@@ -657,7 +697,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin1.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Bitcoin</h6>
@@ -676,7 +716,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin8.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin8.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Litecoin</h6>
@@ -693,7 +733,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin2.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin2.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Ethereum</h6>
@@ -712,7 +752,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin4.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin4.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Ripple</h6>
@@ -729,7 +769,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin1.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin1.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Bitcoin</h6>
@@ -746,7 +786,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin3.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin3.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Dashcoin</h6>
@@ -765,7 +805,7 @@ export class Dashboard extends Component {
                                                     <tr>
                                                         <td>
                                                             <div className="round img2">
-                                                                <img src="../data/crypto-dash/coin5.png" alt="" />
+                                                                <img src="../../../../Assets/Admin/data/crypto-dash/coin5.png" alt="" />
                                                             </div>
                                                             <div className="designer-info">
                                                                 <h6>Bitdash</h6>

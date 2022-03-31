@@ -11,7 +11,7 @@ export class Coins extends Component {
     render(){
         return(
             <>
-            <CoinsListAdmin />
+            {/* <CoinsListAdmin /> */}
             {/* <ShowCoin /> */}
             </>
         )

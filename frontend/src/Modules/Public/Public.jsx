@@ -4,22 +4,40 @@ import { Home } from "./Home/Home";
 import styles from "./Shared/Styles/Public.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Market } from "./Market/Market";
-import { Navbar } from "./Shared/Components/Layouts/Navbar";
+import Navbar  from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
 import { Contact } from "./Contact/Contact";
 import { Abouts } from "./About/Abouts";
 import { LenDing } from "./Lending/LenDing";
 import { Blog } from "./Blog/Blog";
-import { BlogDetails } from "./Blog/Components/BlogDetails";
+import BlogDetails from "./Blog/Components/BlogDetails";
 import { Accounts } from "../Admin/Auth/Tests/Accounts";
-
+import { SingUp } from "./Account/Components/SignUp/SignUp";
+import { SignIn } from "./Account/Components/SignIn/SignIn";
+import authService from "../Admin/Auth/Services/AuthService";
+import { useState } from "react";
 
 export function Public() {
+  const [currentUser, setCurrentUser] = useState('');
+  useState(async () => {
+    const accessToken = localStorage.getItem("access_token");
+    if (accessToken !== null && accessToken !== "") {
+      await authService
+        .getAuthUser(accessToken)
+        .then((res) => {
+          localStorage.setItem("current_user_id", res.data.Id);
+          setCurrentUser(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar currentUser={currentUser} />
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -30,23 +48,26 @@ export function Public() {
           <Route path="/coin-market/:symbol" exact>
             <Coin />
           </Route>
-          <Route path="/Contact" exact>
+          <Route path="/contact" exact>
             <Contact />
           </Route>
-          <Route path="/Abouts" exact>
+          <Route path="/abouts" exact>
             <Abouts />
           </Route>
-          <Route path="/Lending" exact>
+          <Route path="/lending" exact>
             <LenDing />
           </Route>
-          <Route path="/Blog" exact>
+          <Route path="/blog" exact>
             <Blog />
           </Route>
-          <Route path="/Blog-details" exact>
-            <BlogDetails />
+          <Route path="/signin" exact>
+            <SignIn />
           </Route>
-          <Route path="/Login-admin" exact>
-            <Accounts />
+          <Route path="/signup" exact>
+            <SingUp />
+          </Route>
+          <Route path="/:slug" exact>
+            <BlogDetails />
           </Route>
         </Switch>
       </BrowserRouter>

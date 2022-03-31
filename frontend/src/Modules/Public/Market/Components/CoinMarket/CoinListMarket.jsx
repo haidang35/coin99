@@ -1,3 +1,4 @@
+import { touchRippleClasses } from "@mui/material";
 import { onValue, ref } from "firebase/database";
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
@@ -12,7 +13,25 @@ export class CoinListMarket extends Component {
     this.state = {
       coinList: [],
       isRedirect: false,
-      coinDetail: null
+      coinDetail: null,
+      markets: [
+
+        {
+          id: 1,
+          name: 'Binance'
+        },
+        {
+          id: 2,
+          name: 'Houbi'
+        },
+        {
+          id: 3,
+          name: 'Bitfinex'
+        }
+
+      ],
+      marketChoosed: ""
+
     };
   }
 
@@ -25,11 +44,11 @@ export class CoinListMarket extends Component {
     onValue(coinListRef, (snapshot) => {
       let coinListConverted = [];
       snapshot.forEach((snapshotChild) => {
-          let coinValue = snapshotChild.val();
-          coinValue['symbol'] = coinValue['symbol'].replace('USDT', '');
-          coinValue['key'] = snapshotChild.key;
-          coinValue['currency'] = '$';
-         coinListConverted.push(coinValue);
+        let coinValue = snapshotChild.val();
+        coinValue['symbol'] = coinValue['symbol'].replace('USDT', '');
+        coinValue['key'] = snapshotChild.key;
+        coinValue['currency'] = '$';
+        coinListConverted.push(coinValue);
       });
       this.setState({
         coinList: coinListConverted,
@@ -39,21 +58,28 @@ export class CoinListMarket extends Component {
 
   redirectToCoinDetail = (coin) => {
     this.setState({
-        coinDetail: coin,
-        isRedirect: true
+      coinDetail: coin,
+      isRedirect: true
     });
   }
 
+chooseMarket = (market) => {
+  this.setState({
+    marketChoosed: market,
+  });
+  
+}
+
+
   render() {
-    const { coinList, coinDetail, isRedirect } = this.state;
-    console.log(coinDetail);
-    if(isRedirect) {
-        return <Redirect to={{
-            pathname: `/coin-market/${coinDetail.symbol}`,
-            state: {
-                coinKey: coinDetail.key
-            }
-        }} />
+    const { coinList, coinDetail, isRedirect, markets, marketChoosed } = this.state;
+    if (isRedirect) {
+      return <Redirect to={{
+        pathname: `/coin-market/${coinDetail.symbol}`,
+        state: {
+          coinKey: coinDetail.key
+        }
+      }} />
     }
     return (
       <>
@@ -61,21 +87,17 @@ export class CoinListMarket extends Component {
           <div className="with-nav-tabs currency-tabs">
             <div className="tab-header">
               <ul className="nav nav-tabs">
-                <li className="active">
-                  <a href="#crypto" data-toggle="tab">
-                    Crypto
-                  </a>
-                </li>
-                <li>
-                  <a href="#forex" data-toggle="tab">
-                    Forex
-                  </a>
-                </li>
-                <li>
-                  <a href="#stocks" data-toggle="tab">
-                    Stocks
-                  </a>
-                </li>
+                {
+                  markets.map((market) => {
+                    return (
+                    <li className={`market-item ${ market.id === marketChoosed.id ? 'market-item-active' : '' }`} key={markets.id} onClick={() => this.chooseMarket(market)}>
+                          {
+                            market.name
+                          }
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
             <div className="container">
@@ -95,7 +117,7 @@ export class CoinListMarket extends Component {
                     </thead>
                     <tbody>
                       {coinList.map((coin, index) => {
-                        
+
                         return (
                           <tr data-href="#" className="coin-market-item" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
                             <td>
@@ -114,11 +136,11 @@ export class CoinListMarket extends Component {
                             </td>
                             <td>
                               <span className="value_ticker">
-                                { `${ formatCryptoUSDCurrency(coin.lastPrice) }`}
+                                {`${formatCryptoUSDCurrency(coin.lastPrice)}`}
                               </span>
                             </td>
                             <td>
-                              <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative' }>
+                              <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative'}>
                                 {`${coin.priceChangePercent} %`}
                               </span>
                             </td>

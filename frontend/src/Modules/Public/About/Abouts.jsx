@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Footer } from "../Shared/Components/Layouts/Footer";
+
 
 export class Abouts extends Component {
     constructor(props) {
@@ -31,9 +33,9 @@ export class Abouts extends Component {
                                         predefined chunks as necessary, making this the first true
                                         generator.
                                     </p>
-                                    <a href="#" className="btn btn-default mr-20 mb-10">
+                                    <Link to="/contact" className="btn btn-default mr-20 mb-10">
                                         Contact us
-                                    </a>
+                                    </Link>
                                     <div className="play-button">
                                         <a
                                             href="http://www.youtube.com/watch?v=0O2aH4XLbto"
@@ -58,7 +60,7 @@ export class Abouts extends Component {
                             </div>
                             <div className="col-md-6">
                                 <div className="text-right">
-                                    <img src="Assets/Public/asets/img/about.jpg" className="img-responsive" alt="" />
+                                    <img src="../../../../AssetsHome/assets/img/about.jpg" className="img-responsive" alt="" />
                                 </div>
                                 <div className="quote">
                                     It is a long established fact that a reader will be distracted by the
@@ -289,7 +291,7 @@ export class Abouts extends Component {
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
                                             <img
-                                                src="Assets/Public/img/avatar-1.jpg"
+                                                src="../../../../AssetsHome/assets/img/avatar-11.jpg"
                                                 className="quoteAvatar"
                                                 alt=""
                                             />
@@ -321,7 +323,7 @@ export class Abouts extends Component {
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
                                             <img
-                                                src="assets/img/avatar-1.jpg"
+                                                src="../../../../AssetsHome/assets/img/avatar-11.jpg"
                                                 className="quoteAvatar"
                                                 alt=""
                                             />
@@ -354,7 +356,7 @@ export class Abouts extends Component {
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
                                             <img
-                                                src="assets/img/avatar-1.jpg"
+                                                src="../../../../AssetsHome/assets/img/avatar-11.jpg"
                                                 className="quoteAvatar"
                                                 alt=""
                                             />
@@ -387,7 +389,7 @@ export class Abouts extends Component {
                                     <div className="testimonial-panel">
                                         <div className="tes-quoteInfo">
                                             <img
-                                                src="assets/img/avatar-1.jpg"
+                                                src="../../../../AssetsHome/assets/img/avatar-11.jpg"
                                                 className="quoteAvatar"
                                                 alt=""
                                             />
@@ -424,7 +426,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/01.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/01.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -433,7 +435,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/02.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/02.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -442,7 +444,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/03.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/03.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -451,7 +453,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/04.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/04.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -460,7 +462,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/05.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/05.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -469,7 +471,7 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/06.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/06.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
@@ -478,16 +480,17 @@ export class Abouts extends Component {
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/07.png"
+                                                src="../../../../AssetsHome/assets/img/brand-logo/07.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
+                                                
                                             />
                                         </a>
                                     </div>
                                     <div className="logo-item">
                                         <a href="#" target="_blank">
                                             <img
-                                                src="assets/img/brand-logo/08.png"
+                                                src=".../../../../AssetsHome/assets/img/brand-logo/08.png"
                                                 className="img-responsive"
                                                 alt="client-logo"
                                             />
