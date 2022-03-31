@@ -1,9 +1,18 @@
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import userService from "../../Services/UserService";
 import Stack from "@mui/material/Stack";
-
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 class UserList extends Component {
   constructor(props) {
@@ -14,14 +23,15 @@ class UserList extends Component {
         type: "",
         content: "",
       },
-      isOpenDiaglog: false
+      isOpenDiaglog: false,
+      chooseDeleteUser: "",
+      isLoading: false,
     };
   }
 
   componentDidMount() {
     this.getUserList();
     this.getMessage();
-    this.getUserListId();
   }
 
   getMessage = () => {
@@ -45,52 +55,44 @@ class UserList extends Component {
       });
   };
 
-
-  getUserListId = async () => {
-    const id = this.props.match.params.id;
-    console.log(id);
-    await userService
-      .getList(id)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          id: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  onDeleteUser = async (id) => {
-    let { message } = this.state;
-    await userService.deleteUser(id).then((res) => {
+  onDeleteUser = async () => {
+    this.setState({ isLoading: true });
+    let { message, chooseDeleteUser } = this.state;
+    await userService.deleteUser(chooseDeleteUser.Id).then((res) => {
       message.type = "success";
       message.content = "Delete user successful !";
-      this.setState({ message });
-      this.getUserListId();
+      this.setState({ message, isOpenDiaglog: false });
+      this.getUserList();
+      this.setState({ isLoading: false });
     });
-  }
+  };
 
   handleClose = () => {
     this.setState({
-      isOpenDiaglog: false
+      isOpenDiaglog: false,
     });
-  }
+  };
 
-  handleOpen = () => {
+  handleOpen = (user) => {
     this.setState({
-      isOpenDiaglog: true
+      chooseDeleteUser: user,
+      isOpenDiaglog: true,
     });
-  }
-
-
+  };
 
   render() {
-    const { userList, message, isOpenDiaglog } = this.state;
+    const { userList, message, isOpenDiaglog, chooseDeleteUser, isLoading } =
+      this.state;
     return (
       <>
         <div class=" wrapper main-wrapper row">
+          {isLoading ? (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          ) : (
+            ""
+          )}
           <div className="col-lg-12">
             {message.content !== "" && message.type !== "" ? (
               <Stack sx={{ width: "100%" }} spacing={2}>
@@ -143,35 +145,19 @@ class UserList extends Component {
                                 <td>{user.PhoneNumber}</td>
                                 <td>{user.CreatedAt}</td>
                                 <td>
-                                  <Link to={`/admin/users/${user.Id}`} className="btn btn-sm btn-primary">
+                                  <Link
+                                    to={`/admin/users/${user.Id}`}
+                                    className="btn btn-sm btn-primary"
+                                  >
                                     Edit
                                   </Link>
-                                </td>
-                                <td>
-                                  <button onClick={() => this.handleOpen} className="btn btn-sm btn-danger" > Delete</button>
-                                  <Dialog
-                                    open={isOpenDiaglog}
-                                    onClose={this.handleClose}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
+                                  <button
+                                    onClick={() => this.handleOpen(user)}
+                                    className="btn btn-sm btn-danger"
                                   >
-                                    <DialogTitle id="alert-dialog-title">
-                                      {"Use Google's location service?"}
-                                    </DialogTitle>
-                                    <DialogContent>
-                                      <DialogContentText id="alert-dialog-description">
-                                        Are you sure delete post 
-                                      </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                      <Button onClick={this.handleOpen}>
-                                        Disagree
-                                      </Button>
-                                      <Button onClick={() => this.onDeleteUser(user.Id)} autoFocus>
-                                        Agree
-                                      </Button>
-                                    </DialogActions>
-                                  </Dialog>
+                                    {" "}
+                                    Delete
+                                  </button>
                                 </td>
                               </tr>
                             );
@@ -179,6 +165,27 @@ class UserList extends Component {
                         </tbody>
                       </table>
                     </div>
+                    <Dialog
+                      open={isOpenDiaglog}
+                      onClose={this.handleClose}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        {"Alert"}
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          Are you sure delete user {chooseDeleteUser.Email}
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={this.handleClose}>Disagree</Button>
+                        <Button onClick={this.onDeleteUser} autoFocus>
+                          Agree
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
                   </div>
                 </div>
               </div>

@@ -3,8 +3,10 @@ import { Redirect } from "react-router-dom";
 import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import Form from "../../../../../Shared/Components/Form";
 import userService from "../../Services/UserService";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { convertDate } from "../../../../../Helpers/helpers";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 class UserDetails extends Form {
   constructor(props) {
@@ -17,7 +19,7 @@ class UserDetails extends Form {
         PhoneNumber: "",
         Status: "",
         AccountType: "",
-        Role: ""
+        Role: "",
       }),
       isRedirect: false,
       message: {
@@ -25,61 +27,62 @@ class UserDetails extends Form {
         content: "",
       },
       roles: [],
+      isLoading: false,
     };
   }
 
   componentDidMount() {
-      this.getUserDetails();
-      this.getRoles();
+    this.getUserDetails();
+    this.getRoles();
   }
 
   getUserDetails = async () => {
-      const { id } = this.props.match.params;
-     await userService.getDetails(id)
-        .then((res) => {
-            let { form } = this.state;
-            const data = res.data;
-            this._fillForm({
-                FullName: data.FullName,
-                Email: data.Email,
-                PhoneNumber: data.PhoneNumber,
-                Birthday: data.Birthday,
-                Status: data.Status,
-                AccountType: data.AccountType,
-                Role: ''
-            });
-            this.getUserRoles();
-        })
-  }
+    const { id } = this.props.match.params;
+    await userService.getDetails(id).then((res) => {
+      let { form } = this.state;
+      const data = res.data;
+      this._fillForm({
+        FullName: data.FullName,
+        Email: data.Email,
+        PhoneNumber: data.PhoneNumber,
+        Birthday: data.Birthday,
+        Status: data.Status,
+        AccountType: data.AccountType,
+        Role: "",
+      });
+      this.getUserRoles();
+    });
+  };
 
   getUserRoles = async () => {
     const { id } = this.props.match.params;
     let { form } = this.state;
     let roleId = 0;
-    await userService.getUserRoles(id)
-        .then((res) => {
-            const data = res.data;
-            console.log("🚀 ~ file: UserDetails.jsx ~ line 64 ~ UserDetails ~ .then ~ data", data)
-            roleId = data[0].Role.Id;
-            form.Role.value = roleId;
-            this.setState({ form });
-        });
-  }
+    await userService.getUserRoles(id).then((res) => {
+      const data = res.data;
+      console.log(
+        "🚀 ~ file: UserDetails.jsx ~ line 64 ~ UserDetails ~ .then ~ data",
+        data
+      );
+      roleId = data[0].Role.Id;
+      form.Role.value = roleId;
+      this.setState({ form });
+    });
+  };
 
   getRoles = async () => {
-    await userService.getRoleList()
-        .then((res) => {
-            this.setState({
-                roles: res.data
-            });
-        })
-  }
-
+    await userService.getRoleList().then((res) => {
+      this.setState({
+        roles: res.data,
+      });
+    });
+  };
 
   onUpdateUser = async () => {
     const { id } = this.props.match.params;
     this._validateForm();
     if (this._isFormValid()) {
+      this.setState({ isLoading: true });
       const { form } = this.state;
       const data = {
         FullName: form.FullName.value,
@@ -88,9 +91,9 @@ class UserDetails extends Form {
         PhoneNumber: form.PhoneNumber.value,
         AccountType: form.AccountType.value,
         Status: form.Status.value,
-        RoleId: form.Role.value
+        RoleId: form.Role.value,
       };
-      
+
       await userService.updateUser(id, data).then((res) => {
         let { message } = this.state;
         message.type = "success";
@@ -98,12 +101,12 @@ class UserDetails extends Form {
         this.setState({
           isRedirect: true,
           message,
+          isLoading: false,
         });
       });
     } else {
     }
   };
-
 
   render() {
     const {
@@ -113,9 +116,9 @@ class UserDetails extends Form {
       PhoneNumber,
       Status,
       AccountType,
-      Role
+      Role,
     } = this.state.form;
-    const { isRedirect, message, roles } = this.state;
+    const { isRedirect, message, roles, isLoading } = this.state;
     if (isRedirect) {
       return (
         <Redirect
@@ -130,6 +133,13 @@ class UserDetails extends Form {
       <>
         <div className="wrapper main-wrapper row" style={{}}>
           <div className="col-xs-12">
+            {isLoading ? (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
+            ) : (
+              ""
+            )}
             <div className="page-title">
               <div className="pull-left">
                 {/* PAGE HEADING TAG - START */}
@@ -211,16 +221,16 @@ class UserDetails extends Form {
                             required
                             className="form-control"
                             value={Role.value}
-                            onChange={(ev) => this._setValue(ev, 'Role')}
+                            onChange={(ev) => this._setValue(ev, "Role")}
                           >
                             <option value="">Choose Role</option>
-                            {
-                                roles.map((role) => {
-                                    return(
-                                        <option value={role.Id}>{role.Description}</option>
-                                    )
-                                })
-                            }
+                            {roles.map((role) => {
+                              return (
+                                <option value={role.Id}>
+                                  {role.Description}
+                                </option>
+                              );
+                            })}
                           </select>
                           {Role.err !== "" ? (
                             Role.err === "*" ? (

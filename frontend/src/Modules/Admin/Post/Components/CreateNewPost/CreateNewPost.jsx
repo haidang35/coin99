@@ -99,7 +99,7 @@ export class CreateNewPost extends Form {
     const { title, desc, categoryId, status, thumbnail,postType } = this.state.form;
     const { isRedirectSuccess, postCategoryList, content } = this.state;
     if (isRedirectSuccess) {
-      return <Redirect to={"/admin/post"} />;
+      return <Redirect to={"/admin/posts"} />;
     }
     return (
       <>

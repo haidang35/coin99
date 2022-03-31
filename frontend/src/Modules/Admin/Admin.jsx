@@ -30,7 +30,6 @@ export function Admin() {
         const currentUserData = res.data;
         localStorage.setItem("current_user_id", res.data.Id);
         setCurrentUser(currentUserData);
-      
       })
       .catch((err) => {
         console.log(err);
@@ -68,7 +67,7 @@ export function Admin() {
               <PostCategory />
             </Route>
             <Route path="/admin/post-categories/:id" exact>
-              <UpdateCategory/>
+              <UpdateCategory />
             </Route>
             <Route path="/admin/post-categories/create" exact>
               <CreatePostCategory />
@@ -76,11 +75,11 @@ export function Admin() {
             <Route path="/admin/users" exact>
               <User />
             </Route>
-            <Route path="/admin/users/:id" exact>
-              <UserDetails />
-            </Route>
             <Route path="/admin/users/create" exact>
               <NewUser />
+            </Route>
+            <Route path="/admin/users/:id" exact>
+              <UserDetails />
             </Route>
           </Switch>
         </section>

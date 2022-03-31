@@ -67,6 +67,7 @@ namespace backend.Controllers
 
         [Route("~/api/auth-user")]
         [HttpGet]
+        [Authorize]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUserAuth()
         {
@@ -78,6 +79,7 @@ namespace backend.Controllers
 
         [Route("~/api/auth-user/roles")]
         [HttpGet]
+        [Authorize]
         [ResponseType(typeof(ICollection<UserRole>))]
         public IHttpActionResult GetUserRolesAuth()
         {

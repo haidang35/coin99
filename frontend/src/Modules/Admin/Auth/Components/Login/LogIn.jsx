@@ -5,6 +5,8 @@ import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import Form from "../../../../../Shared/Components/Form";
 import authService from "../../Services/AuthService";
 import "./Login.scss";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 export class LogIn extends Form {
   constructor(props) {
@@ -15,6 +17,7 @@ export class LogIn extends Form {
         password: "",
       }),
       message: "",
+      isLoading: false,
     };
   }
 
@@ -26,7 +29,7 @@ export class LogIn extends Form {
     this._validateForm();
     const { email, password } = this.state.form;
     if (this._isFormValid()) {
-      console.log(this.state.form);
+      this.setState({ isLoading: true });
       const params = new URLSearchParams();
       params.append("grant_type", "password");
       params.append("username", email.value);
@@ -41,6 +44,7 @@ export class LogIn extends Form {
           this.setState({
             message:
               "Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản hoặc mật khẩu",
+            isLoading: false
           });
         });
     } else {
@@ -57,9 +61,17 @@ export class LogIn extends Form {
 
   render() {
     const { email, password } = this.state.form;
-    const { message } = this.state;
+    const { message, isLoading } = this.state;
     return (
       <>
+        {isLoading ? (
+          <Box sx={{ width: "100%" }}>
+            <LinearProgress />
+          </Box>
+        ) : (
+          ""
+        )}
+
         <div className="login">
           <div className="container">
             <div className="row">
