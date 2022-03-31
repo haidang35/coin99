@@ -4,7 +4,7 @@ import { Home } from "./Home/Home";
 import styles from "./Shared/Styles/Public.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Market } from "./Market/Market";
-import { Navbar } from "./Shared/Components/Layouts/Navbar";
+import Navbar  from "./Shared/Components/Layouts/Navbar";
 import { Slider } from "../Public/Shared/Components/Slider/Slider";
 import Coin from "./Coin/Components/Coin";
 import { Contact } from "./Contact/Contact";

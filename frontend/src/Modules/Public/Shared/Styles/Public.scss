@@ -21,4 +21,8 @@ body {
         background-color: #0a0f58;
         transition: background-color 200ms linear;
     }
+
+    .navbar-item-active a {
+        color: rgb(27, 205, 218);
+    }
 }

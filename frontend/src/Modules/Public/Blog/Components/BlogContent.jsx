@@ -54,18 +54,18 @@ export class BlogContent extends Component {
       if (authToken === "" || authToken === null) {
         isRedirect = false;
         isOpenDiaglog = true;
-      }else {
+      } else {
         await authService.getAuthUser(authToken)
-            .then((res) => {
-                const userData = res.data;
-                localStorage.setItem('current_user_id', userData.Id);
-                if(userData.AccountType === 2) {
-                    isRedirect = true;
-                }else {
-                    isRedirect = false;
-                    isOpenDiaglog = true;
-                }
-        });
+          .then((res) => {
+            const userData = res.data;
+            localStorage.setItem('current_user_id', userData.Id);
+            if (userData.AccountType === 2) {
+              isRedirect = true;
+            } else {
+              isRedirect = false;
+              isOpenDiaglog = true;
+            }
+          });
       }
     }
     this.setState({
@@ -99,12 +99,58 @@ export class BlogContent extends Component {
     if (isRedirect) {
       return <Redirect to={`/${postDetails.Slug}`} />;
     }
-
-    if (isRedirectToLogin) {
+    const hasAccessToken = localStorage.getItem('access_token') !== '' && localStorage.getItem('access_token') !== null;
+    if (isRedirectToLogin && !hasAccessToken) {
       return <Redirect to={"/signin"} />;
+    } else if (isRedirectToLogin && hasAccessToken) {
+      return <Redirect to={"/Lending"} />;
     }
     return (
       <>
+        <div
+          className="page_header"
+          data-parallax-bg-image="assets/img/1920x650-3.jpg"
+          data-parallax-direction=""
+          style={{
+            position: "relative",
+            background: "transparent",
+            overflow: "hidden",
+            zIndex: 1
+          }}
+        >
+          <div
+            className="parallax-inner"
+            style={{
+              position: "absolute",
+              backgroundImage: 'url(https://images.pexels.com/photos/2874066/pexels-photo-2874066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              width: 1519,
+              height: 350,
+              transform: "translate3d(0px, 0px, 0px)",
+              transition: "transform 100ms ease 0s",
+              zIndex: -1
+            }}
+          />
+          <div className="header-content">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-8 col-sm-offset-2">
+                  <div className="haeder-text">
+                    <h1>Blog details</h1>
+                    <p>
+                      It is a long established fact that a reader will be distracted by
+                      the readable content of a page when looking at its layout. The
+                      point of using Lorem Ipsum is tha
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="blog_wrapper">
           <div className="container">
             <div className="row">
@@ -128,6 +174,7 @@ export class BlogContent extends Component {
                           <button
                             style={{ marginBottom: "1rem" }}
                             className="btn btn-sm btn-warning"
+                            onClick={() => this.onViewBlogDetails(post)}
                           >
                             PREMIUM
                           </button>

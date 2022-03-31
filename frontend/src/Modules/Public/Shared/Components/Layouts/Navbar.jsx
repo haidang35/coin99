@@ -1,8 +1,8 @@
 import React from "react";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export class Navbar extends Component {
+ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +14,7 @@ export class Navbar extends Component {
     this.scrollChangeStyle();
     window.addEventListener("scroll", this.scrollChangeStyle);
   }
+
 
   scrollChangeStyle = (event) => {
     if (window.scrollY >= 200) {
@@ -36,7 +37,7 @@ export class Navbar extends Component {
   render() {
     const { isScroll } = this.state;
     const { currentUser } = this.props;
-    console.log("🚀 ~ file: Navbar.jsx ~ line 38 ~ Navbar ~ render ~ currentUser", currentUser)
+    const pathName = window.location.pathname;
     return (
       <>
         {/* <div id="loader-wrapper">
@@ -126,20 +127,22 @@ export class Navbar extends Component {
             </div>
             <div className="collapse navbar-collapse" id="navbar-menu">
               <ul className="nav navbar-nav" data-in="" data-out="">
-                <li className="active">
+                <li className={pathName === '/' ? 'navbar-item-active' : ''}  style={{
+                  color: "color: #fff;"
+                }}>
                   <Link to="/">Home</Link>
                 </li>
-                <li>
-                  <Link to="/Lending">Lending</Link>
+                <li className={pathName === '/lending' ? 'navbar-item-active' : ''} >
+                  <Link to="/lending">Lending</Link>
                 </li>
-                <li>
+                <li className={pathName === '/coin-market' ? 'navbar-item-active' : ''} >
                   <Link to="/coin-market">Coin Market</Link>
                 </li>
-                <li>
-                  <Link to="/Contact">Contact</Link>
+                <li className={pathName === '/contact' ? 'navbar-item-active' : ''}>
+                  <Link to="/contact">Contact</Link>
                 </li>
-                <li>
-                  <Link to="/Blog">Blog</Link>
+                <li className={pathName === '/blog' ? 'navbar-item-active' : ''}>
+                  <Link to="/blog">Blog</Link>
                 </li>
               </ul>
             </div>
@@ -149,3 +152,5 @@ export class Navbar extends Component {
     );
   }
 }
+
+export default withRouter(Navbar);
