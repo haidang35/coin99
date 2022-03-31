@@ -16,6 +16,7 @@ export class BlogContent extends Component {
     this.state = {
       postList: [],
       categoriesList: [],
+      recentPosts: [],
       isRedirect: false,
       postDetails: "",
       isOpenDiaglog: false,
@@ -26,6 +27,7 @@ export class BlogContent extends Component {
   componentDidMount() {
     this.getPostList();
     this.getCategoriesList();
+    this.getRecentPosts();
   }
 
   getCategoriesList = async () => {
@@ -46,6 +48,14 @@ export class BlogContent extends Component {
     });
   };
 
+  getRecentPosts = async () => {
+    await publicService.getRecentPosts().then((res) => {
+      this.setState({
+        recentPosts: res.data,
+      });
+    });
+  };
+
   onViewBlogDetails = async (post) => {
     let isRedirect = true;
     let { isOpenDiaglog } = this.state;
@@ -55,16 +65,22 @@ export class BlogContent extends Component {
         isRedirect = false;
         isOpenDiaglog = true;
       } else {
-        await authService.getAuthUser(authToken)
+        await authService
+          .getAuthUser(authToken)
           .then((res) => {
             const userData = res.data;
-            localStorage.setItem('current_user_id', userData.Id);
+            localStorage.setItem("current_user_id", userData.Id);
             if (userData.AccountType === 2) {
               isRedirect = true;
             } else {
               isRedirect = false;
               isOpenDiaglog = true;
             }
+          })
+          .catch((err) => {
+            this.setState({
+              isOpenDiaglog: true,
+            });
           });
       }
     }
@@ -95,11 +111,14 @@ export class BlogContent extends Component {
       postDetails,
       isOpenDiaglog,
       isRedirectToLogin,
+      recentPosts,
     } = this.state;
     if (isRedirect) {
       return <Redirect to={`/${postDetails.Slug}`} />;
     }
-    const hasAccessToken = localStorage.getItem('access_token') !== '' && localStorage.getItem('access_token') !== null;
+    const hasAccessToken =
+      localStorage.getItem("access_token") !== "" &&
+      localStorage.getItem("access_token") !== null;
     if (isRedirectToLogin && !hasAccessToken) {
       return <Redirect to={"/signin"} />;
     } else if (isRedirectToLogin && hasAccessToken) {
@@ -115,22 +134,23 @@ export class BlogContent extends Component {
             position: "relative",
             background: "transparent",
             overflow: "hidden",
-            zIndex: 1
+            zIndex: 1,
           }}
         >
           <div
             className="parallax-inner"
             style={{
               position: "absolute",
-              backgroundImage: 'url(https://images.pexels.com/photos/2874066/pexels-photo-2874066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+              backgroundImage:
+                "url(https://images.pexels.com/photos/2874066/pexels-photo-2874066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
               backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              width: 1519,
+              width: "100%",
               height: 350,
               transform: "translate3d(0px, 0px, 0px)",
               transition: "transform 100ms ease 0s",
-              zIndex: -1
+              zIndex: -1,
             }}
           />
           <div className="header-content">
@@ -140,7 +160,8 @@ export class BlogContent extends Component {
                   <div className="haeder-text">
                     <h1>Blog</h1>
                     <p>
-                    Synthesize information about the coin market, new news about the coin market.
+                      Synthesize information about the coin market, new news
+                      about the coin market.
                     </p>
                   </div>
                 </div>
@@ -264,78 +285,34 @@ export class BlogContent extends Component {
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">Recent Post</h4>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Nunc in ante vulputate est fermentum faucibus.
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
+                  {recentPosts.map((post) => {
+                    return (
+                      <div className="post post_list post_list_sm">
+                        <div className="post_img">
                           <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
+                            <img
+                              src={BASE_URL_SERVER + post.Thumbnail}
+                              alt=""
+                            />
                           </a>
-                        </span>
+                        </div>
+                        <div className="post_body">
+                          <h4 className="post_heading">
+                            <a href={`/${post.Slug}`}>
+                              {post.Title}
+                            </a>
+                          </h4>
+                          <div className="post_meta">
+                            <span className="comment_link">
+                              <a href="#">
+                                <i className="fa fa-comment-o" />9 Comments
+                              </a>
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Ut et ipsum nec nulla porttitor ullamcorper.
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
-                          <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../AssetsHome/assets/img/blog/100x75-3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Fusce ac tortor et lacus volutpat euismod .
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
-                          <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">My Social link</h4>

@@ -13,20 +13,28 @@ let isLogged =
   localStorage.getItem("access_token") !== "";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  useEffect(async () =>  {
-    const accessToken = localStorage.getItem("access_token");
-    await authService.getUserRoles(accessToken)
-      .then((res) => {
-        const userRoles = res.data;
-        userRoles.forEach((userRole) => {
-            if(userRole.RoleId === 1 || userRole.RoleId === 2) {
+
+  useEffect(async () => {
+    const checkIsAdmin = localStorage.getItem("role");
+    if (checkIsAdmin === "admin") {
+      setIsAdmin(true);
+    } else if (checkIsAdmin === "" || checkIsAdmin === null) {
+      const accessToken = localStorage.getItem("access_token");
+      if (accessToken !== null && accessToken !== "") {
+        await authService.getUserRoles(accessToken).then((res) => {
+          const userRoles = res.data;
+          userRoles.forEach((userRole) => {
+            if (userRole.RoleId === 1 || userRole.RoleId === 2) {
+              localStorage.setItem("role", "admin");
               setIsAdmin(true);
             }
+          });
         });
-      })
-  }, []);
+      }
+    }
+  });
   return (
     <>
       <BrowserRouter>
@@ -43,7 +51,6 @@ function App() {
           <Route path="/">
             <Public />
           </Route>
-          
         </Switch>
       </BrowserRouter>
     </>

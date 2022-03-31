@@ -6,12 +6,12 @@ import postService from "../../Services/PostService";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Stack from "@mui/material/Stack";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
 export class TrashPost extends Component {
   constructor(props) {
@@ -22,7 +22,8 @@ export class TrashPost extends Component {
         type: "",
         content: "",
       },
-      isOpenDiaglog: false
+      isOpenDiaglog: false,
+      chooseDeletePost: ''
     };
   }
 
@@ -32,7 +33,7 @@ export class TrashPost extends Component {
 
   getTrashPostList = async () => {
     await postService
-      .getList(POST_STATUS.DEACTIVE) 
+      .getList(POST_STATUS.DEACTIVE)
       .then((res) => {
         console.log(res.data);
         this.setState({
@@ -54,30 +55,31 @@ export class TrashPost extends Component {
     });
   };
 
-  onDeletePost = async (postId) => { 
-    let { message } = this.state;
-    await postService.delete(postId).then((res) => {
+  onDeletePost = async () => {
+    let { message, chooseDeletePost } = this.state;
+    await postService.delete(chooseDeletePost.Id).then((res) => {
       message.type = "success";
       message.content = "Delete post successful !";
       this.setState({ message });
-      this.getTrashPostList(); 
+      this.getTrashPostList();
     });
   };
 
   handleClose = () => {
-      this.setState({
-          isOpenDiaglog: false
-      });
-  }
+    this.setState({
+      isOpenDiaglog: false,
+    });
+  };
 
-  handleOpen = () => {
-      this.setState({
-          isOpenDiaglog: true
-      });
-  }
+  handleOpen = (post) => {
+    this.setState({
+      isOpenDiaglog: true,
+      chooseDeletePost: post
+    });
+  };
 
   render() {
-    const { postList, message, isOpenDiaglog } = this.state;
+    const { postList, message, isOpenDiaglog, chooseDeletePost } = this.state;
     return (
       <>
         <div className=" wrapper main-wrapper row">
@@ -154,34 +156,11 @@ export class TrashPost extends Component {
                                     Restore
                                   </button>
                                   <button
-                                    onClick={this.handleOpen}
+                                    onClick={() => this.handleOpen(item)}
                                     className="btn btn-sm btn-danger"
                                   >
                                     Delete
                                   </button>
-                                  <Dialog
-                                    open={isOpenDiaglog}
-                                    onClose={this.handleClose}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
-                                  >
-                                    <DialogTitle id="alert-dialog-title">
-                                      {"Use Google's location service?"}
-                                    </DialogTitle>
-                                    <DialogContent>
-                                      <DialogContentText id="alert-dialog-description">
-                                        Are you sure delete post {item.Title}
-                                      </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                      <Button onClick={this.handleClose}>
-                                        Disagree
-                                      </Button>
-                                      <Button onClick={() => this.onDeletePost(item.Id)} autoFocus>
-                                        Agree
-                                      </Button>
-                                    </DialogActions>
-                                  </Dialog>
                                 </td>
                               </tr>
                             );
@@ -195,6 +174,27 @@ export class TrashPost extends Component {
             </section>
           </div>
         </div>
+        <Dialog
+          open={isOpenDiaglog}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Use Google's location service?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure delete post {chooseDeletePost.Title}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose}>Disagree</Button>
+            <Button onClick={this.onDeletePost} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
       </>
     );
   }

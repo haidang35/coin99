@@ -35,7 +35,7 @@ namespace backend.Controllers
             Debug.WriteLine($"Status {status}");
             if (!string.IsNullOrEmpty(status))
             {
-                switch(status)
+                switch (status)
                 {
                     case "active":
                         postList = db.Posts.Where(p => p.Status == PostStatus.Active).OrderByDescending(u => u.CreateAt).ToList();
@@ -50,7 +50,7 @@ namespace backend.Controllers
                         break;
                 }
             }
-            if(!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(search))
             {
                 postList = postList.Where(p => p.Title.Contains(search)).OrderByDescending(u => u.CreateAt).ToList();
             }
@@ -90,14 +90,14 @@ namespace backend.Controllers
         public IHttpActionResult GetPostBySlug(string slug)
         {
             var post = db.Posts.Where(p => p.Slug == slug).FirstOrDefault();
-            if(post == null)
+            if (post == null)
             {
                 return BadRequest("Post doesn't exist");
             }
             var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
             var currentUserIdentity = identity.FindFirst("currentUserId");
             Debug.WriteLine(currentUserIdentity);
-            if(currentUserIdentity != null)
+            if (currentUserIdentity != null)
             {
                 Debug.WriteLine("Check");
                 var currentUserId = currentUserIdentity.Value;
@@ -108,6 +108,33 @@ namespace backend.Controllers
                 }
             }
             return Ok(post);
+        }
+
+        [Route("~/api/posts/{slug}/recent-posts")]
+        [HttpGet]
+        [AllowAnonymous]
+        [ResponseType(typeof(ICollection<Post>))]
+        public IHttpActionResult GetRecentPosts(string slug)
+        {
+            var post = db.Posts.Where(p => p.Slug == slug).FirstOrDefault();
+            if (post == null)
+            {
+                return BadRequest("Post doesn't exist");
+            }
+            var relatedPosts = db.Posts.Where(p => p.Id != post.Id).OrderByDescending(p => p.CreateAt).Take(5).ToList();
+            return Ok(relatedPosts);
+
+        }
+
+        [Route("~/api/posts/recent-posts")]
+        [HttpGet]
+        [AllowAnonymous]
+        [ResponseType(typeof(ICollection<Post>))]
+        public IHttpActionResult GetRecentPostsWithoutSlug()
+        {
+            var relatedPosts = db.Posts.OrderByDescending(p => p.CreateAt).Take(5).ToList();
+            return Ok(relatedPosts);
+
         }
 
         // PUT: api/Post/5
@@ -182,13 +209,13 @@ namespace backend.Controllers
         public IHttpActionResult UpdateStatus(int id, string status)
         {
             Post post = db.Posts.Find(id);
-            if(post == null)
+            if (post == null)
             {
                 return NotFound();
             }
-            if(! string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(status))
             {
-                switch(status)
+                switch (status)
                 {
                     case "active":
                         post.Status = PostStatus.Active;
@@ -264,7 +291,7 @@ namespace backend.Controllers
                 }
             }
             return Ok(post);
-            
+
         }
 
         [Route("~/api/test-upload-file")]
@@ -292,7 +319,7 @@ namespace backend.Controllers
                 string[] FileExtension = new string[] { ".jpg", ".png", ".jpeg", ".gif" };
                 if (FileExtension.Contains(postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."))))
                 {
-                    string imageName =  postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."));
+                    string imageName = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf("."));
                     string PathDir = "~/Uploads";
                     string pathImage = Path.Combine(HttpContext.Current.Server.MapPath(PathDir), imageName);
                     postedFile.SaveAs(pathImage);

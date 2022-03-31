@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import { BASE_URL_SERVER } from "../../../../Configs/server";
 import authService from "../../../Admin/Auth/Services/AuthService";
+import { CoinBar } from "../../Shared/Components/CoinBar/CoinBar";
 import publicService from "../../Shared/Services/PublicService";
-
 
 class BlogDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       categoriesList: [],
+      relatedPosts: [],
       blog: "",
       isRedirect: false,
     };
@@ -18,7 +19,10 @@ class BlogDetails extends Component {
   componentDidMount() {
     this.getPostDetails();
     this.getCategoriesList();
+    this.getRelatedPosts();
   }
+
+
   getCategoriesList = async () => {
     await publicService.getCategoriesList().then((res) => {
       this.setState({
@@ -39,13 +43,22 @@ class BlogDetails extends Component {
         });
       })
       .catch((err) => {
-         this.setState({
-           isRedirect: true
-         });
+        this.setState({
+          isRedirect: true,
+        });
       });
   };
+
+  getRelatedPosts = async () => {
+    const { params } = this.props.match;
+    await publicService.getRelatedPosts(params.slug).then((res) => {
+      this.setState({
+        relatedPosts: res.data,
+      });
+    });
+  };
   render() {
-    const { blog, isRedirect, categoriesList   } = this.state;
+    const { blog, isRedirect, categoriesList, relatedPosts } = this.state;
     if (isRedirect) {
       return <Redirect to="/blog" />;
     }
@@ -63,91 +76,13 @@ class BlogDetails extends Component {
                 <div className="col-sm-8 col-sm-offset-2">
                   <div className="haeder-text">
                     <h1>{blog !== "" ? blog.Title : ""}</h1>
-                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="ticker">
-          <div className="list-wrpaaer">
-            <ul id="marquee-horizontal">
-              <li className="list-item">
-                <div className="list-item-currency">BCCEUR </div>
-                <div className="list-item-currency upgrade">
-                  <span>
-                    1,244.26331 <span className="arrow-up">↗</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTCGBP</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    7,088.48 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BCCUSD</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    1,470 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTCEUR</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    8,444.84879 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTCGBP</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    7,088.48 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTCRUB</div>
-                <div className="list-item-currency upgrade">
-                  <span>
-                    614,411.15205 <span className="arrow-up">↗</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTCUSD</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    10,487.9123 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTGBTC</div>
-                <div className="list-item-currency downgrade">
-                  <span>
-                    0.013 <span className="arrow-down">↘</span>
-                  </span>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="list-item-currency">BTGEUR</div>
-                <div className="list-item-currency upgrade">
-                  <span>
-                    118.91234 <span className="arrow-up">↗</span>
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <CoinBar />
         <div className="blog_wrapper">
           <div className="container">
             <div className="row">
@@ -326,78 +261,34 @@ class BlogDetails extends Component {
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">Recent Post</h4>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../../Assets/Public/assets/img/blog/100x75-1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Nunc in ante vulputate est fermentum faucibus.
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
-                          <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
+                  {relatedPosts.map((post, index) => {
+                    return (
+                      <div key={index} className="post post_list post_list_sm">
+                        <div className="post_img">
+                          <a href={`/${post.Slug}`}>
+                            <img
+                              src={BASE_URL_SERVER + post.Thumbnail}
+                              alt=""
+                            />
                           </a>
-                        </span>
+                        </div>
+                        <div className="post_body">
+                          <h4 className="post_heading">
+                            <a href={`/${post.Slug}`}>
+                              {post.Title}
+                            </a>
+                          </h4>
+                          <div className="post_meta">
+                            <span className="comment_link">
+                              <a href="#">
+                                <i className="fa fa-comment-o" />9 Comments
+                              </a>
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../../Assets/Public/assets/img/blog/100x75-2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Ut et ipsum nec nulla porttitor ullamcorper.
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
-                          <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="post post_list post_list_sm">
-                    <div className="post_img">
-                      <a href="#">
-                        <img
-                          src="../../../../../Assets/Public/assets/img/blog/100x75-3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="post_body">
-                      <h4 className="post_heading">
-                        <a href="#">
-                          Fusce ac tortor et lacus volutpat euismod .
-                        </a>
-                      </h4>
-                      <div className="post_meta">
-                        <span className="comment_link">
-                          <a href="#">
-                            <i className="fa fa-comment-o" />9 Comments
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">My Social link</h4>
@@ -430,13 +321,11 @@ class BlogDetails extends Component {
                 </div>
                 <div className="widget">
                   <h4 className="widget_title">Categories</h4>
-                  {categoriesList.map((category, index) => {
-                    return (
-                      <ul className="widget_category">
-                        <li>#{category.Name}</li>
-                      </ul>
-                    );
-                  })}
+                  <ul className="widget_category">
+                    {categoriesList.map((category, index) => {
+                      return <li key={index}>#{category.Name}</li>;
+                    })}
+                  </ul>
                 </div>
               </aside>
             </div>
