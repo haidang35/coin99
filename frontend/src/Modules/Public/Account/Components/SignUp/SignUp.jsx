@@ -72,7 +72,6 @@ export class SingUp extends Form {
 
   render() {
     const { message } = this.state;
-
     const { fullName, birthday, email, phoneNumber, password, confirmmationPassword } = this.state.form;
     return (
       <>
@@ -88,7 +87,6 @@ export class SingUp extends Form {
                   ) : (
                     ""
                   )}
-
                 <div className="contact">
                   <div class="row">
                     <div class="col-md-12">

@@ -35,9 +35,10 @@ export class SignIn extends Form {
         await authService.accessAuthToken(params)
             .then((res) => {
                 localStorage.setItem('access_token', res.data.access_token);
-                this.setState({
-                    isRedirect: true
-                });
+                // this.setState({
+                //     isRedirect: true
+                // });
+                window.location.replace('/');
             })
             .catch((err) => {
               let { message } = this.state;
@@ -72,7 +73,6 @@ export class SignIn extends Form {
                   ) : (
                     ""
                   )}
-
                 <div className="contact">
                   <div class="row">
                     <div class="col-md-12">
@@ -117,7 +117,6 @@ export class SignIn extends Form {
                           ""
                         )}
                       </div>
-
                       <button className="submit" onClick={this.onSigin}>
                         START 
                       </button>
@@ -127,8 +126,6 @@ export class SignIn extends Form {
               </div>
               <div className="right">
                 <div className="right-text">
-                  {/* <h2>LONYX</h2> */}
-                  {/* <h5>A UX BASED CREATIVE AGENCEY</h5> */}
                 </div>
                 <div className="right-inductor">
                   <img

@@ -49,7 +49,6 @@ class UserDetails extends Form {
                 Role: ''
             });
             this.getUserRoles();
-            console.log('222', this.state.form);
         })
   }
 
@@ -60,6 +59,7 @@ class UserDetails extends Form {
     await userService.getUserRoles(id)
         .then((res) => {
             const data = res.data;
+            console.log("🚀 ~ file: UserDetails.jsx ~ line 64 ~ UserDetails ~ .then ~ data", data)
             roleId = data[0].Role.Id;
             form.Role.value = roleId;
             this.setState({ form });
@@ -90,6 +90,7 @@ class UserDetails extends Form {
         Status: form.Status.value,
         RoleId: form.Role.value
       };
+      
       await userService.updateUser(id, data).then((res) => {
         let { message } = this.state;
         message.type = "success";

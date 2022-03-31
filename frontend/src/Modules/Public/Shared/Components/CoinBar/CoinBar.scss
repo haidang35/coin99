@@ -1,0 +1,22 @@
+#coin-bar {
+    #marquee-horizontal-1 {
+        transform: translateX(0);
+        animation: coinBarRunning 20000ms linear infinite;
+    }
+
+    // #marquee-horizontal-2 {
+    //     transform: translateX(2000px);
+    //     animation: coinBarRunning 20000ms linear infinite;
+    //     animation-delay: 10000ms;
+    // }
+
+    @keyframes coinBarRunning {
+        from {
+            transform: translateX(2000px);
+        }
+
+        to {
+            transform: translateX(-1500px);
+        }
+    }
+}

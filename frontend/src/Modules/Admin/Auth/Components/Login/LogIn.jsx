@@ -187,14 +187,6 @@ export class LogIn extends Form {
                           </div>
                         </div>
                         <p id="nav" className="over-h">
-                          <a
-                            className="pull-left blue-text"
-                            href="#"
-                            title="Password Lost and Found"
-                          >
-                            <input class="iCheck" type="checkbox"></input>
-                            Remember Password
-                          </a>
                           <Link
                             to="/admin-register"
                             className="pull-right blue-text"

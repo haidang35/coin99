@@ -31,11 +31,11 @@ namespace backend.Auth
             if(String.Compare(user.Password, Hash.Make(context.Password)) == 0)
             {
                 var userRoles = db.UserRoles.Where(r => r.UserId == user.Id).ToList();
-              /*  foreach(var userRole in userRoles)
+                foreach (var userRole in userRoles)
                 {
                     string roleName = Enum.GetName(typeof(RoleName), userRole.Role.RoleName);
                     identity.AddClaim(new Claim(ClaimTypes.Role, roleName));
-                }*/
+                }
                 identity.AddClaim(new Claim("username", user.Email));
                 identity.AddClaim(new Claim(ClaimTypes.Name, $"Hi {user.FullName}"));
                 identity.AddClaim(new Claim("currentUserId", user.Id.ToString()));
