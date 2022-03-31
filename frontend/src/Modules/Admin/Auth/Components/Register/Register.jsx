@@ -112,7 +112,7 @@ export class Register extends Form {
                                       className="form-control"
                                       name="FullName"
                                       placeholder="enter full name"
-                                      required value={FullName.value} onChange={(ev) => this._setValue(ev, "Fullname")}
+                                      required value={FullName.value} onChange={(ev) => this._setValue(ev, "FullName")}
 
 
                                     />
