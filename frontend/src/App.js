@@ -4,9 +4,7 @@ import { Admin } from "./Modules/Admin/Admin";
 import { LogIn } from "./Modules/Admin/Auth/Components/Login/LogIn";
 import { Register } from "./Modules/Admin/Auth/Components/Register/Register";
 import { Dashboard } from "./Modules/Admin/Dashboard/Components/Dashboard";
-import { NewBlog } from "./Modules/Admin/Postt/Components/NewBlog";
 import { PostList } from "./Modules/Admin/Postt/Components/PostList";
-
 import { Post } from "./Modules/Admin/Postt/Post";
 import { Abouts } from "./Modules/Public/About/Abouts";
 import { Contact } from "./Modules/Public/Contact/Contact";

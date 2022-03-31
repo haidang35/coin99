@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD:frontend/src/Modules/Admin/Auth/Components/Login/LogIn.jsx
 import "./Login.scss";
-=======
-import { Link } from "react-router-dom";
->>>>>>> development:frontend/src/Modules/Admin/Account/Components/LogIn.jsx
 
 export class LogIn extends Component {
   constructor(props) {
@@ -103,7 +99,7 @@ export class LogIn extends Component {
                           title="Sign Up"
                         >
                           Sign Up
-                        </Link>
+                        </a>
                       </p>
                     </div>
                   </div>
