@@ -6,6 +6,7 @@ import "./SignUp.scss";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { REGEX_TEL } from "../../../../../Configs/validation";
+import { Box, LinearProgress } from "@mui/material";
 
 
 export class SingUp extends Form {
@@ -20,13 +21,12 @@ export class SingUp extends Form {
         password: "",
         confirmmationPassword: "",
       }),
+      isLoading: false,
       message: {
         type: "",
         content: "",
         isDisplay: false,
       }
-
-
     }
   }
   componentDidMount = () => {
@@ -35,7 +35,8 @@ export class SingUp extends Form {
 
   onSignup = async () => {
     this._validateForm();
-    if (this._isFormValid()) {
+    if (this._isFormValid()){
+      this.setState({ isLoading: true }); 
       const { fullName, birthday, email, phoneNumber, password, confirmmationPassword } = this.state.form;
       const data = {
         FullName: fullName.value,
@@ -54,8 +55,10 @@ export class SingUp extends Form {
           this.setState({
             message
           });
+          this.setState({ isLoading: false });
         })
         .catch((err) => {
+          this.setState({ isLoading: false });
           let { message } = this.state;
           message.isDisplay = true;
           message.type = "error";
@@ -64,24 +67,28 @@ export class SingUp extends Form {
             message
           });
         })
-
     }
-
-
   }
 
   render() {
-    const { message } = this.state;
+    const { message, isLoading } = this.state;
     const { fullName, birthday, email, phoneNumber, password, confirmmationPassword } = this.state.form;
     return (
       <>
+        {isLoading ? (
+          <Box sx={{ width: "100%" }}>
+            <LinearProgress />
+          </Box>
+        ) : (
+          ""
+        )}
         <div id="signup-page" >
           <section className="login">
             <div className="login_box">
               <div className="left">
                 {
                   message.isDisplay ? (<Stack sx={{ width: '100%' }} spacing={2}>
-                    <Alert severity={message.type}> {message.content}  
+                    <Alert severity={message.type}> {message.content}
                     </Alert>
                   </Stack>
                   ) : (
@@ -107,13 +114,13 @@ export class SingUp extends Form {
                         <div className="form-group">
                           <input type="email" placeholder="Email" className="form-control" name="email" required value={email.value} onChange={(ev) => this._setValue(ev, "email")} />
                           {
-                            email.err !== '' ? email.err === "*" ? <ErrorForm message="email cannot be empty" /> : <ErrorForm message={email.err} /> :  ""
+                            email.err !== '' ? email.err === "*" ? <ErrorForm message="email cannot be empty" /> : <ErrorForm message={email.err} /> : ""
                           }
                         </div>
                         <div className="form-group">
                           <input type="tel" pattern={REGEX_TEL} placeholder="PhoneNumber" className="form-control" name="phoneNumber" required value={phoneNumber.value} onChange={(ev) => this._setValue(ev, "phoneNumber")} />
                           {
-                            phoneNumber.err !== '' ? phoneNumber.err === "*" ? <ErrorForm message="Phone Number cannot be empty" /> : <ErrorForm message={phoneNumber.err} />  : ""
+                            phoneNumber.err !== '' ? phoneNumber.err === "*" ? <ErrorForm message="Phone Number cannot be empty" /> : <ErrorForm message={phoneNumber.err} /> : ""
                           }
                         </div>
                         <div className="form-group">
