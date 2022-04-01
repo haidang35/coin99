@@ -70,12 +70,12 @@ import { Link, withRouter } from "react-router-dom";
               {currentUser == '' || currentUser == null ? (
                 <ul>
                   <li>
-                    <Link to="/signin" className="btn nav-btn" style={{ background:"#6251fc", fontSize:"20px"}}>
+                    <Link to="/signin" className="btn nav-btn" style={{ background:"#6251fc", fontSize:"15px"}}>
                       Login
                     </Link>
                   </li>
                   <li>
-                    <Link to="/signup" className="btn nav-btn btn-orange" style={{fontSize:"15px"}}>
+                    <Link to="/signup" className="btn nav-btn btn-orange" style={{fontSize:"14px"}}>
                       Sign Up
                     </Link>
                   </li>
