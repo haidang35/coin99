@@ -115,8 +115,8 @@ import { Link, withRouter } from "react-router-dom";
               >
                 <i className="fa fa-bars" />
               </button>
-              <a className="navbar-brand" href="index-2.html">
-                <img src="assets/img/logo.png" className="logo" alt="" />
+              <a className="navbar-brand" href="/" style={{ marginTop: '-16px' }}>
+                <img src="https://i.ibb.co/bNLWkY1/Logo.png" className="logo" alt="" />
               </a>
             </div>
             <div className="collapse navbar-collapse" id="navbar-menu">
