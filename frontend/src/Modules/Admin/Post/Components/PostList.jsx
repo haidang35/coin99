@@ -8,6 +8,9 @@ import postService, {
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import TablePagination from "@mui/material/TablePagination";
 
 export class PostList extends Component {
   constructor(props) {
@@ -18,7 +21,10 @@ export class PostList extends Component {
         type: "",
         content: "",
       },
-      search: ''
+      search: "",
+      isLoading: false,
+      page: 0,
+      rowsPerPage: 10,
     };
   }
 
@@ -27,6 +33,7 @@ export class PostList extends Component {
   }
 
   fetchPostListApi = async () => {
+    this.setState({ isLoading: true });
     const { search } = this.state;
     await postService
       .getList(POST_STATUS.ACTIVE, search)
@@ -34,6 +41,7 @@ export class PostList extends Component {
         console.log(res.data);
         this.setState({
           postList: res.data,
+          isLoading: false,
         });
       })
       .catch((err) => {
@@ -55,17 +63,33 @@ export class PostList extends Component {
 
   handleSearch = (event) => {
     this.setState({
-      search: event.target.value
+      search: event.target.value,
     });
-  }
+  };
 
   onSearch = () => {
     this.fetchPostListApi();
+  };
+
+  handleChangePage = (event, newPage) => {
+    this.setState({
+      page: newPage
+    });
+  }
+
+  handleChangeRowsPerPage = (event) => {
+    this.setState({
+      rowsPerPage: parseInt(event.target.value, 10)
+    });
   }
 
   render() {
-    const { postList, message, search } = this.state;
+    const { message, search, isLoading, page, rowsPerPage } =
+      this.state;
 
+      let { postList } = this.state;
+      postList = postList.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+    
     return (
       <>
         <div className=" wrapper main-wrapper row">
@@ -96,9 +120,20 @@ export class PostList extends Component {
               <div className="content-body">
                 <div className="row">
                   <div className="col-md-3">
-                    <div className="form-group" style={{ display: 'flex' }}>
-                       <input type="text" name="search" className="form-control" value={search} onChange={this.handleSearch} />
-                      <button className="btn btn-sm btn-info" onClick={this.onSearch}>Search</button>
+                    <div className="form-group" style={{ display: "flex" }}>
+                      <input
+                        type="text"
+                        name="search"
+                        className="form-control"
+                        value={search}
+                        onChange={this.handleSearch}
+                      />
+                      <button
+                        className="btn btn-sm btn-info"
+                        onClick={this.onSearch}
+                      >
+                        Search
+                      </button>
                     </div>
                   </div>
                   <div className="col-md-12">
@@ -123,6 +158,24 @@ export class PostList extends Component {
                           </tr>
                         </thead>
                         <tbody>
+                          {isLoading ? (
+                            <tr>
+                              <td colSpan="8">
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    padding: "1rem",
+                                  }}
+                                >
+                                  <CircularProgress />
+                                </Box>
+                              </td>
+                            </tr>
+                          ) : (
+                            ""
+                          )}
+
                           {postList.map((item, index) => {
                             return (
                               <tr key={item.Id}>
@@ -162,6 +215,14 @@ export class PostList extends Component {
                           })}
                         </tbody>
                       </table>
+                      <TablePagination
+                        component="div"
+                        count={postList.length}
+                        page={page}
+                        onPageChange={this.handleChangePage}
+                        rowsPerPage={rowsPerPage}
+                        onRowsPerPageChange={this.handleChangeRowsPerPage}
+                      />
                     </div>
                   </div>
                 </div>

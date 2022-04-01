@@ -59,12 +59,15 @@ namespace backend.Controllers
 
         [Route("~/api/posts/public")]
         [HttpGet]
-        [ResponseType(typeof(ICollection<Post>))]
+        [ResponseType(typeof(PagedList<Post>))]
         [AllowAnonymous]
-        public IHttpActionResult GetPostsPublic()
+        public IHttpActionResult GetPostsPublic(int pageNumber)
         {
-            var posts = db.Posts.Where(p => p.Status == PostStatus.Active).OrderByDescending(u => u.CreateAt).ToList();
-            return Ok(posts);
+            var posts = from s in db.Posts
+                           select s;
+            var posts2 = PagedList<Post>.ToPagedList(posts.Where(p => p.Status == PostStatus.Active)
+                                        .OrderByDescending(p => p.CreateAt), pageNumber, 10);
+            return Ok(posts2);
         }
 
         // GET: api/Post/

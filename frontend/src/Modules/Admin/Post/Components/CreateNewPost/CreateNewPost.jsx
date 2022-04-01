@@ -10,6 +10,8 @@ import postCategoryService from "../../../PostCategory/Services/PostCategoryServ
 import Form from "../../../../../Shared/Components/Form";
 import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import { currentUserId } from "../../../Auth/Services/AuthService";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 export class CreateNewPost extends Form {
   constructor(props) {
@@ -21,16 +23,17 @@ export class CreateNewPost extends Form {
         categoryId: "",
         status: "",
         thumbnail: "",
-        postType:""
+        postType: "",
       }),
       content: "",
       postCategoryList: [],
       isRedirectSuccess: false,
+      isLoading: false,
     };
   }
 
   componentDidMount() {
-    console.log(this.state.form)
+    console.log(this.state.form);
     this.getPostCategoryList();
   }
 
@@ -46,7 +49,7 @@ export class CreateNewPost extends Form {
     let { form } = this.state;
     form.thumbnail.value = file;
     this.setState({ form });
-  }
+  };
 
   getPostCategoryList = async () => {
     await postCategoryService.getList().then((res) => {
@@ -60,9 +63,10 @@ export class CreateNewPost extends Form {
     this._validateForm();
     console.log(this.state.form);
     if (this._isFormValid()) {
+      this.setState({ isLoading: true });
       let { form, content } = this.state;
       let formData = new FormData();
-      formData.append("fileUpload", form.thumbnail['value'], "hello.png");
+      formData.append("fileUpload", form.thumbnail["value"], "hello.png");
       let dataConverted = {
         Title: form.title.value,
         Thumbnail: "",
@@ -96,14 +100,23 @@ export class CreateNewPost extends Form {
     }
   };
   render() {
-    const { title, desc, categoryId, status, thumbnail,postType } = this.state.form;
-    const { isRedirectSuccess, postCategoryList, content } = this.state;
+    const { title, desc, categoryId, status, thumbnail, postType } =
+      this.state.form;
+    const { isRedirectSuccess, postCategoryList, content, isLoading } =
+      this.state;
     if (isRedirectSuccess) {
       return <Redirect to={"/admin/posts"} />;
     }
     return (
       <>
         <div className=" wrapper main-wrapper row">
+          {isLoading ? (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          ) : (
+            ""
+          )}
           <div className="col-md-8">
             <div className="card">
               <div className="row" style={{ padding: "50px 20px" }}>
