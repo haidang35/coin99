@@ -39,7 +39,6 @@ export class Home extends Component {
         <CoinBar coinListBinance={coinListBinance}/>
         <CoinList coinListBinance={coinListBinance} />
         <Introduction />
-        <Footer />
       </>
     );
   }
