@@ -86,51 +86,7 @@ export class CoinsListAdmin extends Component {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {coinList.map((coin, index) => {
-                                                        return (
-                                                            <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
-                                                                <td>
-                                                                    <div className="logo-name">
-                                                                        <div className="item-logo">
-                                                                            <img
-                                                                                src={coinLogo[coin.symbol]}
-                                                                                className="img-responsive"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                        <span className="item_name_value">
-                                                                            {coin.symbol}
-                                                                        </span>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative' }>
-
-                                                                        {`${coin.currency} ${coin.lastPrice}`}
-                                                                    </span>
-                                                                </td>
-                                                                <td>
-                                                                    <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative'}>
-                                                                        {`${coin.priceChangePercent} %`}
-                                                                    </span>
-                                                                </td>
-                                                                <td>
-                                                                    <span className="value_graph">
-                                                                        <svg viewBox="0 0 500 100" className="chart">
-                                                                            {" "}
-                                                                            <polyline
-                                                                                fill="none"
-                                                                                stroke="#35a947"
-                                                                                strokeWidth={5}
-                                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
-                                                                            />{" "}
-                                                                        </svg>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        );
-                                                    })}
-                                                    <tr>
+                                                <tr>
                                                         <td>
                                                             <div className="round img2">
                                                                 <img src="../Assets/data/crypto-dash/coin1.png" alt="" />
@@ -249,6 +205,52 @@ export class CoinsListAdmin extends Component {
                                                         </td>
                                                         <td className="green-text boldy">+1,429DAH</td>
                                                     </tr>
+                                                    <br />
+                                                    {/* {coinList.map((coin, index) => {
+                                                        return (
+                                                            <tr data-href="#" key={index} onClick={() => this.redirectToCoinDetail(coin)}>
+                                                                <td>
+                                                                    <div className="logo-name">
+                                                                        <div className="item-logo">
+                                                                            <img
+                                                                                src={coinLogo[coin.symbol]}
+                                                                                className="img-responsive"
+                                                                                alt=""
+                                                                            />
+                                                                        </div>
+                                                                        <span className="item_name_value">
+                                                                            {coin.symbol}
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative' }>
+
+                                                                        {`${coin.currency} ${coin.lastPrice}`}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span className={coin.priceChangePercent > 0 ? 'value_d1_return percent_positive' : 'value_d1_return percent_negative'}>
+                                                                        {`${coin.priceChangePercent} %`}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span className="value_graph">
+                                                                        <svg viewBox="0 0 500 100" className="chart">
+                                                                            {" "}
+                                                                            <polyline
+                                                                                fill="none"
+                                                                                stroke="#35a947"
+                                                                                strokeWidth={5}
+                                                                                points=" 00,120 20,60 40,80 60,20 80,80 100,80 120,60 140,100 160,90 180,80 200, 110 220, 10 240, 70 260, 100 280, 100 300, 40 320, 0 340, 100 360, 100 380, 120 400, 60 420, 70 440, 80 "
+                                                                            />{" "}
+                                                                        </svg>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })} */}
+                                                   
                                                 </tbody>
                                             </table>
                                         </div>
