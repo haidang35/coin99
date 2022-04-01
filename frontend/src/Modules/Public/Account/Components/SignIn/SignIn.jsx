@@ -6,6 +6,8 @@ import authService from "../../../../Admin/Auth/Services/AuthService";
 import "./Signin.scss";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { Box } from "@mui/system";
+import { LinearProgress } from "@mui/material";
 
 export class SignIn extends Form {
   constructor(props) {
@@ -15,6 +17,7 @@ export class SignIn extends Form {
         email: "",
         password: "",
       }),
+      isLoading: false,
       isRedirect: false,
       message: {
         type: "",
@@ -27,47 +30,57 @@ export class SignIn extends Form {
   onSigin = async () => {
     this._validateForm();
     if (this._isFormValid()) {
-        const { email, password } = this.state.form;
-        const params = new URLSearchParams();
-        params.append("grant_type", "password");
-        params.append("username", email.value);
-        params.append("password", password.value);
-        await authService.accessAuthToken(params)
-            .then((res) => {
-                localStorage.setItem('access_token', res.data.access_token);
-                // this.setState({
-                //     isRedirect: true
-                // });
-                window.location.replace('/');
-            })
-            .catch((err) => {
-              let { message } = this.state;
-              message.isDisplay = true;
-              message.type = "error";
-              message.content = "Vui lòng kiểm tra lại tải khoản hoặc mật khẩu";
-              this.setState({
-                message
-              });
-            });
+      this.setState({ isLoading: true });
+      const { email, password } = this.state.form;
+      const params = new URLSearchParams();
+      params.append("grant_type", "password");
+      params.append("username", email.value);
+      params.append("password", password.value);
+      await authService.accessAuthToken(params)
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access_token);
+          // this.setState({
+          //     isRedirect: true
+          // });
+          window.location.replace('/');
+        })
+        .catch((err) => {
+          this.setState({ isLoading: false });
+          let { message } = this.state;
+          message.isDisplay = true;
+          message.type = "error";
+          message.content = "Vui lòng kiểm tra lại tải khoản hoặc mật khẩu";
+          this.setState({
+            message
+          });
+        });
     } else {
     }
   };
   render() {
+    const { isLoading } = this.state;
     const { message } = this.state;
     const { email, password } = this.state.form;
     const { isRedirect } = this.state;
-    if(isRedirect) {
-        return <Redirect to="/blog" />
+    if (isRedirect) {
+      return <Redirect to="/blog" />
     }
     return (
       <>
+        {isLoading ? (
+          <Box sx={{ width: "100%" }}>
+            <LinearProgress />
+          </Box>
+        ) : (
+          ""
+        )}
         <div id="signin-page">
           <section className="login">
             <div className="login_box">
               <div className="left">
-              {
+                {
                   message.isDisplay ? (<Stack sx={{ width: '100%' }} spacing={2}>
-                    <Alert severity={message.type}> {message.content}  
+                    <Alert severity={message.type}> {message.content}
                     </Alert>
                   </Stack>
                   ) : (
@@ -118,7 +131,7 @@ export class SignIn extends Form {
                         )}
                       </div>
                       <button className="submit" onClick={this.onSigin}>
-                        START 
+                        START
                       </button>
                     </div>
                   </div>
