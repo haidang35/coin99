@@ -18,8 +18,8 @@ const configs = {
 
 class PublicService {
 
-    getPostList = async () => {
-        return await axios.get(BASE_URL_SERVER + API_ENDPOINT.GET_POST_LIST);
+    getPostList = async (page = 1) => {
+        return await axios.get(BASE_URL_SERVER + API_ENDPOINT.GET_POST_LIST + `?pageNumber=${page}`);
     }
 
     getCategoriesList = async () =>{

@@ -396,6 +396,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Hash.cs" />
+    <Compile Include="Helpers\PagedList.cs" />
     <Compile Include="Helpers\XString.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.cs" />
     <Compile Include="Migrations\202203190420046_Initialize.Designer.cs">

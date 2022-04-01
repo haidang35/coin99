@@ -10,6 +10,8 @@ import Form from "../../../../../Shared/Components/Form";
 import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
 import "./UpdatePost.scss";
 import { currentUserId } from "../../../Auth/Services/AuthService";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 class UpdatePost extends Form {
   constructor(props) {
@@ -20,13 +22,14 @@ class UpdatePost extends Form {
         desc: "",
         categoryId: "",
         status: "",
-        postType:""
+        postType: "",
       }),
       thumbnail: "",
       content: "",
       thumbnailLink: "",
       postCategoryList: [],
       isRedirectSuccess: false,
+      isLoading: false,
     };
   }
 
@@ -36,19 +39,32 @@ class UpdatePost extends Form {
   }
 
   getPostDetails = async () => {
+    this.setState({ isLoading: true });
     const postId = this.props.match.params.id;
     let { form } = this.state;
     await postService
       .getDetails(postId)
       .then((res) => {
-        const { Title, Body, Status, Description, CategoryId, Thumbnail, PostType } =
-          res.data;
+        const {
+          Title,
+          Body,
+          Status,
+          Description,
+          CategoryId,
+          Thumbnail,
+          PostType,
+        } = res.data;
         form.title.value = Title;
         form.status.value = Status;
         form.desc.value = Description;
         form.categoryId.value = CategoryId;
         form.postType.value = PostType;
-        this.setState({ form, content: Body, thumbnailLink: Thumbnail });
+        this.setState({
+          form,
+          content: Body,
+          thumbnailLink: Thumbnail,
+          isLoading: false,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -75,11 +91,11 @@ class UpdatePost extends Form {
     });
   };
 
-  // update info 
+  // update info
   updatePost = async () => {
     this._validateForm();
-    console.log(this.state.form);
     if (this._isFormValid()) {
+      this.setState({ isLoading: true });
       let { form, content, thumbnail, thumbnailLink } = this.state;
       const postId = this.props.match.params.id;
       let dataConverted = {
@@ -116,24 +132,31 @@ class UpdatePost extends Form {
             console.log(err);
           });
       } else {
-        await postService.updateDetails(postId, dataConverted)
-          .then((res) => {
-            this.setState({
-              isRedirectSuccess: true
-            });
+        await postService.updateDetails(postId, dataConverted).then((res) => {
+          this.setState({
+            isRedirectSuccess: true,
           });
+        });
       }
     }
   };
   render() {
     const { title, desc, categoryId, status, postType } = this.state.form;
-    const { isRedirectSuccess, postCategoryList, content } = this.state;
+    const { isRedirectSuccess, postCategoryList, content, isLoading } =
+      this.state;
     if (isRedirectSuccess) {
       return <Redirect to={"/admin/posts"} />;
     }
     return (
       <>
         <div id="update-post" className=" wrapper main-wrapper row">
+          {isLoading ? (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          ) : (
+            ""
+          )}
           <div className="col-md-8">
             <div className="card">
               <div className="row" style={{ padding: "50px 20px" }}>

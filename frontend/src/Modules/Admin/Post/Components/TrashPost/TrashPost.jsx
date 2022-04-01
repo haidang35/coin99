@@ -60,7 +60,7 @@ export class TrashPost extends Component {
     await postService.delete(chooseDeletePost.Id).then((res) => {
       message.type = "success";
       message.content = "Delete post successful !";
-      this.setState({ message });
+      this.setState({ message, isOpenDiaglog: false });
       this.getTrashPostList();
     });
   };
@@ -181,7 +181,7 @@ export class TrashPost extends Component {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Use Google's location service?"}
+            {"Alert"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
