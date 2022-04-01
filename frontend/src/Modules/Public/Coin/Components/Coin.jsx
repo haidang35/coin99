@@ -2,6 +2,7 @@ import { onValue, ref } from "firebase/database";
 import React, { Component }  from "react";
 import { useParams, withRouter } from "react-router-dom";
 import { realtimeDb } from "../../../../Configs/firebase";
+import { BlogContent } from "../../Blog/Components/BlogContent/BlogContent";
 import { CoinDetails } from "./CoinDetails/CoinDetails";
 import { CoinHeader } from "./CoinHeader/CoinHeader";
 import { CoinPricing } from "./CoinPricing/CoinPricing";
@@ -38,7 +39,7 @@ import { CoinPricing } from "./CoinPricing/CoinPricing";
             <>
             <CoinHeader coinDetails={coinDetails} />
             <CoinDetails coinDetails={coinDetails}/>
-            <CoinPricing />
+             <BlogContent />
             </>
         )
     }
