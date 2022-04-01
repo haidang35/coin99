@@ -40,12 +40,6 @@ import { Link, withRouter } from "react-router-dom";
     const pathName = window.location.pathname;
     return (
       <>
-        {/* <div id="loader-wrapper">
-            <div id="loader" />
-            <div className="loader-section section-left" />
-            <div className="loader-section section-right" />
-          </div> */}
-        {/* /.End of loader wrapper*/}
         <nav
           id="navbar-public"
           className="navbar navbar-default navbar-fixed navbar-transparent bootsnav"
@@ -54,7 +48,6 @@ import { Link, withRouter } from "react-router-dom";
             transition: "background-color 200ms linear",
           }}
         >
-          {/* Start Top Search */}
           <div className="top-search">
             <div className="container">
               <div className="input-group">
@@ -92,6 +85,7 @@ import { Link, withRouter } from "react-router-dom";
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center'
+                  
                 }}>
                   <li style={{ display: "flex" }}>
                     <a href="#">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Slider extends Component {
   constructor(props) {
@@ -35,9 +36,9 @@ export class Slider extends Component {
                           dummy text ever since the 1500s
                         </p>
                         <div className="slide-buttons">
-                          <a href="#" className="slide-btn">
-                            Download Now
-                          </a>
+                          <Link to="/coin-market" className="slide-btn">
+                            View Coin Market
+                          </Link>
                         </div>
                       </div>
                     </div>

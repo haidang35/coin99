@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 
 export class Introduction extends Component {
     constructor(props) {
@@ -10,185 +12,61 @@ export class Introduction extends Component {
     render() {
         return (
             <>
-                <div className="blog_content">
+                <div className="about_content">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-sm-8 col-sm-offset-2">
-                                <div className="section_title">
-                                    <h3>
-                                        Cryptocurrency <span>News</span>
-                                    </h3>
+                        <div className="row about-text justify-content">
+                            <div className="col-md-6">
+                                <div className="about-info">
+                                    <h2>What is ICO Crypto?</h2>
+                                    <div className="definition">
+                                        ICO Crypto is a platform for the future of funding that powering dat
+                                        for the new equity blockchain
+                                    </div>
                                     <p>
-                                        It is a long established fact that a reader will be distracted by
-                                        the readable content of a page when looking at its layout. The point
-                                        of using Lorem Ipsum.
+                                        There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected
+                                        humour, or randomised words which don't look even slightly
+                                        believable. If you are going to use a passage of Lorem Ipsum, you
+                                        need to be sure there isn't anything.
                                     </p>
+                                    <p>
+                                        All the Lorem Ipsum generators on the Internet tend to repeat
+                                        predefined chunks as necessary, making this the first true
+                                        generator.
+                                    </p>
+                                    <Link to="/contact" className="btn btn-default mr-20 mb-10">
+                                        Contact us
+                                    </Link>
+                                    <div className="play-button">
+                                        <a
+                                            href="http://www.youtube.com/watch?v=0O2aH4XLbto"
+                                            className="btn-play popup-youtube"
+                                        >
+                                            <div className="play-icon">
+                                                <i className="fa fa-play" />
+                                            </div>
+                                            <div className="play-text">
+                                                <div className="btn-title-inner">
+                                                    <div className="btn-title">
+                                                        <span>Watch Video</span>
+                                                    </div>
+                                                    <div className="btn-subtitle">
+                                                        <span>About Bitcoin</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="owl-blog owl-carousel owl-theme">
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-1.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted
-                                                by the readable content of a page
-                                            </p>
-                                        </div>
-                                    </div>
+                            <div className="col-md-6">
+                                <div className="text-right">
+                                    <img src="/Assets/Public/assets/img/about.jpg" className="img-responsive" alt="" />
                                 </div>
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-2.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                The standard chunk of Lorem Ipsum used since the 1500s is
-                                                reproduced below.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-3.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                Many desktop publishing packages and web page editors now use
-                                                Lorem Ipsum{" "}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-4.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-5.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="post_grid">
-                                        <div className="grid_img">
-                                            <img
-                                                src="assets/img/blog/360x250-6.jpg"
-                                                className="img-responsive"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="grid_body">
-                                            <h3 className="post_heading">
-                                                <a href="#">
-                                                    <strong>IFusce</strong> <span className="dash">—</span> ac
-                                                    tortor et lacus volutpat euismod.
-                                                </a>
-                                            </h3>
-                                            <time dateTime="2018-01-21T19:00" className="time">
-                                                {" "}
-                                                13/02/17
-                                            </time>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry.
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div className="quote">
+                                    It is a long established fact that a reader will be distracted by the
+                                    readable content of a page when looking at its layout.
+                                    <div className="author-address">Tanjil Ahmed - Owner, Bdtask</div>
                                 </div>
                             </div>
                         </div>
