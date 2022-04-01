@@ -16,6 +16,7 @@ import { SingUp } from "./Account/Components/SignUp/SignUp";
 import { SignIn } from "./Account/Components/SignIn/SignIn";
 import authService from "../Admin/Auth/Services/AuthService";
 import { useState } from "react";
+import { Footer } from "./Shared/Components/Layouts/Footer";
 
 export function Public() {
   const [currentUser, setCurrentUser] = useState('');
@@ -69,6 +70,7 @@ export function Public() {
             <BlogDetails />
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </>
   );

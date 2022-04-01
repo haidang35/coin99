@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { ErrorForm } from "../../../../Shared/Components/ErrorForm";
-import Form from "../../../../Shared/Components/Form";
-import postCategoryService from "../Services/PostCategoryService";
+import { ErrorForm } from "../../../../../Shared/Components/ErrorForm";
+import Form from "../../../../../Shared/Components/Form";
+import postCategoryService from "../../Services/PostCategoryService";
 
 
 

@@ -5,12 +5,28 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import "./PostCategory.scss";
 import postCategoryService from "./Services/PostCategoryService";
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
 export class PostCategory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       postCategoryList: [],
+      isOpenDiaglog: false,
+      choosedDeleteCategory: "",
+      message: {
+        type: '',
+        content: '',
+        isDisplay: false
+      }
     };
   }
 
@@ -19,19 +35,45 @@ export class PostCategory extends Component {
   }
 
   getPostCategoryList = async () => {
-    await postCategoryService.getList()
+    await postCategoryService
+      .getList()
       .then((res) => {
         this.setState({
-          postCategoryList: res.data
+          postCategoryList: res.data,
         });
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
+  onChooseDeleteCategory = (category) => {
+    this.setState({
+      choosedDeleteCategory: category,
+      isOpenDiaglog: true
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      isOpenDiaglog: false
+    })
+  }
+
+  onDeleteCategory = async () => {
+    const { choosedDeleteCategory } = this.state;
+    await postCategoryService.deleteCategory(choosedDeleteCategory.Id)
+      .then((res) => {
+         let { message } = this.state;
+         this.setState({
+           isOpenDiaglog: false
+         });
+         this.getPostCategoryList();
+      })
+  }
+
   render() {
-    const { postCategoryList } = this.state;
+    const { postCategoryList, isOpenDiaglog, choosedDeleteCategory } = this.state;
     return (
       <>
         <div id="post-category">
@@ -72,23 +114,31 @@ export class PostCategory extends Component {
                                 <tr key={category.Id}>
                                   <td>{category.Id}</td>
                                   <td>{category.Name}</td>
-                                  <td>{category.CategoryType === 1 ? 'Free' : 'Premium'}</td>
-                                  <td>{category.Status === 1 ? 'Active' : 'Deactive'}</td>
+                                  <td>
+                                    {category.CategoryType === 1
+                                      ? "Free"
+                                      : "Premium"}
+                                  </td>
+                                  <td>
+                                    {category.Status === 1
+                                      ? "Active"
+                                      : "Deactive"}
+                                  </td>
                                   <td>{category.CreatedAt}</td>
                                   <td>{category.UpdatedAt}</td>
-                                  <td><button>Edit</button></td>
-                                  <td><Link to={`/admin/post-categories/${category.Id}`}>
-                                    <button className="btn btn-sm btn-primary">
-                                      Update
-                                    </button>
-                                  </Link></td>
                                   <td>
-                                    <button className="btn btn-sm btn-danger">
+                                    <Link
+                                      to={`/admin/post-categories/${category.Id}`}
+                                    >
+                                      <button className="btn btn-sm btn-primary">
+                                        Update
+                                      </button>
+                                    </Link>
+                                    <button onClick={() => this.onChooseDeleteCategory(category)} className="btn btn-sm btn-danger">
                                       Delete
                                     </button>
                                   </td>
                                 </tr>
-                                
                               );
                             })}
                           </tbody>
@@ -101,6 +151,25 @@ export class PostCategory extends Component {
             </div>
           </div>
         </div>
+        <Dialog
+          open={isOpenDiaglog}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Alert"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure delete category: {choosedDeleteCategory.Name}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose}>Disagree</Button>
+            <Button onClick={this.onDeleteCategory} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
       </>
     );
   }

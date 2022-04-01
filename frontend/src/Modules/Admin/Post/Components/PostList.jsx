@@ -73,23 +73,22 @@ export class PostList extends Component {
 
   handleChangePage = (event, newPage) => {
     this.setState({
-      page: newPage
+      page: newPage,
     });
-  }
+  };
 
   handleChangeRowsPerPage = (event) => {
     this.setState({
-      rowsPerPage: parseInt(event.target.value, 10)
+      rowsPerPage: parseInt(event.target.value, 10),
     });
-  }
+  };
 
   render() {
-    const { message, search, isLoading, page, rowsPerPage } =
-      this.state;
+    const { message, search, isLoading, page, rowsPerPage } = this.state;
 
-      let { postList } = this.state;
-      postList = postList.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
-    
+    let { postList } = this.state;
+    postList = postList.slice(page * rowsPerPage, (page + 1) * rowsPerPage);
+
     return (
       <>
         <div className=" wrapper main-wrapper row">
